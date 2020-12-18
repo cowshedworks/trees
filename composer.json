@@ -1,0 +1,21 @@
+{
+    "name": "cowshedworks/trees",
+    "description": "Tree Database",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gavin Phillips",
+            "email": "gavin@cowshedworks.co.uk"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "CowshedWorks\\Trees\\" : "src/"
+        }
+    }
+}
