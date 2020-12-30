@@ -20,9 +20,9 @@ class TreeAttributesTest extends TestCase
             ['circumference' => '33cm']
         );
 
-        $this->assertEquals($treeAttributes->describeAge(), '13.2years');
-        $this->assertEquals($treeAttributes->describeHeight(), '792cm');
-        $this->assertEquals($treeAttributes->describeCircumference(), '33cm');
+        $this->assertEquals($treeAttributes->describeAge(), '13.2 years');
+        $this->assertEquals($treeAttributes->describeHeight(), '792 cm');
+        $this->assertEquals($treeAttributes->describeCircumference(), '33 cm');
     }
 
     /**
@@ -35,9 +35,9 @@ class TreeAttributesTest extends TestCase
             ['age' => '75years']
         );
 
-        $this->assertEquals($treeAttributes->describeAge(), '75years');
-        $this->assertEquals($treeAttributes->describeHeight(), '4500cm');
-        $this->assertEquals($treeAttributes->describeCircumference(), '187.5cm');
+        $this->assertEquals($treeAttributes->describeAge(), '75 years');
+        $this->assertEquals($treeAttributes->describeHeight(), '4500 cm');
+        $this->assertEquals($treeAttributes->describeCircumference(), '187.5 cm');
     }
 
     /**
@@ -50,8 +50,8 @@ class TreeAttributesTest extends TestCase
             ['height' => '10cm']
         );
 
-        $this->assertEquals($treeAttributes->describeAge(), '0.17years');
-        $this->assertEquals($treeAttributes->describeHeight(), '10cm');
-        $this->assertEquals($treeAttributes->describeCircumference(), '0.425cm');
+        $this->assertEquals($treeAttributes->describeAge(), '0.17 years');
+        $this->assertEquals($treeAttributes->describeHeight(), '10 cm');
+        $this->assertEquals($treeAttributes->describeCircumference(), '0.425 cm');
     }
 }

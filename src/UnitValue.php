@@ -34,7 +34,7 @@ abstract class UnitValue
 
     public function getDescription()
     {
-        return "{$this->getValue()}{$this->getUnit()}";
+        return "{$this->getValue()} {$this->getUnit()}";
     }
 
     public static function getDefault()
