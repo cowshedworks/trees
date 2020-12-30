@@ -46,7 +46,7 @@ class TreeAttributes
     {
         $currentValue = $this->speciesData;
 
-        foreach(explode('.', $dataName) as $key) {
+        foreach (explode('.', $dataName) as $key) {
             $currentValue = $currentValue[$key];
         }
 
