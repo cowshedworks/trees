@@ -1,7 +1,5 @@
 <?php
 
-
-
 namespace CowshedWorks\Trees;
 
 class TreeState

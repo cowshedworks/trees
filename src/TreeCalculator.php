@@ -13,7 +13,7 @@ class TreeCalculator
     public function __construct(array $speciesData, array $treeData)
     {
         $this->speciesData = $speciesData;
-        $this->treePresentState= new TreeState($treeData);
+        $this->treePresentState = new TreeState($treeData);
     }
 
     public function getPopularName(): string
