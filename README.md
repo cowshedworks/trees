@@ -93,11 +93,12 @@ Call getTrees() on TreeCalculatorFactory to list the available tree calculators.
 To instantiate a calculator you need to pass parameters to the contructor, it will require one of 'circumference', 'age', or 'height' in order to build the calculator.
 
 ```PHP
-echo TreeCalculatorFactory::getTrees();
+$factory = new TreeCalculatorFactory();
+echo $factory->getTrees();
 
 // prints ['alder', 'birch', 'oak']
 
-$treeCalculator = TreeCalculatorFactory::alder(['circumference' = '33cm']);
+$treeCalculator = $factory->alder(['circumference' = '33cm']);
 
 $treeCalculator->getAge();
 

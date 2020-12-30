@@ -14,9 +14,11 @@ class FactoryTest extends TestCase
      */
     public function the_factory_can_list_available_tree_calculators(): void
     {
+        $factory = new TreeCalculatorFactory();
+
         $this->assertContains(
-            TreeCalculatorFactory::getTrees(),
-            'alder'
+            'alder',
+            $factory->getTrees(),
         );
     }
 }
