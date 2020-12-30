@@ -34,6 +34,14 @@ class TreeAttributes
             if ($this->circumference) {
                 $this->age = new Age($this->circumference->getValue() / $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'years');
             }
+
+            if ($this->height) {
+                $this->age = new Age($this->height->getValue() / $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'years');
+            }
+        }
+
+        if ($this->age === null) {
+            throw new Exception('Unable to resolve tree age');
         }
 
         if ($this->circumference === null) {

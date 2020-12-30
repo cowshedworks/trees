@@ -11,6 +11,6 @@ class Age extends UnitValue
 
     protected function setValue($value)
     {
-        return $this->value = (float) $value;
+        return $this->value = round((float) $value, 2);
     }
 }

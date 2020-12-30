@@ -51,7 +51,7 @@ class TreeCalculatorFactory
         return new TreeCalculator(
             new TreeAttributes(
                 $this->configLoader->getConfigFor($treeName),
-                $userParameters
+                $userParameters[0] ?? []
             )
         );
     }
