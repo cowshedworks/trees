@@ -64,7 +64,7 @@ class TreeAttributes
         }
 
         $values = [];
-        
+
         if (isset($treeData['circumference'])) {
             $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['circumference']);
         }
@@ -87,7 +87,7 @@ class TreeAttributes
         }
 
         $values = [];
-        
+
         if (isset($treeData['age'])) {
             $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['age']);
         }
@@ -110,7 +110,7 @@ class TreeAttributes
         }
 
         $values = [];
-        
+
         if (isset($treeData['height'])) {
             $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['height']);
         }
