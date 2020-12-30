@@ -13,16 +13,15 @@ class TreeAttributesTest extends TestCase
     /**
      * @test
      */
-    public function a_tree_calculator_will_guess_the_age_and_height_when_circumference_is_provided(): void
+    public function attributes_will_be_calculated_from_circumference(): void
     {
-        $configLoader = new ConfigLoader();
-        $presentState = new TreeAttributes(
-            $configLoader->getConfigFor('alder'),
+        $treeAttributes = new TreeAttributes(
+            (new ConfigLoader())->getConfigFor('alder'),
             ['circumference' => '33cm']
         );
 
-        $this->assertEquals($presentState->getAge(), 1);
-        $this->assertEquals($presentState->getHeight(), 1);
-        $this->assertEquals($presentState->getCircumference(), 1);
+        $this->assertEquals($treeAttributes->describeAge(), '13.2years');
+        $this->assertEquals($treeAttributes->describeHeight(), '792cm');
+        $this->assertEquals($treeAttributes->describeCircumference(), '33cm');
     }
 }

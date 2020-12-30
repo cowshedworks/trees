@@ -4,42 +4,148 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
+use Exception;
+
 class TreeAttributes
 {
-    protected array $speciesData;
-
     public static array $requiredvalidParameters = ['circumference', 'age', 'height'];
-
-    private int $age;
-    private int $circumference;
-    private int $height;
+    private array $speciesData;
+    private $age;
+    private $circumference;
+    private $height;
 
     public function __construct(array $speciesData, array $treeData)
     {
         $this->speciesData = $speciesData;
-        $this->resolveFromData($treeData);
+        $this->init($treeData);
     }
 
-    private function resolveFromData(array $treeData): void
+    private function init(array $treeData): void
     {
-        $this->age = 1;
-        $this->circumference = 1;
-        $this->height = 1;
+        $this->resolveCircumference($treeData);
+        $this->resolveAge($treeData);
+        $this->resolveHeight($treeData);
+        $this->resolveMissing();
     }
 
-    public function getAge(): int
+    private function resolveMissing(): void
     {
-        return $this->age;
+        if ($this->age === null) {
+            if ($this->circumference) {
+                $this->age = new Age($this->circumference->getValue() / $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'years');
+            }
+        }
+
+        if ($this->circumference === null) {
+            if ($this->age) {
+                $this->circumference = new Circumference($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'cm');
+            }
+        }
+
+        if ($this->height === null) {
+            if ($this->age) {
+                $this->height = new Height($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'cm');
+            }
+        }
     }
 
-    public function getCircumference(): int
+    private function resolveCircumference(array $treeData): void
     {
-        return $this->circumference;
+        if (false === isset($treeData['circumference'])) {
+            return;
+        }
+
+        $values = [];
+        
+        if (isset($treeData['circumference'])) {
+            $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['circumference']);
+        }
+
+        if (count($values) === 2) {
+            // No id set, use cm
+            $this->circumference = new Circumference($values[0], $values[1]);
+        }
+
+        if (count($values) === 1) {
+            // No id set, use cm
+            $this->circumference = new Circumference($values[0], 'cm');
+        }
     }
 
-    public function getHeight(): int
+    private function resolveAge(array $treeData): void
     {
-        return $this->height;
+        if (false === isset($treeData['age'])) {
+            return;
+        }
+
+        $values = [];
+        
+        if (isset($treeData['age'])) {
+            $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['age']);
+        }
+
+        if (count($values) === 2) {
+            // No id set, use cm
+            $this->age = new Age($values[0], $values[1]);
+        }
+
+        if (count($values) === 1) {
+            // No id set, use cm
+            $this->age = new Age($values[0], 'years');
+        }
+    }
+
+    private function resolveHeight(array $treeData): void
+    {
+        if (false === isset($treeData['height'])) {
+            return;
+        }
+
+        $values = [];
+        
+        if (isset($treeData['height'])) {
+            $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['height']);
+        }
+
+        if (count($values) === 2) {
+            // No id set, use cm
+            $this->height = new Height($values[0], $values[1]);
+        }
+
+        if (count($values) === 1) {
+            // No id set, use cm
+            $this->height = new Height($values[0], 'cm');
+        }
+    }
+
+    public function getAge(): float
+    {
+        return $this->age->getValue();
+    }
+
+    public function getCircumference(): float
+    {
+        return $this->circumference->getValue();
+    }
+
+    public function getHeight(): float
+    {
+        return $this->height->getValue();
+    }
+
+    public function describeAge(): string
+    {
+        return $this->age->getDescription();
+    }
+
+    public function describeCircumference(): string
+    {
+        return $this->circumference->getDescription();
+    }
+
+    public function describeHeight(): string
+    {
+        return $this->height->getDescription();
     }
 
     public function getSpeciesData(string $dataName)
