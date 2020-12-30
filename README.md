@@ -82,3 +82,30 @@ TCW = 0.5 * TDW  = 0.5 * 208.8 = 104.4 lbs
 TCS = 3.67 * TCW  = 3.67 * 104.4 
 
 = 382.8 lbs CO2 sequestered in 10 years
+
+
+### Tree Calculations API
+
+The tree calculator factory will return a calculator that can be used to calculate various things about the tree.
+
+Call trees() to list the available tree calculators.
+
+To instantiate a calculator you need to pass parameters to the contructor, it will require one of 'circumference', 'age', or 'height' in order to build the calculator.
+
+`
+echo TreeCalculator::trees();
+
+#['alder', 'birch', 'oak']
+
+$treeCalculator = TreeCalculatorFactory::alder(['circumference' = '33cm']);
+
+$treeCalculator->getAge();
+
+$treeCalculator->getMaxAge();
+
+$treeCalculator->getCO2SequestrationPerYear();
+
+$treeCalculator->getCO2SequestrationToDate();
+
+$treeCalculator->getCO2SequestrationLifetime();
+`

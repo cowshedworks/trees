@@ -2,4 +2,4 @@
 
 namespace CowshedWorks\Trees;
 
-class TreeFactory {}
+class TreeCalculatorFactory {}
