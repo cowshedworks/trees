@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
-use CowshedWorks\Trees\TreeCalculator;
 use Exception;
 
 class TreeCalculatorFactory
 {
-    const DATADIR = __DIR__ .'/data';
+    const DATADIR = __DIR__.'/data';
 
     protected bool $availableTreesLoaded = false;
 
@@ -32,10 +31,12 @@ class TreeCalculatorFactory
             ['..', '.']
         );
 
-        $dataFiles = array_map(function($filename){
-                return str_replace('.json', '', $filename);
-            },
-        $dataFiles);
+        $dataFiles = array_map(
+            function ($filename) {
+            return str_replace('.json', '', $filename);
+        },
+            $dataFiles
+        );
 
         $this->availableTrees = array_values($dataFiles);
         $this->availableTreesLoaded = true;
@@ -44,7 +45,7 @@ class TreeCalculatorFactory
     private function checkCanBuild(string $treeName): void
     {
         if (false === $this->availableTreesLoaded) {
-            throw new Exception("Config files not loaded");
+            throw new Exception('Config files not loaded');
         }
 
         if (false === in_array($treeName, $this->availableTrees)) {

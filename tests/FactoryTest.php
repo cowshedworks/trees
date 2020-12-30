@@ -33,7 +33,7 @@ class FactoryTest extends TestCase
 
         $this->assertNotNull($calculator);
         $this->assertEquals($calculator->getPopularName(), 'Alder');
-        $this->assertEquals($calculator->getCommonNames(), ["Alder", "Common Alder", "Black Alder", "European Alder"]);
+        $this->assertEquals($calculator->getCommonNames(), ['Alder', 'Common Alder', 'Black Alder', 'European Alder']);
         $this->assertEquals($calculator->getScientificName(), ['Alnus glutinosa']);
     }
 }
