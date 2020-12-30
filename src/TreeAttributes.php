@@ -53,24 +53,23 @@ class TreeAttributes
 
     private function resolveParameters(array $treeData): void
     {
-        foreach(self::$requiredvalidParameters as $parameter) {
-
+        foreach (self::$requiredvalidParameters as $parameter) {
             if (false === isset($treeData[$parameter])) {
                 continue;
             }
-    
+
             $values = [];
-    
+
             if (isset($parameter)) {
                 $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData[$parameter]);
             }
 
             $unitValueClass = '\CowshedWorks\Trees\\'.ucfirst($parameter);
-    
+
             if (count($values) === 2) {
                 $this->{$parameter} = new $unitValueClass($values[0], $values[1]);
             }
-    
+
             if (count($values) === 1) {
                 $this->{$parameter} = new $unitValueClass($values[0], $unitValueClass::getDefault());
             }
