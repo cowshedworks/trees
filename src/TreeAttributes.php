@@ -22,13 +22,11 @@ class TreeAttributes
 
     private function init(array $treeData): void
     {
-        $this->resolveCircumference($treeData);
-        $this->resolveAge($treeData);
-        $this->resolveHeight($treeData);
-        $this->resolveMissing();
+        $this->resolveParameters($treeData);
+        $this->setupAttributes();
     }
 
-    private function resolveMissing(): void
+    private function setupAttributes(): void
     {
         if ($this->age === null) {
             if ($this->circumference) {
@@ -45,86 +43,85 @@ class TreeAttributes
         }
 
         if ($this->circumference === null) {
-            if ($this->age) {
-                $this->circumference = new Circumference($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'cm');
-            }
+            $this->circumference = new Circumference($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'cm');
         }
 
         if ($this->height === null) {
-            if ($this->age) {
-                $this->height = new Height($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'cm');
+            $this->height = new Height($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'cm');
+        }
+    }
+
+    private function resolveParameters(array $treeData): void
+    {
+        foreach(self::$requiredvalidParameters as $parameter) {
+
+            if (false === isset($treeData[$parameter])) {
+                continue;
+            }
+    
+            $values = [];
+    
+            if (isset($parameter)) {
+                $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData[$parameter]);
+            }
+
+            $unitValueClass = '\CowshedWorks\Trees\\'.ucfirst($parameter);
+    
+            if (count($values) === 2) {
+                $this->{$parameter} = new $unitValueClass($values[0], $values[1]);
+            }
+    
+            if (count($values) === 1) {
+                $this->{$parameter} = new $unitValueClass($values[0], $unitValueClass::getDefault());
             }
         }
     }
 
-    private function resolveCircumference(array $treeData): void
-    {
-        if (false === isset($treeData['circumference'])) {
-            return;
-        }
+    // private function resolveAge(array $treeData): void
+    // {
+    //     if (false === isset($treeData['age'])) {
+    //         return;
+    //     }
 
-        $values = [];
+    //     $values = [];
 
-        if (isset($treeData['circumference'])) {
-            $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['circumference']);
-        }
+    //     if (isset($treeData['age'])) {
+    //         $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['age']);
+    //     }
 
-        if (count($values) === 2) {
-            // No id set, use cm
-            $this->circumference = new Circumference($values[0], $values[1]);
-        }
+    //     if (count($values) === 2) {
+    //         // No id set, use cm
+    //         $this->age = new Age($values[0], $values[1]);
+    //     }
 
-        if (count($values) === 1) {
-            // No id set, use cm
-            $this->circumference = new Circumference($values[0], 'cm');
-        }
-    }
+    //     if (count($values) === 1) {
+    //         // No id set, use cm
+    //         $this->age = new Age($values[0], 'years');
+    //     }
+    // }
 
-    private function resolveAge(array $treeData): void
-    {
-        if (false === isset($treeData['age'])) {
-            return;
-        }
+    // private function resolveHeight(array $treeData): void
+    // {
+    //     if (false === isset($treeData['height'])) {
+    //         return;
+    //     }
 
-        $values = [];
+    //     $values = [];
 
-        if (isset($treeData['age'])) {
-            $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['age']);
-        }
+    //     if (isset($treeData['height'])) {
+    //         $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['height']);
+    //     }
 
-        if (count($values) === 2) {
-            // No id set, use cm
-            $this->age = new Age($values[0], $values[1]);
-        }
+    //     if (count($values) === 2) {
+    //         // No id set, use cm
+    //         $this->height = new Height($values[0], $values[1]);
+    //     }
 
-        if (count($values) === 1) {
-            // No id set, use cm
-            $this->age = new Age($values[0], 'years');
-        }
-    }
-
-    private function resolveHeight(array $treeData): void
-    {
-        if (false === isset($treeData['height'])) {
-            return;
-        }
-
-        $values = [];
-
-        if (isset($treeData['height'])) {
-            $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['height']);
-        }
-
-        if (count($values) === 2) {
-            // No id set, use cm
-            $this->height = new Height($values[0], $values[1]);
-        }
-
-        if (count($values) === 1) {
-            // No id set, use cm
-            $this->height = new Height($values[0], 'cm');
-        }
-    }
+    //     if (count($values) === 1) {
+    //         // No id set, use cm
+    //         $this->height = new Height($values[0], 'cm');
+    //     }
+    // }
 
     public function getAge(): float
     {

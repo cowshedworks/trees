@@ -6,6 +6,8 @@ namespace CowshedWorks\Trees;
 
 class Age extends UnitValue
 {
+    const DEFAULTUNIT = 'years';
+
     protected $value;
     protected $unit;
 

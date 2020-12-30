@@ -6,6 +6,8 @@ namespace CowshedWorks\Trees;
 
 class Height extends UnitValue
 {
+    const DEFAULTUNIT = 'cm';
+
     protected $value;
     protected $unit;
 

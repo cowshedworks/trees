@@ -6,6 +6,8 @@ namespace CowshedWorks\Trees;
 
 class Circumference extends UnitValue
 {
+    const DEFAULTUNIT = 'cm';
+
     protected $value;
     protected $unit;
 

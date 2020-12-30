@@ -36,4 +36,9 @@ abstract class UnitValue
     {
         return "{$this->getValue()}{$this->getUnit()}";
     }
+
+    public static function getDefault()
+    {
+        return static::DEFAULTUNIT;
+    }
 }
