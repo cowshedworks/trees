@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees\Tests;
 
 use CowshedWorks\Trees\TreeCalculatorFactory;
-use Exception;
 use PHPUnit\Framework\TestCase;
 
 class TreeCalculatorTest extends TestCase
