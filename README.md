@@ -100,6 +100,8 @@ echo $factory->getTrees();
 
 $treeCalculator = $factory->alder(['circumference' = '33cm']);
 
+$treeCalculator->getName();
+
 $treeCalculator->getAge();
 
 $treeCalculator->getMaxAge();

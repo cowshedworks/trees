@@ -21,4 +21,17 @@ class FactoryTest extends TestCase
             $factory->getTrees(),
         );
     }
+
+    /**
+     * @test
+     */
+    public function the_factory_can_get_a_calculator(): void
+    {
+        $factory = new TreeCalculatorFactory();
+
+        $calculator = $factory->alder(['circumference' => '33cm']);
+
+        $this->assertEquals($calculator->getName(), 'Alder');
+        $this->assertEquals($calculator->getScientificName(), ['Alnus glutinosa']);
+    }
 }
