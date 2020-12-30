@@ -10,6 +10,8 @@ class TreeCalculatorFactory
 {
     const DATADIR = __DIR__.'/data';
 
+    protected array $validParameters = ['circumference', 'age', 'height'];
+
     protected bool $availableTreesLoaded = false;
 
     protected array $availableTrees = [];
@@ -42,8 +44,22 @@ class TreeCalculatorFactory
         $this->availableTreesLoaded = true;
     }
 
-    private function checkCanBuild(string $treeName): void
+    private function checkCanBuild(string $treeName, array $userParameters): void
     {
+        try {
+            $configParameter = $userParameters[0];
+        } catch (Exception $exception) {
+            throw new Exception('No config provided');
+        }
+
+        if (false === is_array($configParameter) || count($configParameter) < 1) {
+            throw new Exception('Cannot build alder calculator without one of these parameters: age, height, circumference');
+        }
+
+        if (false === $this->parametersAreValid($configParameter)) {
+            throw new Exception('Cannot build alder calculator without one of these parameters: age, height, circumference');
+        }
+
         if (false === $this->availableTreesLoaded) {
             throw new Exception('Config files not loaded');
         }
@@ -51,6 +67,15 @@ class TreeCalculatorFactory
         if (false === in_array($treeName, $this->availableTrees)) {
             throw new Exception("{$treeName} not available");
         }
+    }
+
+    private function parametersAreValid(array $parameters): bool
+    {
+        $totalValidParams = count($this->validParameters);
+
+        $validParamsNotProvided = array_diff($this->validParameters, array_keys($parameters));
+
+        return  count($validParamsNotProvided) != $totalValidParams;
     }
 
     private function getConfigFor(string $treeName): array
@@ -67,17 +92,18 @@ class TreeCalculatorFactory
         );
     }
 
-    private function build(string $treeName): TreeCalculator
+    private function build(string $treeName, array $userParameters): TreeCalculator
     {
         return new TreeCalculator(
-            $this->getConfigFor($treeName)
+            $this->getConfigFor($treeName),
+            $userParameters
         );
     }
 
-    public function __call($method, $params)
+    public function __call($method, $userParameters)
     {
-        $this->checkCanBuild($method);
+        $this->checkCanBuild($method, $userParameters);
 
-        return $this->build($method);
+        return $this->build($method, $userParameters);
     }
 }

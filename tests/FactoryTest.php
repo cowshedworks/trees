@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees\Tests;
 
 use CowshedWorks\Trees\TreeCalculatorFactory;
+use Exception;
 use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
@@ -20,6 +21,30 @@ class FactoryTest extends TestCase
             'alder',
             $factory->getTrees(),
         );
+    }
+
+    /**
+     * @test
+     */
+    public function the_factory_will_not_build_a_calculator_when_no_params_are_provided(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('No config provided');
+
+        $factory = new TreeCalculatorFactory();
+        $calculator = $factory->alder();
+    }
+
+    /**
+     * @test
+     */
+    public function the_factory_will_not_build_a_calculator_when_unknown_params_are_provided(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Cannot build alder calculator without one of these parameters: age, height, circumference');
+
+        $factory = new TreeCalculatorFactory();
+        $calculator = $factory->alder(['wat' => '100cm']);
     }
 
     /**
