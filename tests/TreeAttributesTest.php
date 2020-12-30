@@ -78,4 +78,23 @@ class TreeAttributesTest extends TestCase
         $this->assertEquals($treeAttributes->describeHeight(), '10 cm');
         $this->assertEquals($treeAttributes->describeCircumference(), '0.425 cm');
     }
+
+    /**
+     * @test
+     */
+    public function all_attributes_can_be_overridden(): void
+    {
+        $treeAttributes = new TreeAttributes(
+            (new ConfigLoader())->getConfigFor('alder'),
+            [
+                'circumference' => '33cm',
+                'age' => '40 years',
+                'height' => '280cm'
+            ]
+        );
+
+        $this->assertEquals($treeAttributes->describeAge(), '40 years');
+        $this->assertEquals($treeAttributes->describeHeight(), '280 cm');
+        $this->assertEquals($treeAttributes->describeCircumference(), '33 cm');
+    }
 }
