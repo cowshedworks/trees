@@ -18,7 +18,7 @@ class TreeCalculatorTest extends TestCase
 
         $calculator = $factory->alder(['circumference' => '33cm']);
 
-        $this->assertEquals($calculator->getAge(), 50);
-        $this->assertEquals($calculator->getHeight(), 100);
+        $this->assertEquals($calculator->getAge(), 1);
+        $this->assertEquals($calculator->getHeight(), 1);
     }
 }
