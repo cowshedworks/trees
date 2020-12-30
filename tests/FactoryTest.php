@@ -8,8 +8,11 @@ use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
 {
-    public function testCanBeCreatedFromValidEmailAddress(): void
+    /**
+     * @test
+     */
+    public function the_factory_can_list_available_tree_calculators(): void
     {
-        
+        $this->assertTrue(true);
     }
 }
