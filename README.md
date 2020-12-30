@@ -24,10 +24,10 @@ Default value is 2.5 cm/year
 eg 100cm Oak tree = 100 / 1.88 = 53 years old
 
 
-CO2 Sequestration
+### CO2 Sequestration
 
 Source for calculations
-Carbon sequestration: how much can forestry sequester CO2?, Forestry Research and Engineering: International Journal, 
+*Carbon sequestration: how much can forestry sequester CO2?, Forestry Research and Engineering: International Journal*
 
 Process for working out C02 sequestration for a tree is:
 
@@ -42,7 +42,7 @@ Inputs needed
 - Calculate the carbon weight
 - Calculate the carbon sequestered by the tree, total and per year
 
-### TOTAL GREEN WEIGHT
+#### TOTAL GREEN WEIGHT
 To get the CO2 sequestration rate of the tree we need to work out the total tree weight, this is the above ground plus the below ground weight. The below ground weight is an average value of 20% of the above ground weight.
 
 D = tree diameter (inches)
@@ -53,24 +53,24 @@ Above ground weight (AGW) = COEEFICIENT (D*D) H
 Below ground weight (BGW) = AGW * 0.2
 Total green weight (TGW) = BGW + AGW
 
-### TOTAL DRY WEIGHT
+#### TOTAL DRY WEIGHT
 Assumption is that 72.5% of tree weight is dry matter, 27.5% is mosture.
 
 Total dry weight (TDW) = TGW * 0.725
 
-### CARBON WEIGHT
+#### CARBON WEIGHT
 The carbon content is roughly 50% of the dry weight of the tree.
 
 Carbon Weight (TCW) = TDW * 0.5
 
-### TOTAL CARBON SEQUESTERED
+#### TOTAL CARBON SEQUESTERED
 To calculate the amount of CO2 that the tree has sequestered from the atmosphere you need to multiply the carbon weight by the CO2 sequestration coefficient. This is the ratio of the atomic numbers of carbon dioxide to carbon, which is 43.999915 / 12.001115 which is 3.6663
 
 CO2 SEQUESTRATION COEFFICIENT = 3.6663
 
 Total carbon sequestered (TCS) = TCW * CO2 SEQUESTRATION COEFFICIENT
 
-### Tree example:
+##### Tree example:
 10 years old
 15 feet tall HEIGHT
 8 inch trunk DIAMETER
@@ -82,4 +82,3 @@ TCW = 0.5 * TDW  = 0.5 * 208.8 = 104.4 lbs
 TCS = 3.67 * TCW  = 3.67 * 104.4 
 
 = 382.8 lbs CO2 sequestered in 10 years
-= 
