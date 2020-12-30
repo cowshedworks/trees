@@ -76,52 +76,6 @@ class TreeAttributes
         }
     }
 
-    // private function resolveAge(array $treeData): void
-    // {
-    //     if (false === isset($treeData['age'])) {
-    //         return;
-    //     }
-
-    //     $values = [];
-
-    //     if (isset($treeData['age'])) {
-    //         $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['age']);
-    //     }
-
-    //     if (count($values) === 2) {
-    //         // No id set, use cm
-    //         $this->age = new Age($values[0], $values[1]);
-    //     }
-
-    //     if (count($values) === 1) {
-    //         // No id set, use cm
-    //         $this->age = new Age($values[0], 'years');
-    //     }
-    // }
-
-    // private function resolveHeight(array $treeData): void
-    // {
-    //     if (false === isset($treeData['height'])) {
-    //         return;
-    //     }
-
-    //     $values = [];
-
-    //     if (isset($treeData['height'])) {
-    //         $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData['height']);
-    //     }
-
-    //     if (count($values) === 2) {
-    //         // No id set, use cm
-    //         $this->height = new Height($values[0], $values[1]);
-    //     }
-
-    //     if (count($values) === 1) {
-    //         // No id set, use cm
-    //         $this->height = new Height($values[0], 'cm');
-    //     }
-    // }
-
     public function getAge(): float
     {
         return $this->age->getValue();

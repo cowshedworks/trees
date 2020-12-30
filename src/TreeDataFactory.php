@@ -6,7 +6,7 @@ namespace CowshedWorks\Trees;
 
 use Exception;
 
-class TreeCalculatorFactory
+class TreeDataFactory
 {
     protected array $availableTrees = [];
 
@@ -46,9 +46,9 @@ class TreeCalculatorFactory
         }
     }
 
-    private function build(string $treeName, array $userParameters): TreeCalculator
+    private function build(string $treeName, array $userParameters): TreeData
     {
-        return new TreeCalculator(
+        return new TreeData(
             new TreeAttributes(
                 $this->configLoader->getConfigFor($treeName),
                 $userParameters[0] ?? []

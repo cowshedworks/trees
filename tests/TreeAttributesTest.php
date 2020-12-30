@@ -13,6 +13,30 @@ class TreeAttributesTest extends TestCase
     /**
      * @test
      */
+    public function attributes_will_be_calculated_regardless_of_unit_spacing(): void
+    {
+        $treeAttributes = new TreeAttributes(
+            (new ConfigLoader())->getConfigFor('alder'),
+            ['circumference' => '33cm']
+        );
+
+        $this->assertEquals($treeAttributes->describeAge(), '13.2 years');
+        $this->assertEquals($treeAttributes->describeHeight(), '792 cm');
+        $this->assertEquals($treeAttributes->describeCircumference(), '33 cm');
+
+        $treeAttributes = new TreeAttributes(
+            (new ConfigLoader())->getConfigFor('alder'),
+            ['circumference' => '33 cm']
+        );
+
+        $this->assertEquals($treeAttributes->describeAge(), '13.2 years');
+        $this->assertEquals($treeAttributes->describeHeight(), '792 cm');
+        $this->assertEquals($treeAttributes->describeCircumference(), '33 cm');
+    }
+
+    /**
+     * @test
+     */
     public function attributes_will_be_calculated_from_circumference(): void
     {
         $treeAttributes = new TreeAttributes(

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
-class TreeCalculator
+class TreeData
 {
     protected TreeAttributes $attributes;
 
