@@ -10,18 +10,23 @@ class TreeCalculator
 
     protected array $speciesData;
 
+    protected array $treePresentState = [
+        'circumference' => null,
+        'age' => null,
+        'height' => null,
+    ];
+
     public function __construct(array $speciesData, array $treeData)
     {
         $this->speciesData = $speciesData;
+        $this->build($treeData);
     }
 
-    public static function validateTreeParameters(array $treeParameters): bool
+    private function build(array $treeData): void
     {
-        $totalValidParams = count(self::$requiredvalidParameters);
-
-        $validParamsNotProvided = array_diff(self::$requiredvalidParameters, array_keys($treeParameters));
-
-        return count($validParamsNotProvided) != $totalValidParams;
+        // here we should fill the tree present state by calculating
+        // the height, age, circumference. We only need one of these
+        // values to guess the others using the coefficients
     }
 
     public function getPopularName(): string
@@ -37,5 +42,14 @@ class TreeCalculator
     public function getScientificName(): array
     {
         return $this->speciesData['name']['scientific'];
+    }
+
+    public static function validateTreeParameters(array $treeParameters): bool
+    {
+        $totalValidParams = count(self::$requiredvalidParameters);
+
+        $validParamsNotProvided = array_diff(self::$requiredvalidParameters, array_keys($treeParameters));
+
+        return count($validParamsNotProvided) != $totalValidParams;
     }
 }
