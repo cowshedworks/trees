@@ -88,12 +88,12 @@ TCS = 3.67 * TCW  = 3.67 * 104.4
 
 The tree calculator factory will return a calculator that can be used to calculate various things about the tree.
 
-Call trees() to list the available tree calculators.
+Call getTrees() on TreeCalculatorFactory to list the available tree calculators.
 
 To instantiate a calculator you need to pass parameters to the contructor, it will require one of 'circumference', 'age', or 'height' in order to build the calculator.
 
 ```PHP
-echo TreeCalculator::trees();
+echo TreeCalculatorFactory::getTrees();
 
 // prints ['alder', 'birch', 'oak']
 

@@ -2,4 +2,10 @@
 
 namespace CowshedWorks\Trees;
 
-class TreeCalculatorFactory {}
+class TreeCalculatorFactory
+{
+    static function getTrees(): array
+    {
+
+    }
+}
