@@ -33,8 +33,8 @@ class TreeCalculatorFactory
 
         $dataFiles = array_map(
             function ($filename) {
-            return str_replace('.json', '', $filename);
-        },
+                return str_replace('.json', '', $filename);
+            },
             $dataFiles
         );
 
