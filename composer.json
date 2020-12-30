@@ -15,7 +15,8 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "CowshedWorks\\Trees\\" : "src/"
+            "CowshedWorks\\Trees\\" : "src/",
+            "CowshedWorks\\Trees\\Tests\\" : "tests/"
         }
     }
 }
