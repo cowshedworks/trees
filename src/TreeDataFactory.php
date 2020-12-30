@@ -30,11 +30,11 @@ class TreeDataFactory
         }
 
         if (false === is_array($configParameter) || count($configParameter) < 1) {
-            throw new Exception('Cannot build alder calculator without one of these parameters: age, height, circumference');
+            throw new Exception('Cannot build alder data without one of these parameters: age, height, circumference');
         }
 
         if (false === TreeAttributes::validateTreeParameters($configParameter)) {
-            throw new Exception('Cannot build alder calculator without one of these parameters: age, height, circumference');
+            throw new Exception('Cannot build alder data without one of these parameters: age, height, circumference');
         }
 
         if (count($this->availableTrees) === 0) {

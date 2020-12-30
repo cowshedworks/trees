@@ -86,32 +86,32 @@ TCS = 3.67 * TCW  = 3.67 * 104.4
 
 ### Tree Calculations API
 
-The tree calculator factory will return a calculator that can be used to calculate various things about the tree.
+The tree data factory will return a tree data object that can be used to calculate various things about the tree.
 
-Call getTrees() on TreeCalculatorFactory to list the available tree calculators.
+Call getTrees() on TreeDataFactory to list the available tree data objects.
 
-To instantiate a calculator you need to pass parameters to the contructor, it will require one of 'circumference', 'age', or 'height' in order to build the calculator.
+To instantiate a data object you need to pass parameters to the contructor, it will require one of 'circumference', 'age', or 'height' in order to build the calculator.
 
 ```PHP
 
-use CowshedWorks\Trees\TreeCalculatorFactory;
+use CowshedWorks\Trees\TreeDataFactory;
 
-$factory = new TreeCalculatorFactory();
+$factory = new TreeDataFactory();
 echo $factory->getTrees();
 
 // prints ['alder', 'birch', 'oak']
 
-$treeCalculator = $factory->alder(['circumference' = '33cm']);
+$treeData = $factory->alder(['circumference' = '33cm']);
 
-$treeCalculator->getName();
+$treeData->getName();
 
-$treeCalculator->getAge();
+$treeData->getAge();
 
-$treeCalculator->getMaxAge();
+$treeData->getMaxAge();
 
-$treeCalculator->getCO2SequestrationPerYear();
+$treeData->getCO2SequestrationPerYear();
 
-$treeCalculator->getCO2SequestrationToDate();
+$treeData->getCO2SequestrationToDate();
 
-$treeCalculator->getCO2SequestrationLifetime();
+$treeData->getCO2SequestrationLifetime();
 ```
