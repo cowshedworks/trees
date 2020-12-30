@@ -6,25 +6,36 @@ namespace CowshedWorks\Trees;
 
 class TreeCalculator
 {
-    protected array $treeData;
+    public static array $requiredvalidParameters = ['circumference', 'age', 'height'];
 
-    public function __construct(array $treeData)
+    protected array $speciesData;
+
+    public function __construct(array $speciesData, array $treeData)
     {
-        $this->treeData = $treeData;
+        $this->speciesData = $speciesData;
+    }
+
+    public static function validateTreeParameters(array $treeParameters): bool
+    {
+        $totalValidParams = count(self::$requiredvalidParameters);
+
+        $validParamsNotProvided = array_diff(self::$requiredvalidParameters, array_keys($treeParameters));
+
+        return count($validParamsNotProvided) != $totalValidParams;
     }
 
     public function getPopularName(): string
     {
-        return $this->treeData['name']['popular'];
+        return $this->speciesData['name']['popular'];
     }
 
     public function getCommonNames(): array
     {
-        return $this->treeData['name']['common'];
+        return $this->speciesData['name']['common'];
     }
 
     public function getScientificName(): array
     {
-        return $this->treeData['name']['scientific'];
+        return $this->speciesData['name']['scientific'];
     }
 }

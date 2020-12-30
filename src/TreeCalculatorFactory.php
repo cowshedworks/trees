@@ -10,8 +10,6 @@ class TreeCalculatorFactory
 {
     const DATADIR = __DIR__.'/data';
 
-    protected array $validParameters = ['circumference', 'age', 'height'];
-
     protected bool $availableTreesLoaded = false;
 
     protected array $availableTrees = [];
@@ -56,7 +54,7 @@ class TreeCalculatorFactory
             throw new Exception('Cannot build alder calculator without one of these parameters: age, height, circumference');
         }
 
-        if (false === $this->parametersAreValid($configParameter)) {
+        if (false === TreeCalculator::validateTreeParameters($configParameter)) {
             throw new Exception('Cannot build alder calculator without one of these parameters: age, height, circumference');
         }
 
@@ -67,15 +65,6 @@ class TreeCalculatorFactory
         if (false === in_array($treeName, $this->availableTrees)) {
             throw new Exception("{$treeName} not available");
         }
-    }
-
-    private function parametersAreValid(array $parameters): bool
-    {
-        $totalValidParams = count($this->validParameters);
-
-        $validParamsNotProvided = array_diff($this->validParameters, array_keys($parameters));
-
-        return  count($validParamsNotProvided) != $totalValidParams;
     }
 
     private function getConfigFor(string $treeName): array
