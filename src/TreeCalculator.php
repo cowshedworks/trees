@@ -6,29 +6,26 @@ namespace CowshedWorks\Trees;
 
 class TreeCalculator
 {
-    protected array $speciesData;
-
     protected TreeAttributes $attributes;
 
-    public function __construct(array $speciesData, array $treeData)
+    public function __construct(TreeAttributes $attributes)
     {
-        $this->speciesData = $speciesData;
-        $this->attributes = new TreeAttributes($treeData);
+        $this->attributes = $attributes;
     }
 
     public function getPopularName(): string
     {
-        return $this->speciesData['name']['popular'];
+        return $this->attributes->getSpeciesData('name.popular');
     }
 
     public function getCommonNames(): array
     {
-        return $this->speciesData['name']['common'];
+        return $this->attributes->getSpeciesData('name.common');
     }
 
     public function getScientificName(): array
     {
-        return $this->speciesData['name']['scientific'];
+        return $this->attributes->getSpeciesData('name.scientific');
     }
 
     public function getAge(): int

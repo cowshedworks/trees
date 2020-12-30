@@ -8,38 +8,17 @@ use Exception;
 
 class TreeCalculatorFactory
 {
-    const DATADIR = __DIR__.'/data';
-
-    protected bool $availableTreesLoaded = false;
-
     protected array $availableTrees = [];
 
     public function __construct()
     {
-        $this->loadAvailableTrees();
+        $this->configLoader = new ConfigLoader();
+        $this->availableTrees = $this->configLoader->loadAvailableTrees();
     }
 
     public function getTrees(): array
     {
         return $this->availableTrees;
-    }
-
-    private function loadAvailableTrees(): void
-    {
-        $dataFiles = array_diff(
-            scandir(self::DATADIR),
-            ['..', '.']
-        );
-
-        $dataFiles = array_map(
-            function ($filename) {
-                return str_replace('.json', '', $filename);
-            },
-            $dataFiles
-        );
-
-        $this->availableTrees = array_values($dataFiles);
-        $this->availableTreesLoaded = true;
     }
 
     private function checkCanBuild(string $treeName, array $userParameters): void
@@ -58,7 +37,7 @@ class TreeCalculatorFactory
             throw new Exception('Cannot build alder calculator without one of these parameters: age, height, circumference');
         }
 
-        if (false === $this->availableTreesLoaded) {
+        if (count($this->availableTrees) === 0) {
             throw new Exception('Config files not loaded');
         }
 
@@ -67,25 +46,12 @@ class TreeCalculatorFactory
         }
     }
 
-    private function getConfigFor(string $treeName): array
-    {
-        return json_decode(
-            file_get_contents(
-                sprintf(
-                    '%s/%s.json',
-                    self::DATADIR,
-                    $treeName
-                )
-            ),
-            true // JSON OBJECT -> ASSOCIATIVE ARRAY
-        );
-    }
-
     private function build(string $treeName, array $userParameters): TreeCalculator
     {
         return new TreeCalculator(
-            $this->getConfigFor($treeName),
-            $userParameters
+            new TreeAttributes(
+                $this->configLoader->getConfigFor($treeName),
+                $userParameters)
         );
     }
 

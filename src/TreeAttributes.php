@@ -6,14 +6,17 @@ namespace CowshedWorks\Trees;
 
 class TreeAttributes
 {
+    protected array $speciesData;
+
     public static array $requiredvalidParameters = ['circumference', 'age', 'height'];
 
     private int $age;
     private int $circumference;
     private int $height;
 
-    public function __construct(array $treeData)
+    public function __construct(array $speciesData, array $treeData)
     {
+        $this->speciesData = $speciesData;
         $this->resolveFromData($treeData);
     }
 
@@ -37,6 +40,17 @@ class TreeAttributes
     public function getHeight(): int
     {
         return $this->height;
+    }
+
+    public function getSpeciesData(string $dataName)
+    {
+        $currentValue = $this->speciesData;
+
+        foreach(explode('.', $dataName) as $key) {
+            $currentValue = $currentValue[$key];
+        }
+
+        return $currentValue;
     }
 
     public static function validateTreeParameters(array $treeParameters): bool

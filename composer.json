@@ -3,7 +3,8 @@
     "description": "Tree Database",
     "type": "library",
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "symfony/var-dumper": "^5.2"
     },
     "license": "MIT",
     "authors": [
