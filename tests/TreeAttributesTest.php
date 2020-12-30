@@ -88,8 +88,8 @@ class TreeAttributesTest extends TestCase
             (new ConfigLoader())->getConfigFor('alder'),
             [
                 'circumference' => '33cm',
-                'age' => '40 years',
-                'height' => '280cm'
+                'age'           => '40 years',
+                'height'        => '280cm',
             ]
         );
 
