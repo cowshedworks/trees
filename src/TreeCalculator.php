@@ -12,8 +12,8 @@ class TreeCalculator
 
     protected array $treePresentState = [
         'circumference' => null,
-        'age' => null,
-        'height' => null,
+        'age'           => null,
+        'height'        => null,
     ];
 
     public function __construct(array $speciesData, array $treeData)
