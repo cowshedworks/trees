@@ -8,12 +8,12 @@ class TreeCalculator
 {
     protected array $speciesData;
 
-    protected TreeState $treePresentState;
+    protected TreeAttributes $attributes;
 
     public function __construct(array $speciesData, array $treeData)
     {
         $this->speciesData = $speciesData;
-        $this->treePresentState = new TreeState($treeData);
+        $this->attributes = new TreeAttributes($treeData);
     }
 
     public function getPopularName(): string
@@ -33,16 +33,16 @@ class TreeCalculator
 
     public function getAge(): int
     {
-        return $this->treePresentState->getAge();
+        return $this->attributes->getAge();
     }
 
     public function getCircumference(): int
     {
-        return $this->treePresentState->getCircumference();
+        return $this->attributes->getCircumference();
     }
 
     public function getHeight(): int
     {
-        return $this->treePresentState->getHeight();
+        return $this->attributes->getHeight();
     }
 }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
-class TreeState
+class TreeAttributes
 {
     public static array $requiredvalidParameters = ['circumference', 'age', 'height'];
 

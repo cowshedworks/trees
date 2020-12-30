@@ -54,7 +54,7 @@ class TreeCalculatorFactory
             throw new Exception('Cannot build alder calculator without one of these parameters: age, height, circumference');
         }
 
-        if (false === TreeState::validateTreeParameters($configParameter)) {
+        if (false === TreeAttributes::validateTreeParameters($configParameter)) {
             throw new Exception('Cannot build alder calculator without one of these parameters: age, height, circumference');
         }
 
