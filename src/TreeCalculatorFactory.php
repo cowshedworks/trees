@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace CowshedWorks\Trees;
 
+use CowshedWorks\Trees\TreeCalculator;
 use Exception;
 
 class TreeCalculatorFactory
@@ -74,6 +77,6 @@ class TreeCalculatorFactory
     {
         $this->checkCanBuild($method);
 
-        $this->build($method);
+        return $this->build($method);
     }
 }

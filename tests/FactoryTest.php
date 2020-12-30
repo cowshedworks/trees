@@ -31,7 +31,9 @@ class FactoryTest extends TestCase
 
         $calculator = $factory->alder(['circumference' => '33cm']);
 
-        $this->assertEquals($calculator->getName(), 'Alder');
+        $this->assertNotNull($calculator);
+        $this->assertEquals($calculator->getPopularName(), 'Alder');
+        $this->assertEquals($calculator->getCommonNames(), ["Alder", "Common Alder", "Black Alder", "European Alder"]);
         $this->assertEquals($calculator->getScientificName(), ['Alnus glutinosa']);
     }
 }
