@@ -24,9 +24,19 @@ class UnitValueTest extends TestCase
      */
     public function age_unit_value_will_convert_months_to_years(): void
     {
-        $age = new Age(26, 'months');
+        $age = new Age(36, 'months');
 
         $this->assertEquals($age->getDescription(), '3 years');
+    }
+
+    /**
+     * @test
+     */
+    public function age_unit_value_will_convert_days_to_years(): void
+    {
+        $age = new Age(400, 'days');
+
+        $this->assertEquals($age->getDescription(), '1.1 years');
     }
 }
 

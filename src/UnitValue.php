@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
+use Exception;
+
 abstract class UnitValue
 {
     protected $value;
@@ -38,5 +40,25 @@ abstract class UnitValue
     public static function getDefault()
     {
         return static::DEFAULT_UNIT;
+    }
+
+    protected function getConverionMultiplier($fromUnit, $toUnit)
+    {
+        $conversionString = $fromUnit.'-'.$toUnit;
+
+        switch ($conversionString) {
+            case "months-years":
+                return function($value) {
+                    return $value / 12;
+                };
+                break;
+            case "days-years":
+                return function($value) {
+                    return $value / 365;
+                };
+                break;
+        }
+
+        throw new Exception("Cannot convert {$conversionString}");
     }
 }

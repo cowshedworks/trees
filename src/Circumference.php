@@ -10,7 +10,7 @@ class Circumference extends UnitValue
 
     protected function setupUnitValue($constructValue, $constructUnit): void
     {
-        $this->value = (float) $this->constructValue;
+        $this->value = (float) $constructValue;
         $this->unit = $constructUnit;
     }
 }

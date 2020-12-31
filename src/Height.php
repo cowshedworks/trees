@@ -10,7 +10,7 @@ class Height extends UnitValue
 
     protected function setupUnitValue($constructValue, $constructUnit): void
     {
-        $this->value = (int) $this->constructValue;
+        $this->value = (int) $constructValue;
         $this->unit = $constructUnit;
     }
 }

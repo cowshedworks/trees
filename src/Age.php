@@ -10,7 +10,18 @@ class Age extends UnitValue
 
     protected function setupUnitValue($constructValue, $constructUnit): void
     {
-        $this->value = round((float) $this->constructValue, 2);
+        if ($constructUnit != $this->getDefault()) {
+            // The provided unit is not the default, we need to convert the
+            // unit and adjust the value
+
+            $conversionFunction = $this->getConverionMultiplier($constructUnit, $this->getDefault());
+
+            $this->value = round((float) $conversionFunction($constructValue), 1);
+            $this->unit = $this->getDefault();
+            return;
+        }
+
+        $this->value = round((float) $constructValue, 2);
         $this->unit = $constructUnit;
     }
 }
