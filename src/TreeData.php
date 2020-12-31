@@ -24,6 +24,7 @@ class TreeData
     private $totalDryWeight;
     private $totalCarbonWeight;
     private $totalCarbonSequestered;
+    private $totalCarbonSequesteredPerYear;
 
     public function __construct(array $speciesData, array $treeData)
     {
@@ -104,6 +105,7 @@ class TreeData
         $this->totalDryWeight = new Weight($this->totalGreenWeight->getValueIn('lbs') * 0.725, 'lbs');
         $this->totalCarbonWeight = new Weight($this->totalDryWeight->getValueIn('lbs') * 0.5, 'lbs');
         $this->totalCarbonSequestered = new Weight(3.6663 * $this->totalCarbonWeight->getValueIn('lbs'), 'lbs');
+        $this->totalCarbonSequesteredPerYear = new Weight($this->totalCarbonSequestered->getValue() / $this->age->getValue(), 'kg');
     }
 
     public function getDiameterCoefficient(): float
@@ -193,12 +195,12 @@ class TreeData
 
     public function getCO2SequestrationPerYear(): float
     {
-        return round($this->totalCarbonSequestered->getValue() / $this->age->getValue(), 2);
+        return round($this->totalCarbonSequesteredPerYear->getValue(), 2);
     }
 
     public function describeCO2SequestrationPerYear(): string
     {
-        return $this->getCO2SequestrationPerYear().' kg / year';
+        return $this->totalCarbonSequesteredPerYear->getDescription();
     }
 
     public static function validateTreeParameters(array $treeParameters): bool

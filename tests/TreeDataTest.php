@@ -98,6 +98,6 @@ class TreeDataTest extends TestCase
         ]);
 
         $this->assertEquals('172.87 kg', $data->describeCO2SequestrationToDate());
-        $this->assertEquals('17.29 kg / year', $data->describeCO2SequestrationPerYear());
+        $this->assertEquals('17.29 kg', $data->describeCO2SequestrationPerYear());
     }
 }
