@@ -80,6 +80,11 @@ abstract class UnitValue
                     return $value / 10;
                 };
                 break;
+            case 'm-cm':
+                return function ($value) {
+                    return $value * 100;
+                };
+                break;
         }
 
         throw new Exception("Cannot convert {$conversionString}");

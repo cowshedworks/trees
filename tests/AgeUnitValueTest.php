@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace CowshedWorks\Trees;
+namespace CowshedWorks\Trees\Tests;
 
+use CowshedWorks\Trees\Age;
 use PHPUnit\Framework\TestCase;
 
 class AgeUnitValueTest extends TestCase
