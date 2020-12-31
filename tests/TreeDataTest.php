@@ -14,8 +14,8 @@ class TreeDataTest extends TestCase
      */
     public function tree_data_will_be_calculated_regardless_of_unit_spacing(): void
     {
-         $factory = new TreeDataFactory();
-         $data = $factory->alder(['circumference' => '33cm']);
+        $factory = new TreeDataFactory();
+        $data = $factory->alder(['circumference' => '33cm']);
 
         $this->assertEquals('13.2 years', $data->describeAge());
         $this->assertEquals('792 cm', $data->describeHeight());
@@ -76,15 +76,15 @@ class TreeDataTest extends TestCase
         $factory = new TreeDataFactory();
         $data = $factory->alder([
             'circumference' => '33cm',
-            'age' => '40 years',
-            'height' => '280cm'
+            'age'           => '40 years',
+            'height'        => '280cm',
         ]);
 
         $this->assertEquals('40 years', $data->describeAge());
         $this->assertEquals('280 cm', $data->describeHeight());
         $this->assertEquals('33 cm', $data->describeCircumference());
     }
-    
+
     /**
      * @test
      */

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
-use CowshedWorks\Trees\Age;
 use PHPUnit\Framework\TestCase;
 
 class CircumferenceUnitValueTest extends TestCase
@@ -29,4 +28,3 @@ class CircumferenceUnitValueTest extends TestCase
         $this->assertEquals('150 cm', $age->getDescription());
     }
 }
-

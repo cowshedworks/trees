@@ -26,11 +26,11 @@ abstract class UnitValue
             // The provided unit is not the default, we need to convert the
             // unit and adjust the value
             $conversionFunction = $this->getConverionFunction($constructUnit, $this->getDefault());
-            
+
             $constructValue = $conversionFunction($constructValue);
             $constructUnit = $this->getDefault();
         }
-        
+
         $this->value = round($constructValue, $this->getPrecision());
         $this->unit = $constructUnit;
     }
@@ -65,18 +65,18 @@ abstract class UnitValue
         $conversionString = $fromUnit.'-'.$toUnit;
 
         switch ($conversionString) {
-            case "months-years":
-                return function($value) {
+            case 'months-years':
+                return function ($value) {
                     return $value / 12;
                 };
                 break;
-            case "days-years":
-                return function($value) {
+            case 'days-years':
+                return function ($value) {
                     return $value / 365;
                 };
                 break;
-            case "mm-cm":
-                return function($value) {
+            case 'mm-cm':
+                return function ($value) {
                     return $value / 10;
                 };
                 break;
