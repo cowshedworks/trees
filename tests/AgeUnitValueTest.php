@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees\Tests;
 
-use CowshedWorks\Trees\Age;
+use CowshedWorks\Trees\UnitValues\Age;
 use PHPUnit\Framework\TestCase;
 
 class AgeUnitValueTest extends TestCase

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees\Tests;
 
-use CowshedWorks\Trees\Weight;
+use CowshedWorks\Trees\UnitValues\Weight;
 use PHPUnit\Framework\TestCase;
 
 class WeightUnitValueTest extends TestCase
@@ -22,11 +22,11 @@ class WeightUnitValueTest extends TestCase
     /**
      * @test
      */
-    public function weight_unit_value_will_convert_pounds_to_kg(): void
+    public function weight_unit_value_will_convert_lbs_to_kg(): void
     {
-        $weight = new Weight(36, 'pounds');
+        $weight = new Weight(36, 'lbs');
 
-        $this->assertEquals('16.3 kg', $weight->getDescription());
+        $this->assertEquals('16.33 kg', $weight->getDescription());
     }
 
     /**

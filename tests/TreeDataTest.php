@@ -91,8 +91,13 @@ class TreeDataTest extends TestCase
     public function co2_sequestration_per_year_can_be_calculated(): void
     {
         $factory = new TreeDataFactory();
-        $data = $factory->alder(['circumference' => '33cm']);
+        $data = $factory->alder([
+            'age' => '10years',
+            'diameter' => '8in',
+            'height' => '15feet',
+        ]);
 
-        $this->assertEquals('10023 kg', $data->describeCO2SequestrationPerYear());
+        $this->assertEquals('172.87 kg', $data->describeCO2SequestrationToDate());
+        $this->assertEquals('17.29 kg / year', $data->describeCO2SequestrationPerYear());
     }
 }

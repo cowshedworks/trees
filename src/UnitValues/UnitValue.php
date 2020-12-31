@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CowshedWorks\Trees;
+namespace CowshedWorks\Trees\UnitValues;
 
 use Exception;
 
@@ -95,9 +95,19 @@ abstract class UnitValue
                     return $value * 2.54;
                 };
                 break;
-            case 'pounds-kg':
+            case 'cm-in':
+                return function ($value) {
+                    return $value / 2.54;
+                };
+                break;
+            case 'lbs-kg':
                 return function ($value) {
                     return $value * 0.453592;
+                };
+                break;
+            case 'kg-lbs':
+                return function ($value) {
+                    return $value / 0.453592;
                 };
                 break;
             case 'grams-kg':
@@ -105,8 +115,25 @@ abstract class UnitValue
                     return $value / 1000;
                 };
                 break;
+            case 'feet-cm':
+                return function ($value) {
+                    return $value / 30.48;
+                };
+                break;
+            case 'cm-feet':
+                return function ($value) {
+                    return $value * 30.48;
+                };
+                break;
         }
 
         throw new Exception("Cannot convert {$conversionString}");
+    }
+
+    public function getValueIn($unit): float
+    {
+        $conversionFunction = $this->getConverionFunction($this->getDefault(), $unit);
+
+        return $conversionFunction($this->getValue());
     }
 }
