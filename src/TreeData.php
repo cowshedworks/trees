@@ -178,7 +178,7 @@ class TreeData
 
     public function describeCO2SequestrationPerYear(): string
     {
-        return round($this->totalCarbonSequestered->getValue() / $this->age->getValue(), 2) . ' kg / year';
+        return round($this->totalCarbonSequestered->getValue() / $this->age->getValue(), 2).' kg / year';
     }
 
     public static function validateTreeParameters(array $treeParameters): bool
