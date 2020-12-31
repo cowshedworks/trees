@@ -8,14 +8,14 @@ use Exception;
 
 abstract class UnitValue
 {
-    protected $value;
-    protected $constructValue;
+    protected float $value;
+    protected float $constructValue;
     protected $unit;
     protected $constructUnit;
 
     public function __construct($constructValue, $constructUnit)
     {
-        $this->constructValue = $constructValue;
+        $this->constructValue = (float) $constructValue;
         $this->constructUnit = $constructUnit;
         $this->setupUnitValue($this->constructValue, $this->constructUnit);
     }
