@@ -33,7 +33,7 @@ class TreeDataFactory
             throw new Exception('Cannot build alder data without one of these parameters: age, height, circumference');
         }
 
-        if (false === TreeAttributes::validateTreeParameters($configParameter)) {
+        if (false === TreeData::validateTreeParameters($configParameter)) {
             throw new Exception('Cannot build alder data without one of these parameters: age, height, circumference');
         }
 
@@ -49,10 +49,8 @@ class TreeDataFactory
     private function build(string $treeName, array $userParameters): TreeData
     {
         return new TreeData(
-            new TreeAttributes(
-                $this->configLoader->getConfigFor($treeName),
-                $userParameters[0] ?? []
-            )
+            $this->configLoader->getConfigFor($treeName),
+            $userParameters[0] ?? []
         );
     }
 
