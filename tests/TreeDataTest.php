@@ -92,9 +92,9 @@ class TreeDataTest extends TestCase
     {
         $factory = new TreeDataFactory();
         $data = $factory->alder([
-            'age' => '10years',
+            'age'      => '10years',
             'diameter' => '8in',
-            'height' => '15feet',
+            'height'   => '15feet',
         ]);
 
         $this->assertEquals('172.87 kg', $data->describeCO2SequestrationToDate());
