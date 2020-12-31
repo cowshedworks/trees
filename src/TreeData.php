@@ -147,6 +147,11 @@ class TreeData
         return $this->height->getDescription();
     }
 
+    public function describeWeight(): string
+    {
+        return $this->totalGreenWeight->getDescription();
+    }
+
     public function getSpeciesData(string $dataName)
     {
         $currentValue = $this->speciesData;
@@ -171,6 +176,11 @@ class TreeData
     public function getScientificName(): array
     {
         return $this->getSpeciesData('name.scientific');
+    }
+
+    public function getMaxAge(): float
+    {
+        return $this->getSpeciesData('attributes.age.max.value');
     }
 
     public function getCarbonWeight(): float

@@ -25,7 +25,7 @@ Call getTrees() on TreeDataFactory to list the available tree data objects.
 use CowshedWorks\Trees\TreeDataFactory;
 
 $factory = new TreeDataFactory();
-echo $factory->getTrees();
+print_r($factory->getTrees());
 
 // prints ['alder', 'birch', 'oak']
 ```
@@ -35,19 +35,35 @@ To instantiate a data object you need to pass parameters to the constructor, it 
 If any of 'circumference', 'age', or 'height' are not provided when building the object it will attempt to guess them using values from the species data. These values are needed for the CO2 sequestration calculations, the more accurate the data you provide when building the object the more accurate the calculations will be. That said, these are general calculations intended for approximations, there are lots of factors that will affect these values in the real world.
 
 ```PHP
-$treeData = $factory->alder(['circumference' = '33cm']);
+$treeData = $factory->alder([
+    'age'      => '10years',
+    'diameter' => '8in',
+    'height'   => '15feet'
+]);
 
-$treeData->getName();
-
-$treeData->getAge();
-
-$treeData->getMaxAge();
-
-$treeData->getCarbonWeight();
-
-$treeData->getCO2SequestrationPerYear();
-
+$treeData->getPopularName();
+// Alder
+$treeData->getCommonNames();
+// Array
+// (
+//     [0] => Alder
+//     [1] => Common Alder
+//     [2] => Black Alder
+//     [3] => European Alder
+// )
+$treeData->getScientificName();
+// Array
+// (
+//     [0] => Alnus glutinosa
+// )
+$treeData->describeAge();
+// 10 years
+$treeData->describeCarbonWeight();
+// 47.15 kg
+$treeData->describeCO2SequestrationPerYear();
+// 17.29 kg
 $treeData->getCO2SequestrationToDate();
+// 172.87 kg
 ```
 
 
