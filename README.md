@@ -1,11 +1,20 @@
 # Trees
+
 Tree data for UK native trees
 
 The provided PHP utilities can be used to work out the CO2 sequestration rate for trees. The data is used as the base data in the Plant a Tree Project.
 
-Please feel free to use and submit modifications/improvements to the data.
+## Installation
 
-### Using the Tree Data API
+### NOT YET AVAILABLE ON PACKAGIST
+
+Use the package manager [composer](https://getcomposer.org/) to install.
+
+```bash
+composer require cowshedworks/trees
+```
+
+## Using the Tree Data API
 
 The tree data factory will return a tree data object that can be used to calculate various things about the tree.
 
@@ -40,3 +49,12 @@ $treeData->getCO2SequestrationToDate();
 
 $treeData->getCO2SequestrationLifetime();
 ```
+
+
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
