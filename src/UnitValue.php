@@ -95,6 +95,16 @@ abstract class UnitValue
                     return $value * 2.54;
                 };
                 break;
+            case 'pounds-kg':
+                return function ($value) {
+                    return $value * 0.453592;
+                };
+                break;
+            case 'grams-kg':
+                return function ($value) {
+                    return $value / 1000;
+                };
+                break;
         }
 
         throw new Exception("Cannot convert {$conversionString}");

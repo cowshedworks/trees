@@ -11,6 +11,9 @@ class TreeData
     private $age;
     private $circumference;
     private $height;
+    private $totalGreenWeight;
+    private $totalDryWeight;
+    private $totalCarbonWeight;
 
     public function __construct(array $speciesData, array $treeData)
     {
@@ -22,6 +25,7 @@ class TreeData
     {
         $this->buildProvidedAttributes($treeData);
         $this->buildEmptyAttributes();
+        $this->calculateWeights();
     }
 
     private function buildProvidedAttributes(array $treeData): void
@@ -72,6 +76,11 @@ class TreeData
         if ($this->height === null) {
             $this->height = new Height($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'cm');
         }
+    }
+
+    private function calculateWeights(): void
+    {
+        $this->totalGreenWeight = 10;
     }
 
     public function getAge(): float
