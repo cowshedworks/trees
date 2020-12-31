@@ -7,10 +7,6 @@ namespace CowshedWorks\Trees;
 class Circumference extends UnitValue
 {
     const DEFAULT_UNIT = 'cm';
+    const PRECISION = 2;
 
-    protected function setupUnitValue($constructValue, $constructUnit): void
-    {
-        $this->value = (float) $constructValue;
-        $this->unit = $constructUnit;
-    }
 }

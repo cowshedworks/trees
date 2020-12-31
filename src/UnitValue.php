@@ -20,7 +20,20 @@ abstract class UnitValue
         $this->setupUnitValue($this->constructValue, $this->constructUnit);
     }
 
-    abstract protected function setupUnitValue($constructValue, $constructUnit);
+    protected function setupUnitValue($constructValue, $constructUnit): void
+    {
+        if ($constructUnit != $this->getDefault()) {
+            // The provided unit is not the default, we need to convert the
+            // unit and adjust the value
+            $conversionFunction = $this->getConverionFunction($constructUnit, $this->getDefault());
+            
+            $constructValue = $conversionFunction($constructValue);
+            $constructUnit = $this->getDefault();
+        }
+        
+        $this->value = round($constructValue, $this->getPrecision());
+        $this->unit = $constructUnit;
+    }
 
     public function getValue()
     {
@@ -42,7 +55,12 @@ abstract class UnitValue
         return static::DEFAULT_UNIT;
     }
 
-    protected function getConverionMultiplier($fromUnit, $toUnit)
+    public static function getPrecision()
+    {
+        return static::PRECISION;
+    }
+
+    protected function getConverionFunction($fromUnit, $toUnit)
     {
         $conversionString = $fromUnit.'-'.$toUnit;
 
@@ -55,6 +73,11 @@ abstract class UnitValue
             case "days-years":
                 return function($value) {
                     return $value / 365;
+                };
+                break;
+            case "mm-cm":
+                return function($value) {
+                    return $value / 10;
                 };
                 break;
         }

@@ -7,7 +7,7 @@ namespace CowshedWorks\Trees;
 use CowshedWorks\Trees\Age;
 use PHPUnit\Framework\TestCase;
 
-class UnitValueTest extends TestCase
+class AgeUnitValueTest extends TestCase
 {
     /**
      * @test
@@ -16,7 +16,7 @@ class UnitValueTest extends TestCase
     {
         $age = new Age(32, 'years');
 
-        $this->assertEquals($age->getDescription(), '32 years');
+        $this->assertEquals('32 years', $age->getDescription());
     }
 
     /**
@@ -26,7 +26,7 @@ class UnitValueTest extends TestCase
     {
         $age = new Age(36, 'months');
 
-        $this->assertEquals($age->getDescription(), '3 years');
+        $this->assertEquals('3 years', $age->getDescription());
     }
 
     /**
@@ -36,7 +36,7 @@ class UnitValueTest extends TestCase
     {
         $age = new Age(400, 'days');
 
-        $this->assertEquals($age->getDescription(), '1.1 years');
+        $this->assertEquals('1.1 years', $age->getDescription());
     }
 }
 

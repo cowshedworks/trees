@@ -57,8 +57,8 @@ class FactoryTest extends TestCase
         $data = $factory->alder(['circumference' => '33cm']);
 
         $this->assertNotNull($data);
-        $this->assertEquals($data->getPopularName(), 'Alder');
-        $this->assertEquals($data->getCommonNames(), ['Alder', 'Common Alder', 'Black Alder', 'European Alder']);
-        $this->assertEquals($data->getScientificName(), ['Alnus glutinosa']);
+        $this->assertEquals('Alder', $data->getPopularName());
+        $this->assertEquals(['Alder', 'Common Alder', 'Black Alder', 'European Alder'], $data->getCommonNames());
+        $this->assertEquals(['Alnus glutinosa'], $data->getScientificName());
     }
 }
