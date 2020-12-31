@@ -4,6 +4,8 @@ Tree data for UK native trees
 
 The provided PHP utilities can be used to work out the CO2 sequestration rate for trees. The data is used as the base data in the Plant a Tree Project.
 
+### Currently work in progress, auto calculations aren't correct
+
 ## Installation
 
 ### NOT YET AVAILABLE ON PACKAGIST
@@ -62,7 +64,7 @@ $treeData->describeCarbonWeight();
 // 47.15 kg
 $treeData->describeCO2SequestrationPerYear();
 // 17.29 kg
-$treeData->getCO2SequestrationToDate();
+$treeData->describeCO2SequestrationToDate();
 // 172.87 kg
 ```
 
