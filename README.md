@@ -43,11 +43,11 @@ $treeData->getAge();
 
 $treeData->getMaxAge();
 
+$treeData->getCarbonWeight();
+
 $treeData->getCO2SequestrationPerYear();
 
 $treeData->getCO2SequestrationToDate();
-
-$treeData->getCO2SequestrationLifetime();
 ```
 
 

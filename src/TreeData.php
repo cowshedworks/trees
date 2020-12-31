@@ -171,14 +171,34 @@ class TreeData
         return $this->getSpeciesData('name.scientific');
     }
 
+    public function getCarbonWeight(): float
+    {
+        return round($this->totalCarbonWeight->getValue(), 2);
+    }
+
+    public function describeCarbonWeight(): string
+    {
+        return $this->totalCarbonWeight->getDescription();
+    }
+
+    public function getCO2SequestrationToDate(): float
+    {
+        return round($this->totalCarbonSequestered->getValue(), 2);
+    }
+
     public function describeCO2SequestrationToDate(): string
     {
         return $this->totalCarbonSequestered->getDescription();
     }
 
+    public function getCO2SequestrationPerYear(): float
+    {
+        return round($this->totalCarbonSequestered->getValue() / $this->age->getValue(), 2);
+    }
+
     public function describeCO2SequestrationPerYear(): string
     {
-        return round($this->totalCarbonSequestered->getValue() / $this->age->getValue(), 2).' kg / year';
+        return $this->getCO2SequestrationPerYear().' kg / year';
     }
 
     public static function validateTreeParameters(array $treeParameters): bool
