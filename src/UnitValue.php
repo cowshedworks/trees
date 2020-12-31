@@ -7,20 +7,18 @@ namespace CowshedWorks\Trees;
 abstract class UnitValue
 {
     protected $value;
+    protected $constructValue;
     protected $unit;
+    protected $constructUnit;
 
-    public function __construct($value, $unit)
+    public function __construct($constructValue, $constructUnit)
     {
-        $this->value = $this->setValue($value);
-        $this->unit = $this->setUnit($unit);
+        $this->constructValue = $constructValue;
+        $this->constructUnit = $constructUnit;
+        $this->setupUnitValue($this->constructValue, $this->constructUnit);
     }
 
-    abstract protected function setValue($value);
-
-    public function setUnit($unit)
-    {
-        return $this->unit = (string) $unit;
-    }
+    abstract protected function setupUnitValue($constructValue, $constructUnit);
 
     public function getValue()
     {
@@ -39,6 +37,6 @@ abstract class UnitValue
 
     public static function getDefault()
     {
-        return static::DEFAULTUNIT;
+        return static::DEFAULT_UNIT;
     }
 }

@@ -6,13 +6,11 @@ namespace CowshedWorks\Trees;
 
 class Age extends UnitValue
 {
-    const DEFAULTUNIT = 'years';
+    const DEFAULT_UNIT = 'years';
 
-    protected $value;
-    protected $unit;
-
-    protected function setValue($value)
+    protected function setupUnitValue($constructValue, $constructUnit): void
     {
-        return $this->value = round((float) $value, 2);
+        $this->value = round((float) $this->constructValue, 2);
+        $this->unit = $constructUnit;
     }
 }
