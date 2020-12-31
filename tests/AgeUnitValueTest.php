@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
-use CowshedWorks\Trees\Age;
 use PHPUnit\Framework\TestCase;
 
 class AgeUnitValueTest extends TestCase
@@ -39,4 +38,3 @@ class AgeUnitValueTest extends TestCase
         $this->assertEquals('1.1 years', $age->getDescription());
     }
 }
-
