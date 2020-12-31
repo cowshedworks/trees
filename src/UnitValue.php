@@ -85,6 +85,16 @@ abstract class UnitValue
                     return $value * 100;
                 };
                 break;
+            case 'cm-m':
+                return function ($value) {
+                    return $value / 100;
+                };
+                break;
+            case 'in-cm':
+                return function ($value) {
+                    return $value * 2.54;
+                };
+                break;
         }
 
         throw new Exception("Cannot convert {$conversionString}");
