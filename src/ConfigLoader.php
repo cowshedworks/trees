@@ -8,10 +8,22 @@ class ConfigLoader
 {
     const DATADIR = __DIR__.'/data';
 
+    protected ?string $dataDir = null;
+
+    public function setDataDir(string $dataDir): void
+    {
+        $this->dataDir = $dataDir;
+    }
+
+    public function getDataDir(): string
+    {
+        return $this->dataDir ?? self::DATADIR;
+    }
+
     public function loadAvailableTrees(): array
     {
         $dataFiles = array_diff(
-            scandir(self::DATADIR),
+            scandir($this->getDataDir()),
             ['..', '.']
         );
 
@@ -31,7 +43,7 @@ class ConfigLoader
             file_get_contents(
                 sprintf(
                     '%s/%s.json',
-                    self::DATADIR,
+                    $this->getDataDir(),
                     $treeName
                 )
             ),

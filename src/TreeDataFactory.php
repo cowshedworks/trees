@@ -10,9 +10,9 @@ class TreeDataFactory
 {
     protected array $availableTrees = [];
 
-    public function __construct()
+    public function __construct(ConfigLoader $configLoader = null)
     {
-        $this->configLoader = new ConfigLoader();
+        $this->configLoader = $configLoader ?? new ConfigLoader();
         $this->availableTrees = $this->configLoader->loadAvailableTrees();
     }
 
