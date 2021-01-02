@@ -11,9 +11,9 @@ trait TestTreeFactory
 {
     protected function getTreeDataFactory(): TreeDataFactory
     {
-        $configLoader = new ConfigLoader;
+        $configLoader = new ConfigLoader();
         $configLoader->setDataDir(__DIR__.'/data');
-        
+
         return new TreeDataFactory($configLoader);
     }
 }
