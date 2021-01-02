@@ -4,8 +4,6 @@ Tree data for UK native trees
 
 The provided PHP utilities can be used to get data about a range of tree species. It can work out the CO2 sequestration rate for trees. The data is used as the base data in the Plant a Tree Project.
 
-### Currently work in progress, auto calculations aren't correct
-
 ## Installation
 
 ### NOT YET AVAILABLE ON PACKAGIST
