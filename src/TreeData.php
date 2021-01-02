@@ -228,6 +228,14 @@ class TreeData
         $this->calculateTotalCarbonSequesteredPerYear();
     }
 
+    private function calculateAboveGroundWeight(): void
+    {
+        $this->aboveGroundWeight = $this->unitValueFactory->weight(
+            $this->getDiameterCoefficient() * pow($this->diameter->getValueIn('in'), 2) * $this->height->getValueIn('feet'),
+            'lbs'
+        );
+    }
+
     private function calculateTotalCarbonSequesteredPerYear(): void
     {
         $this->totalCarbonSequesteredPerYear = $this->unitValueFactory->weight(
@@ -264,14 +272,6 @@ class TreeData
     {
         $this->totalGreenWeight = $this->unitValueFactory->weight(
             $this->aboveGroundWeight->getValueIn('lbs') + $this->belowGroundWeight->getValueIn('lbs'),
-            'lbs'
-        );
-    }
-
-    private function calculateAboveGroundWeight(): void
-    {
-        $this->aboveGroundWeight = $this->unitValueFactory->weight(
-            $this->getDiameterCoefficient() * pow($this->diameter->getValueIn('in'), 2) * $this->height->getValueIn('feet'),
             'lbs'
         );
     }
