@@ -22,7 +22,7 @@ class TreeDataCO2Test extends TestCase
             'height'   => '15ft',
         ]);
 
-        $this->assertEquals('173.64 kg', $data->describeCO2SequestrationToDate());
-        $this->assertEquals('17.36 kg', $data->describeCO2SequestrationPerYear());
+        $this->assertEquals('173.64 kg', $data->getCO2SequestrationToDate()->describe());
+        $this->assertEquals('17.36 kg', $data->getCO2SequestrationPerYear()->describe());
     }
 }

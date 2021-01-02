@@ -16,7 +16,7 @@ class LengthUnitValueTest extends TestCase
     {
         $length = new Length(45, 'cm');
 
-        $this->assertEquals('45 cm', $length->getDescription());
+        $this->assertEquals('45 cm', $length->describe());
     }
 
     /**
@@ -26,7 +26,7 @@ class LengthUnitValueTest extends TestCase
     {
         $length = new Length(1500, 'mm');
 
-        $this->assertEquals('150 cm', $length->getDescription());
+        $this->assertEquals('150 cm', $length->describe());
     }
 
     /**
@@ -36,7 +36,7 @@ class LengthUnitValueTest extends TestCase
     {
         $length = new Length(0.2, 'm');
 
-        $this->assertEquals('20 cm', $length->getDescription());
+        $this->assertEquals('20 cm', $length->describe());
     }
 
     /**
@@ -46,6 +46,6 @@ class LengthUnitValueTest extends TestCase
     {
         $length = new Length(10, 'in');
 
-        $this->assertEquals('25.4 cm', $length->getDescription());
+        $this->assertEquals('25.4 cm', $length->describe());
     }
 }

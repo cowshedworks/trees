@@ -58,13 +58,13 @@ $treeData->getScientificName();
 // (
 //     [0] => Alnus glutinosa
 // )
-$treeData->describeAge();
+$treeData->getAge()->describe();
 // 10 years
-$treeData->describeCarbonWeight();
+$treeData->getCarbonWeight()->describe();
 // 47.15 kg
-$treeData->describeCO2SequestrationPerYear();
+$treeData->getCO2SequestrationPerYear()->describe();
 // 17.29 kg
-$treeData->describeCO2SequestrationToDate();
+$treeData->getCO2SequestrationToDate()->describe();
 // 172.87 kg
 ```
 

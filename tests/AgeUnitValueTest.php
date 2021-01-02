@@ -18,7 +18,7 @@ class AgeUnitValueTest extends TestCase
     {
         $age = new Age(32, 'years');
 
-        $this->assertEquals('32 years', $age->getDescription());
+        $this->assertEquals('32 years', $age->describe());
     }
 
     /**
@@ -28,7 +28,7 @@ class AgeUnitValueTest extends TestCase
     {
         $age = new Age(36, 'months');
 
-        $this->assertEquals('3 years', $age->getDescription());
+        $this->assertEquals('3 years', $age->describe());
     }
 
     /**
@@ -38,6 +38,6 @@ class AgeUnitValueTest extends TestCase
     {
         $age = new Age(400, 'days');
 
-        $this->assertEquals('1.1 years', $age->getDescription());
+        $this->assertEquals('1.1 years', $age->describe());
     }
 }

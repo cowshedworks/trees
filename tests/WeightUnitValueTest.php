@@ -16,7 +16,7 @@ class WeightUnitValueTest extends TestCase
     {
         $weight = new Weight(20, 'kg');
 
-        $this->assertEquals('20 kg', $weight->getDescription());
+        $this->assertEquals('20 kg', $weight->describe());
     }
 
     /**
@@ -26,7 +26,7 @@ class WeightUnitValueTest extends TestCase
     {
         $weight = new Weight(36, 'lbs');
 
-        $this->assertEquals('16.33 kg', $weight->getDescription());
+        $this->assertEquals('16.33 kg', $weight->describe());
     }
 
     /**
@@ -36,6 +36,6 @@ class WeightUnitValueTest extends TestCase
     {
         $weight = new Weight(200, 'grams');
 
-        $this->assertEquals('0.2 kg', $weight->getDescription());
+        $this->assertEquals('0.2 kg', $weight->describe());
     }
 }

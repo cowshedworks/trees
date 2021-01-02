@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
+use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Circumference;
+use CowshedWorks\Trees\UnitValues\Diameter;
 use CowshedWorks\Trees\UnitValues\Height;
+use CowshedWorks\Trees\UnitValues\Weight;
 
 class TreeData
 {
@@ -54,46 +57,6 @@ class TreeData
         $this->calculateWeights();
     }
 
-    public function getAge(): float
-    {
-        return $this->age->getValue();
-    }
-
-    public function getCircumference(): float
-    {
-        return $this->circumference->getValue();
-    }
-
-    public function getHeight(): float
-    {
-        return $this->height->getValue();
-    }
-
-    public function describeAge(): string
-    {
-        return $this->age->getDescription();
-    }
-
-    public function describeCircumference(): string
-    {
-        return $this->circumference->getDescription();
-    }
-
-    public function describeDiameter(): string
-    {
-        return $this->diameter->getDescription();
-    }
-
-    public function describeHeight(): string
-    {
-        return $this->height->getDescription();
-    }
-
-    public function describeWeight(): string
-    {
-        return $this->totalGreenWeight->getDescription();
-    }
-
     public function getPopularName(): string
     {
         return $this->getSpeciesData('name.popular');
@@ -114,68 +77,63 @@ class TreeData
         return $this->getSpeciesData('attributes.age.max-average.value');
     }
 
-    public function getCarbonWeight(): float
+    public function getAge(): Age
     {
-        return round($this->totalCarbonWeight->getValue(), 2);
+        return $this->age;
     }
 
-    public function describeCarbonWeight(): string
+    public function getCircumference(): Circumference
     {
-        return $this->totalCarbonWeight->getDescription();
+        return $this->circumference;
     }
 
-    public function getCO2SequestrationToDate(): float
+    public function getHeight(): Height
     {
-        return round($this->totalCarbonSequestered->getValue(), 2);
+        return $this->height;
     }
 
-    public function describeCO2SequestrationToDate(): string
+    public function getDiameter(): Diameter
     {
-        return $this->totalCarbonSequestered->getDescription();
+        return $this->diameter;
     }
 
-    public function getCO2SequestrationPerYear(): float
+    public function getWeight(): Weight
     {
-        return round($this->totalCarbonSequesteredPerYear->getValue(), 2);
+        return $this->totalGreenWeight;
     }
 
-    public function describeCO2SequestrationPerYear(): string
+    public function getCarbonWeight(): Weight
     {
-        return $this->totalCarbonSequesteredPerYear->getDescription();
+        return $this->totalCarbonWeight;
     }
 
-    public function describeActualHeightGrowthRate(): string
+    public function getCO2SequestrationToDate(): Weight
     {
-        return "{$this->growthRateHeightActual->getValue()} cm / year";
+        return $this->totalCarbonSequestered;
     }
 
-    public function getAverageHeightGrowthRate(): Height
+    public function getCO2SequestrationPerYear(): Weight
+    {
+        return $this->totalCarbonSequesteredPerYear;
+    }
+
+    public function getActualHeightGrowthRate(): Length
+    {
+        return $this->growthRateHeightActual;
+    }
+
+    public function getAverageAnnualHeightGrowthRate(): Height
     {
         return $this->unitValueFactory->height(
             $this->getSpeciesData('attributes.growth-rate.annual-average-height.value')
         );
     }
 
-    public function describeAverageHeightGrowthRate(): string
-    {
-        return "{$this->getAverageHeightGrowthRate()->getValue()} cm / year";
-    }
-
-    public function describeActualCircumferenceGrowthRate(): string
-    {
-        return "{$this->growthRateCircumferenceActual->getValue()} cm / year";
-    }
-
-    public function getAverageCircumferenceGrowthRate(): Circumference
+    public function getAverageAnnualCircumferenceGrowthRate(): Circumference
     {
         return $this->unitValueFactory->circumference(
             $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value')
         );
-    }
-
-    public function describeAverageCircumferenceGrowthRate(): string
-    {
-        return "{$this->getAverageCircumferenceGrowthRate()->getValue()} cm / year";
     }
 
     // PRIVATE API
@@ -316,11 +274,11 @@ class TreeData
     {
         if ($this->age === null) {
             if ($this->circumference) {
-                $this->age = $this->unitValueFactory->age($this->circumference->getValue() / $this->getAverageCircumferenceGrowthRate()->getValue(), 'years');
+                $this->age = $this->unitValueFactory->age($this->circumference->getValue() / $this->getAverageAnnualCircumferenceGrowthRate()->getValue(), 'years');
             }
 
             if ($this->height) {
-                $this->age = $this->unitValueFactory->age($this->height->getValue() / $this->getAverageHeightGrowthRate()->getValue(), 'years');
+                $this->age = $this->unitValueFactory->age($this->height->getValue() / $this->getAverageAnnualHeightGrowthRate()->getValue(), 'years');
             }
         }
 
@@ -332,7 +290,7 @@ class TreeData
             if ($this->diameter != null) {
                 $this->circumference = $this->unitValueFactory->circumference($this->diameter->getValue() * M_PI, 'cm');
             } else {
-                $this->circumference = $this->unitValueFactory->circumference($this->age->getValue() * $this->getAverageCircumferenceGrowthRate()->getValue(), 'cm');
+                $this->circumference = $this->unitValueFactory->circumference($this->age->getValue() * $this->getAverageAnnualCircumferenceGrowthRate()->getValue(), 'cm');
             }
         }
 
@@ -341,7 +299,7 @@ class TreeData
         }
 
         if ($this->height === null) {
-            $this->height = $this->unitValueFactory->height($this->age->getValue() * $this->getAverageHeightGrowthRate()->getValue(), 'cm');
+            $this->height = $this->unitValueFactory->height($this->age->getValue() * $this->getAverageAnnualHeightGrowthRate()->getValue(), 'cm');
         }
     }
 }
