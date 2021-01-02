@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees\Tests;
 
-use CowshedWorks\Trees\TreeDataFactory;
 use PHPUnit\Framework\TestCase;
 
 class TreeDataTest extends TestCase

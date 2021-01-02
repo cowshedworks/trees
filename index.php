@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__.'/vendor/autoload.php';
 
 use CowshedWorks\Trees\TreeDataFactory;
 
@@ -20,11 +20,11 @@ print_r($treeData->getScientificName());
 echo PHP_EOL;
 echo $treeData->describeAge();
 echo PHP_EOL;
-echo 'Weight of tree: ' . $treeData->describeWeight();
+echo 'Weight of tree: '.$treeData->describeWeight();
 echo PHP_EOL;
-echo 'Carbon in tree: ' . $treeData->describeCarbonWeight();
+echo 'Carbon in tree: '.$treeData->describeCarbonWeight();
 echo PHP_EOL;
-echo 'CO2 Sequestered per year: ' . $treeData->describeCO2SequestrationPerYear();
+echo 'CO2 Sequestered per year: '.$treeData->describeCO2SequestrationPerYear();
 echo PHP_EOL;
-echo 'CO2 Sequestered to date: ' . $treeData->describeCO2SequestrationToDate();
+echo 'CO2 Sequestered to date: '.$treeData->describeCO2SequestrationToDate();
 echo PHP_EOL;
