@@ -27,7 +27,17 @@
             "annual-average-circumference": {
                 "unit": "cm",
                 "value": 2.5
-            }
+            },
+            "height-regression-seed": [
+                {"year": 5, "value": { "unit": "m", "value": 8.0 }},
+                {"year": 20, "value": { "unit": "m", "value": 18.8 }},
+                {"year": 30, "value": { "unit": "m", "value": 22.5 }},
+                {"year": 40, "value": { "unit": "m", "value": 25.3 }},
+                {"year": 50, "value": { "unit": "m", "value": 27.5 }},
+                {"year": 60, "value": { "unit": "m", "value": 29.2 }},
+                {"year": 80, "value": { "unit": "m", "value": 31.3 }},
+                {"year": 100, "value": { "unit": "m", "value": 32.3 }}
+            ]
         },
         "carbon-sequestration": {
             "annual": {
