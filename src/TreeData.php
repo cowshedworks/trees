@@ -187,7 +187,7 @@ class TreeData
 
     private function calculateTotalCarbonSequesteredPerYear(): void
     {
-        $this->totalCarbonSequesteredPerYear = new Weight(
+        $this->totalCarbonSequesteredPerYear = $this->unitValueFactory->weight(
             $this->totalCarbonSequestered->getValue() / $this->age->getValue(),
             'kg'
         );
@@ -195,7 +195,7 @@ class TreeData
 
     private function calculateTotalCarbonSequestered(): void
     {
-        $this->totalCarbonSequestered = new Weight(
+        $this->totalCarbonSequestered = $this->unitValueFactory->weight(
             3.6663 * $this->totalCarbonWeight->getValueIn('lbs'),
             'lbs'
         );
@@ -203,7 +203,7 @@ class TreeData
 
     private function calculateTotalCarbonWeight(): void
     {
-        $this->totalCarbonWeight = new Weight(
+        $this->totalCarbonWeight = $this->unitValueFactory->weight(
             $this->totalDryWeight->getValueIn('lbs') * 0.5,
             'lbs'
         );
@@ -211,7 +211,7 @@ class TreeData
 
     private function calculateTotalDryWeight(): void
     {
-        $this->totalDryWeight = new Weight(
+        $this->totalDryWeight = $this->unitValueFactory->weight(
             $this->totalGreenWeight->getValueIn('lbs') * 0.725,
             'lbs'
         );
@@ -219,7 +219,7 @@ class TreeData
 
     private function calculateTotalGreenWeight(): void
     {
-        $this->totalGreenWeight = new Weight(
+        $this->totalGreenWeight = $this->unitValueFactory->weight(
             $this->aboveGroundWeight->getValueIn('lbs') + $this->belowGroundWeight->getValueIn('lbs'),
             'lbs'
         );
@@ -227,7 +227,7 @@ class TreeData
 
     private function calculateAboveGroundWeight(): void
     {
-        $this->aboveGroundWeight = new Weight(
+        $this->aboveGroundWeight = $this->unitValueFactory->weight(
             $this->getDiameterCoefficient() * pow($this->diameter->getValueIn('in'), 2) * $this->height->getValueIn('feet'),
             'lbs'
         );
@@ -235,7 +235,7 @@ class TreeData
 
     private function calculateBelowGroundWeight(): void
     {
-        $this->belowGroundWeight = new Weight(
+        $this->belowGroundWeight = $this->unitValueFactory->weight(
             $this->aboveGroundWeight->getValueIn('lbs') * 0.2,
             'lbs'
         );
@@ -257,20 +257,14 @@ class TreeData
                 continue;
             }
 
-            $values = [];
-
-            if (isset($parameter)) {
-                $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData[$parameter]);
-            }
-
-            $unitValueClass = '\CowshedWorks\Trees\UnitValues\\'.ucfirst($parameter);
+            $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData[$parameter]);
 
             if (count($values) === 2) {
-                $this->{$parameter} = new $unitValueClass($values[0], $values[1]);
+                $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0], $values[1]);
             }
 
             if (count($values) === 1) {
-                $this->{$parameter} = new $unitValueClass($values[0], $unitValueClass::getDefault());
+                $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0]);
             }
         }
     }
@@ -279,11 +273,11 @@ class TreeData
     {
         if ($this->age === null) {
             if ($this->circumference) {
-                $this->age = new Age($this->circumference->getValue() / $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'years');
+                $this->age = $this->unitValueFactory->age($this->circumference->getValue() / $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'years');
             }
 
             if ($this->height) {
-                $this->age = new Age($this->height->getValue() / $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'years');
+                $this->age = $this->unitValueFactory->age($this->height->getValue() / $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'years');
             }
         }
 
@@ -293,18 +287,18 @@ class TreeData
 
         if ($this->circumference === null) {
             if ($this->diameter != null) {
-                $this->circumference = new Circumference($this->diameter->getValue() * M_PI, 'cm');
+                $this->circumference = $this->unitValueFactory->circumference($this->diameter->getValue() * M_PI, 'cm');
             } else {
-                $this->circumference = new Circumference($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'cm');
+                $this->circumference = $this->unitValueFactory->circumference($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'cm');
             }
         }
 
         if ($this->diameter === null) {
-            $this->diameter = new Diameter($this->circumference->getValue() / M_PI, 'cm');
+            $this->diameter = $this->unitValueFactory->diameter($this->circumference->getValue() / M_PI, 'cm');
         }
 
         if ($this->height === null) {
-            $this->height = new Height($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'cm');
+            $this->height = $this->unitValueFactory->height($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'cm');
         }
     }
 }
