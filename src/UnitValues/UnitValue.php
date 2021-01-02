@@ -115,12 +115,12 @@ abstract class UnitValue
                     return $value / 1000;
                 };
                 break;
-            case 'feet-cm':
+            case 'ft-cm':
                 return function ($value) {
                     return $value * 30.48;
                 };
                 break;
-            case 'cm-feet':
+            case 'cm-ft':
                 return function ($value) {
                     return $value / 30.48;
                 };

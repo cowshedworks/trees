@@ -40,7 +40,7 @@ That said, these are general calculations intended for approximations, there are
 $treeData = $factory->alder([
     'age'      => '10years',
     'diameter' => '8in',
-    'height'   => '15feet'
+    'height'   => '15ft'
 ]);
 
 $treeData->getPopularName();

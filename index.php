@@ -9,7 +9,7 @@ $factory = new TreeDataFactory();
 $treeData = $factory->alder([
     'age'      => '60years',
     'diameter' => '8in',
-    'height'   => '15feet',
+    'height'   => '15ft',
 ]);
 
 echo $treeData->getPopularName();

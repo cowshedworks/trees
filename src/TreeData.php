@@ -179,9 +179,9 @@ class TreeData
     }
 
     // PRIVATE API
-    private function getDiameterCoefficient(): float
+    private function getDiameterCoefficient(float $diameter): float
     {
-        if ($this->diameter->getValue() < 27.94) {
+        if ($diameter < 27.94) {
             return 0.25;
         }
 
@@ -231,7 +231,7 @@ class TreeData
     private function calculateAboveGroundWeight(): void
     {
         $this->aboveGroundWeight = $this->unitValueFactory->weight(
-            $this->getDiameterCoefficient() * pow($this->diameter->getValueIn('in'), 2) * $this->height->getValueIn('feet'),
+            $this->getDiameterCoefficient($this->diameter->getValue()) * pow($this->diameter->getValueIn('in'), 2) * $this->height->getValueIn('ft'),
             'lbs'
         );
     }
