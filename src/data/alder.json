@@ -14,7 +14,7 @@
             }
         },
         "age": {
-            "max": {
+            "max-average": {
                 "unit": "years",
                 "value": 60
             }
@@ -22,7 +22,7 @@
         "growth-rate": {
             "annual-average-height": {
                 "unit": "cm",
-                "value": 60
+                "value": 4.75
             },
             "annual-average-circumference": {
                 "unit": "cm",

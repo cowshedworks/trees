@@ -130,7 +130,7 @@ class TreeData
 
     public function getMaxAge(): float
     {
-        return $this->getSpeciesData('attributes.age.max.value');
+        return $this->getSpeciesData('attributes.age.max-average.value');
     }
 
     public function getCarbonWeight(): float
