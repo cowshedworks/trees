@@ -316,11 +316,11 @@ class TreeData
     {
         if ($this->age === null) {
             if ($this->circumference) {
-                $this->age = $this->unitValueFactory->age($this->circumference->getValue() / $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'years');
+                $this->age = $this->unitValueFactory->age($this->circumference->getValue() / $this->getAverageCircumferenceGrowthRate()->getValue(), 'years');
             }
 
             if ($this->height) {
-                $this->age = $this->unitValueFactory->age($this->height->getValue() / $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'years');
+                $this->age = $this->unitValueFactory->age($this->height->getValue() / $this->getAverageHeightGrowthRate()->getValue(), 'years');
             }
         }
 
@@ -332,7 +332,7 @@ class TreeData
             if ($this->diameter != null) {
                 $this->circumference = $this->unitValueFactory->circumference($this->diameter->getValue() * M_PI, 'cm');
             } else {
-                $this->circumference = $this->unitValueFactory->circumference($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value'), 'cm');
+                $this->circumference = $this->unitValueFactory->circumference($this->age->getValue() * $this->getAverageCircumferenceGrowthRate()->getValue(), 'cm');
             }
         }
 
@@ -341,7 +341,7 @@ class TreeData
         }
 
         if ($this->height === null) {
-            $this->height = $this->unitValueFactory->height($this->age->getValue() * $this->getSpeciesData('attributes.growth-rate.annual-average-height.value'), 'cm');
+            $this->height = $this->unitValueFactory->height($this->age->getValue() * $this->getAverageHeightGrowthRate()->getValue(), 'cm');
         }
     }
 }
