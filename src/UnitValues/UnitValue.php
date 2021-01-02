@@ -136,4 +136,9 @@ abstract class UnitValue
 
         return $conversionFunction($this->getValue());
     }
+
+    public function __toString(): string
+    {
+        return $this->describe();
+    }
 }

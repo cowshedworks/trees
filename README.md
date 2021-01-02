@@ -43,9 +43,9 @@ $treeData = $factory->alder([
     'height'   => '15ft'
 ]);
 
-$treeData->getPopularName();
+echo $treeData->getPopularName();
 // Alder
-$treeData->getCommonNames();
+print_r($treeData->getCommonNames());
 // Array
 // (
 //     [0] => Alder
@@ -53,18 +53,18 @@ $treeData->getCommonNames();
 //     [2] => Black Alder
 //     [3] => European Alder
 // )
-$treeData->getScientificName();
+print_r($treeData->getScientificName());
 // Array
 // (
 //     [0] => Alnus glutinosa
 // )
-$treeData->getAge()->describe();
+echo $treeData->getAge();
 // 10 years
-$treeData->getCarbonWeight()->describe();
+echo $treeData->getCarbonWeight();
 // 47.15 kg
-$treeData->getCO2SequestrationPerYear()->describe();
+echo $treeData->getCO2SequestrationPerYear();
 // 17.29 kg
-$treeData->getCO2SequestrationToDate()->describe();
+echo $treeData->getCO2SequestrationToDate();
 // 172.87 kg
 ```
 
