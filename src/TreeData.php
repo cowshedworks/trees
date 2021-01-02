@@ -46,6 +46,7 @@ class TreeData
     public function __construct(array $speciesData, array $treeData)
     {
         $this->speciesData = $speciesData;
+        $this->unitValueFactory = new UnitValueFactory();
         $this->buildProvidedAttributes($treeData);
         $this->resolveEmptyAttributes();
         $this->calculateWeights();
@@ -85,6 +86,11 @@ class TreeData
         return $this->circumference->getDescription();
     }
 
+    public function describeDiameter(): string
+    {
+        return $this->diameter->getDescription();
+    }
+
     public function describeHeight(): string
     {
         return $this->height->getDescription();
@@ -104,6 +110,18 @@ class TreeData
         }
 
         return $currentValue;
+    }
+
+    public function getSpeciesDataUnitValue(string $key, string $unitValueClass)
+    {
+        return $this->unitValueFactory->$unitValueClass(
+            $this->getSpeciesData($key)
+        );
+
+        // return new $unitValueClass(
+        //     $unitValueObject['value'],
+        //     $unitValueObject['unit']
+        // );
     }
 
     public function getPopularName(): string
