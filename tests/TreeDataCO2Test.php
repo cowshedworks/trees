@@ -13,7 +13,7 @@ class TreeDataCO2Test extends TestCase
     /**
      * @test
      */
-    public function co2_sequestration_per_year_can_be_calculated(): void
+    public function co2_sequestration_can_be_calculated(): void
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->testTree([
