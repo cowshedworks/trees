@@ -85,20 +85,4 @@ class TreeDataTest extends TestCase
         $this->assertEquals('280 cm', $data->describeHeight());
         $this->assertEquals('33 cm', $data->describeCircumference());
     }
-
-    /**
-     * @test
-     */
-    public function co2_sequestration_per_year_can_be_calculated(): void
-    {
-        $factory = $this->getTreeDataFactory();
-        $data = $factory->testTree([
-            'age'      => '10years',
-            'diameter' => '8in',
-            'height'   => '15feet',
-        ]);
-
-        $this->assertEquals('172.87 kg', $data->describeCO2SequestrationToDate());
-        $this->assertEquals('17.29 kg', $data->describeCO2SequestrationPerYear());
-    }
 }
