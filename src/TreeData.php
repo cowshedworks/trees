@@ -172,13 +172,11 @@ class TreeData
             $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value')
         );
     }
-    
+
     public function describeAverageCircumferenceGrowthRate(): string
     {
         return "{$this->getAverageCircumferenceGrowthRate()->getValue()} cm / year";
     }
-
-
 
     // PRIVATE API
     private function getDiameterCoefficient(): float
@@ -211,11 +209,11 @@ class TreeData
     private function calculateRates(): void
     {
         $this->growthRateHeightActual = $this->unitValueFactory->height(
-            $this->height->getValue() / $this->age->getValue() 
+            $this->height->getValue() / $this->age->getValue()
         );
 
         $this->growthRateCircumferenceActual = $this->unitValueFactory->height(
-            $this->circumference->getValue() / $this->age->getValue() 
+            $this->circumference->getValue() / $this->age->getValue()
         );
     }
 
