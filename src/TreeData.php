@@ -181,7 +181,7 @@ class TreeData
     // PRIVATE API
     private function getDiameterCoefficient(): float
     {
-        if ($this->diameter->getValueIn('in') < 11) {
+        if ($this->diameter->getValue() < 27.94) {
             return 0.25;
         }
 
