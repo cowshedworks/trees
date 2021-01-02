@@ -4,12 +4,6 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
-use CowshedWorks\Trees\UnitValues\Age;
-use CowshedWorks\Trees\UnitValues\Circumference;
-use CowshedWorks\Trees\UnitValues\Diameter;
-use CowshedWorks\Trees\UnitValues\Height;
-use CowshedWorks\Trees\UnitValues\Weight;
-
 class TreeData
 {
     public static array $requiredvalidParameters = [

@@ -10,28 +10,27 @@ use CowshedWorks\Trees\UnitValues\Diameter;
 use CowshedWorks\Trees\UnitValues\Height;
 use CowshedWorks\Trees\UnitValues\Length;
 use CowshedWorks\Trees\UnitValues\Weight;
-use Exception;
 
 class UnitValueFactory
 {
     protected array $unitValues = [
-        'age' => Age::class,
+        'age'           => Age::class,
         'circumference' => Circumference::class,
-        'diameter' => Diameter::class,
-        'height' => Height::class,
-        'lenth' => Length::class,
-        'weight' => Weight::class,
+        'diameter'      => Diameter::class,
+        'height'        => Height::class,
+        'lenth'         => Length::class,
+        'weight'        => Weight::class,
     ];
 
     public function __construct()
     {
-
     }
 
     public function __call($method, $params)
     {
         if (is_array($params[0])) {
             $unitValueData = $params[0];
+
             return new $this->unitValues[$method]($unitValueData['value'], $unitValueData['unit']);
         }
 
