@@ -4,21 +4,22 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees\Tests;
 
-use CowshedWorks\Trees\TreeDataFactory;
 use Exception;
 use PHPUnit\Framework\TestCase;
 
 class FactoryTest extends TestCase
 {
+    use TestTreeFactory;
+
     /**
      * @test
      */
     public function the_factory_can_list_available_tree_data(): void
     {
-        $factory = new TreeDataFactory();
+        $factory = $this->getTreeDataFactory();
 
         $this->assertContains(
-            'alder',
+            'testTree',
             $factory->getTrees(),
         );
     }
@@ -31,8 +32,8 @@ class FactoryTest extends TestCase
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('No config provided');
 
-        $factory = new TreeDataFactory();
-        $data = $factory->alder();
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree();
     }
 
     /**
@@ -41,10 +42,10 @@ class FactoryTest extends TestCase
     public function the_factory_will_not_build_when_unknown_params_are_provided(): void
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage('Cannot build alder data without one of these parameters: age, height, circumference');
+        $this->expectExceptionMessage('Cannot build testTree data without one of these parameters: age, height, circumference');
 
-        $factory = new TreeDataFactory();
-        $data = $factory->alder(['wat' => '100cm']);
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree(['wat' => '100cm']);
     }
 
     /**
@@ -52,9 +53,9 @@ class FactoryTest extends TestCase
      */
     public function the_factory_can_get_tree_data(): void
     {
-        $factory = new TreeDataFactory();
+        $factory = $this->getTreeDataFactory();
 
-        $data = $factory->alder(['circumference' => '33cm']);
+        $data = $factory->testTree(['circumference' => '33cm']);
 
         $this->assertNotNull($data);
         $this->assertEquals('Alder', $data->getPopularName());

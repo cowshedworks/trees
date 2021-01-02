@@ -9,20 +9,22 @@ use PHPUnit\Framework\TestCase;
 
 class TreeDataTest extends TestCase
 {
+    use TestTreeFactory;
+
     /**
      * @test
      */
     public function tree_data_will_be_calculated_regardless_of_unit_spacing(): void
     {
-        $factory = new TreeDataFactory();
-        $data = $factory->alder(['circumference' => '33cm']);
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree(['circumference' => '33cm']);
 
         $this->assertEquals('13.2 years', $data->describeAge());
         $this->assertEquals('792 cm', $data->describeHeight());
         $this->assertEquals('33 cm', $data->describeCircumference());
 
-        $factory = new TreeDataFactory();
-        $data = $factory->alder(['circumference' => '33 cm']);
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree(['circumference' => '33 cm']);
 
         $this->assertEquals('13.2 years', $data->describeAge());
         $this->assertEquals('792 cm', $data->describeHeight());
@@ -34,8 +36,8 @@ class TreeDataTest extends TestCase
      */
     public function tree_data_will_be_calculated_from_circumference(): void
     {
-        $factory = new TreeDataFactory();
-        $data = $factory->alder(['circumference' => '33cm']);
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree(['circumference' => '33cm']);
 
         $this->assertEquals('13.2 years', $data->describeAge());
         $this->assertEquals('792 cm', $data->describeHeight());
@@ -47,8 +49,8 @@ class TreeDataTest extends TestCase
      */
     public function tree_data_will_be_calculated_from_age(): void
     {
-        $factory = new TreeDataFactory();
-        $data = $factory->alder(['age' => '75years']);
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree(['age' => '75years']);
 
         $this->assertEquals('75 years', $data->describeAge());
         $this->assertEquals('4500 cm', $data->describeHeight());
@@ -60,8 +62,8 @@ class TreeDataTest extends TestCase
      */
     public function tree_data_will_be_calculated_from_height(): void
     {
-        $factory = new TreeDataFactory();
-        $data = $factory->alder(['height' => '10cm']);
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree(['height' => '10cm']);
 
         $this->assertEquals('0.17 years', $data->describeAge());
         $this->assertEquals('10 cm', $data->describeHeight());
@@ -73,8 +75,8 @@ class TreeDataTest extends TestCase
      */
     public function all_tree_data_can_be_overridden(): void
     {
-        $factory = new TreeDataFactory();
-        $data = $factory->alder([
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree([
             'circumference' => '33cm',
             'age'           => '40 years',
             'height'        => '280cm',
@@ -90,8 +92,8 @@ class TreeDataTest extends TestCase
      */
     public function co2_sequestration_per_year_can_be_calculated(): void
     {
-        $factory = new TreeDataFactory();
-        $data = $factory->alder([
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree([
             'age'      => '10years',
             'diameter' => '8in',
             'height'   => '15feet',

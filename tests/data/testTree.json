@@ -1,0 +1,48 @@
+{
+    "name": {
+        "popular": "Alder",
+        "common": ["Alder", "Common Alder", "Black Alder", "European Alder"],
+        "scientific": ["Alnus glutinosa"],
+        "family": "Betulaceae"
+    },
+    "attributes": {
+        "shape": "Conical",
+        "dimensions": {
+            "max-height": {
+                "unit": "cm",
+                "value": 280
+            }
+        },
+        "age": {
+            "max": {
+                "unit": "years",
+                "value": 60
+            }
+        },
+        "growth-rate": {
+            "annual-average-height": {
+                "unit": "cm",
+                "value": 60
+            },
+            "annual-average-circumference": {
+                "unit": "cm",
+                "value": 2.5
+            }
+        },
+        "carbon-sequestration": {
+            "annual": {
+                "metric": "kg",
+                "value": 21
+            }
+        }
+    },
+    "information": {
+        "origin": "Native",
+        "habitat": "Moist ground near rivers, ponds and lakes and it thrives in damp, cool areas such as marshes, wet woodland and streams",
+        "leaves": null,
+        "flowers": null,
+        "fruits": null,
+        "wildlife": null,
+        "uses": null
+    }
+}

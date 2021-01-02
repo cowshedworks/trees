@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 
 class AgeUnitValueTest extends TestCase
 {
+    use TestTreeFactory;
+    
     /**
      * @test
      */
