@@ -1,8 +1,8 @@
-# Trees
+# Tree Data
 
 Tree data for UK native trees
 
-The provided PHP utilities can be used to work out the CO2 sequestration rate for trees. The data is used as the base data in the Plant a Tree Project.
+The provided PHP utilities can be used to get data about a range of tree species. It can work out the CO2 sequestration rate for trees. The data is used as the base data in the Plant a Tree Project.
 
 ### Currently work in progress, auto calculations aren't correct
 
@@ -34,7 +34,9 @@ print_r($factory->getTrees());
 
 To instantiate a data object you need to pass parameters to the constructor, it will require one of 'circumference', 'age', or 'height' in order to build the object.
 
-If any of 'circumference', 'age', or 'height' are not provided when building the object it will attempt to guess them using values from the species data. These values are needed for the CO2 sequestration calculations, the more accurate the data you provide when building the object the more accurate the calculations will be. That said, these are general calculations intended for approximations, there are lots of factors that will affect these values in the real world.
+If any of 'circumference', 'age', or 'height' are not provided when building the object it will attempt to guess them using values from the species data. These values are needed for the CO2 sequestration calculations, the more accurate the data you provide when building the object the more accurate the calculations will be.
+
+That said, these are general calculations intended for approximations, there are lots of factors that will affect these values in the real world.
 
 ```PHP
 $treeData = $factory->alder([
