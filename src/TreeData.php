@@ -16,7 +16,7 @@ class TreeData
         'circumference',
         'age',
         'height',
-        'diameter'
+        'diameter',
     ];
 
     private array $speciesData;
@@ -40,7 +40,7 @@ class TreeData
     private $totalCarbonWeight;
 
     private $totalCarbonSequestered;
-    
+
     private $totalCarbonSequesteredPerYear;
 
     public function __construct(array $speciesData, array $treeData)
