@@ -111,11 +111,6 @@ class TreeData
         return $this->unitValueFactory->$unitValueClass(
             $this->getSpeciesData($key)
         );
-
-        // return new $unitValueClass(
-        //     $unitValueObject['value'],
-        //     $unitValueObject['unit']
-        // );
     }
 
     public function getPopularName(): string

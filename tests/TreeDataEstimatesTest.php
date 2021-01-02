@@ -6,7 +6,7 @@ namespace CowshedWorks\Trees\Tests;
 
 use PHPUnit\Framework\TestCase;
 
-class TreeDataCalculationsTest extends TestCase
+class TreeDataEstimatesTest extends TestCase
 {
     use TestTreeFactory;
 
