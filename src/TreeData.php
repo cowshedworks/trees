@@ -117,9 +117,14 @@ class TreeData
         return $this->totalCarbonSequesteredPerYear;
     }
 
-    public function getActualHeightGrowthRate(): Length
+    public function getActualAnnualHeightGrowthRate(): Height
     {
         return $this->growthRateHeightActual;
+    }
+
+    public function getActualAverageCircumferenceGrowthRate(): Height
+    {
+        return $this->growthRateCircumferenceActual;
     }
 
     public function getAverageAnnualHeightGrowthRate(): Height
