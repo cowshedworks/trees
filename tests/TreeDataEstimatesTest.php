@@ -18,17 +18,8 @@ class TreeDataEstimatesTest extends TestCase
         $factory = $this->getTreeDataFactory();
         $data = $factory->testTree(['height' => '10m']);
 
-        $heightGrowthRate = $data->getSpeciesDataUnitValue(
-            'attributes.growth-rate.annual-average-height',
-            'height'
-        );
-        $this->assertEquals('60 cm', $heightGrowthRate->getDescription());
-
-        $circumferenceGrowthRate = $data->getSpeciesDataUnitValue(
-            'attributes.growth-rate.annual-average-circumference',
-            'height'
-        );
-        $this->assertEquals('2.5 cm', $circumferenceGrowthRate->getDescription());
+        $this->assertEquals('60 cm / year', $data->describeAverageHeightGrowthRate());
+        $this->assertEquals('2.5 cm / year', $data->describeAverageCircumferenceGrowthRate());
     }
 
     /**

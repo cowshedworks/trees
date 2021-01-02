@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
+use CowshedWorks\Trees\UnitValues\Circumference;
+use CowshedWorks\Trees\UnitValues\Height;
+
 class TreeData
 {
     public static array $requiredvalidParameters = [
@@ -37,22 +40,18 @@ class TreeData
 
     private $totalCarbonSequesteredPerYear;
 
+    private $growthRateHeightActual;
+
+    private $growthRateCircumferenceActual;
+
     public function __construct(array $speciesData, array $treeData)
     {
         $this->speciesData = $speciesData;
         $this->unitValueFactory = new UnitValueFactory();
         $this->buildProvidedAttributes($treeData);
         $this->resolveEmptyAttributes();
+        $this->calculateRates();
         $this->calculateWeights();
-    }
-
-    public function getDiameterCoefficient(): float
-    {
-        if ($this->diameter->getValueIn('in') < 11) {
-            return 0.25;
-        }
-
-        return 0.15;
     }
 
     public function getAge(): float
@@ -93,24 +92,6 @@ class TreeData
     public function describeWeight(): string
     {
         return $this->totalGreenWeight->getDescription();
-    }
-
-    public function getSpeciesData(string $dataName)
-    {
-        $currentValue = $this->speciesData;
-
-        foreach (explode('.', $dataName) as $key) {
-            $currentValue = $currentValue[$key];
-        }
-
-        return $currentValue;
-    }
-
-    public function getSpeciesDataUnitValue(string $key, string $unitValueClass)
-    {
-        return $this->unitValueFactory->$unitValueClass(
-            $this->getSpeciesData($key)
-        );
     }
 
     public function getPopularName(): string
@@ -161,6 +142,81 @@ class TreeData
     public function describeCO2SequestrationPerYear(): string
     {
         return $this->totalCarbonSequesteredPerYear->getDescription();
+    }
+
+    public function describeActualHeightGrowthRate(): string
+    {
+        return "{$this->growthRateHeightActual->getValue()} cm / year";
+    }
+
+    public function getAverageHeightGrowthRate(): Height
+    {
+        return $this->unitValueFactory->height(
+            $this->getSpeciesData('attributes.growth-rate.annual-average-height.value')
+        );
+    }
+
+    public function describeAverageHeightGrowthRate(): string
+    {
+        return "{$this->getAverageHeightGrowthRate()->getValue()} cm / year";
+    }
+
+    public function describeActualCircumferenceGrowthRate(): string
+    {
+        return "{$this->growthRateCircumferenceActual->getValue()} cm / year";
+    }
+
+    public function getAverageCircumferenceGrowthRate(): Circumference
+    {
+        return $this->unitValueFactory->circumference(
+            $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value')
+        );
+    }
+    
+    public function describeAverageCircumferenceGrowthRate(): string
+    {
+        return "{$this->getAverageCircumferenceGrowthRate()->getValue()} cm / year";
+    }
+
+
+
+    // PRIVATE API
+    private function getDiameterCoefficient(): float
+    {
+        if ($this->diameter->getValueIn('in') < 11) {
+            return 0.25;
+        }
+
+        return 0.15;
+    }
+
+    private function getSpeciesDataUnitValue(string $key, string $unitValueClass)
+    {
+        return $this->unitValueFactory->$unitValueClass(
+            $this->getSpeciesData($key)
+        );
+    }
+
+    private function getSpeciesData(string $dataName)
+    {
+        $currentValue = $this->speciesData;
+
+        foreach (explode('.', $dataName) as $key) {
+            $currentValue = $currentValue[$key];
+        }
+
+        return $currentValue;
+    }
+
+    private function calculateRates(): void
+    {
+        $this->growthRateHeightActual = $this->unitValueFactory->height(
+            $this->height->getValue() / $this->age->getValue() 
+        );
+
+        $this->growthRateCircumferenceActual = $this->unitValueFactory->height(
+            $this->circumference->getValue() / $this->age->getValue() 
+        );
     }
 
     private function calculateWeights(): void
