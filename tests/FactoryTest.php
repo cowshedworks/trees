@@ -58,8 +58,8 @@ class FactoryTest extends TestCase
         $data = $factory->testTree(['circumference' => '33cm']);
 
         $this->assertNotNull($data);
-        $this->assertEquals('Alder', $data->getPopularName());
-        $this->assertEquals(['Alder', 'Common Alder', 'Black Alder', 'European Alder'], $data->getCommonNames());
-        $this->assertEquals(['Alnus glutinosa'], $data->getScientificName());
+        $this->assertEquals('Test Tree', $data->getPopularName());
+        $this->assertEquals(['Test Tree', 'Common Test Tree', 'Black Test Tree', 'European Test Tree'], $data->getCommonNames());
+        $this->assertEquals(['TestTree glutinosa'], $data->getScientificName());
     }
 }

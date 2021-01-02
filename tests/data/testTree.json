@@ -1,9 +1,9 @@
 {
     "name": {
-        "popular": "Alder",
-        "common": ["Alder", "Common Alder", "Black Alder", "European Alder"],
-        "scientific": ["Alnus glutinosa"],
-        "family": "Betulaceae"
+        "popular": "Test Tree",
+        "common": ["Test Tree", "Common Test Tree", "Black Test Tree", "European Test Tree"],
+        "scientific": ["TestTree glutinosa"],
+        "family": "TestTreeius"
     },
     "attributes": {
         "shape": "Conical",
