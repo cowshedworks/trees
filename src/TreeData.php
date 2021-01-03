@@ -290,6 +290,25 @@ class TreeData
         }
     }
 
+    private function resolveStrategies(): void
+    {
+        if ($this->age === null) {
+            $this->resolveAgeStrategy();
+        }
+
+        if ($this->circumference === null) {
+            $this->resolveCircumferenceStrategy();
+        }
+
+        if ($this->diameter === null) {
+            $this->strategies[] = new DiameterFromCircumference();
+        }
+
+        if ($this->height === null) {
+            $this->strategies[] = new HeightFromGrowthRate();
+        }
+    }
+
     private function resolveAgeStrategy(): void
     {
         if ($this->circumference) {
@@ -317,24 +336,5 @@ class TreeData
         }
 
         $this->strategies[] = new CircumferenceFromGrowthRate();
-    }
-
-    private function resolveStrategies(): void
-    {
-        if ($this->age === null) {
-            $this->resolveAgeStrategy();
-        }
-
-        if ($this->circumference === null) {
-            $this->resolveCircumferenceStrategy();
-        }
-
-        if ($this->diameter === null) {
-            $this->strategies[] = new DiameterFromCircumference();
-        }
-
-        if ($this->height === null) {
-            $this->strategies[] = new HeightFromGrowthRate();
-        }
     }
 }
