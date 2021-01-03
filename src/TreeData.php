@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees;
 
 use CowshedWorks\Trees\Calculators\AboveGroundWeightCalculator;
+use CowshedWorks\Trees\Calculators\TotalBelowGroundWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequestered;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonWeight;
@@ -251,10 +252,7 @@ class TreeData
 
     private function calculateBelowGroundWeight(): void
     {
-        $this->belowGroundWeight = $this->unitValueFactory->weight(
-            $this->aboveGroundWeight->getValueIn('lbs') * 0.2,
-            'lbs'
-        );
+        $this->belowGroundWeight = (new TotalBelowGroundWeightCalculator)->calculate($this->aboveGroundWeight);
     }
 
     public static function validateTreeParameters(array $treeParameters): bool
