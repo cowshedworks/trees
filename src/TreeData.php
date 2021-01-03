@@ -308,13 +308,13 @@ class TreeData
 
     private function resolveAgeStrategy(): void
     {
+        if ($this->height && $this->heightRegressionData != null) {
+            $this->strategies[] = new AgeFromHeightRegression();
+
+            return;
+        }
+
         if ($this->height) {
-            if ($this->heightRegressionData != null) {
-                $this->strategies[] = new AgeFromHeightRegression();
-
-                return;
-            }
-
             $this->strategies[] = new AgeFromHeight();
 
             return;
