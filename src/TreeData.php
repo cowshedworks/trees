@@ -5,6 +5,11 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees;
 
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
+use CowshedWorks\Trees\Strategies\AgeFromHeight;
+use CowshedWorks\Trees\Strategies\CircumferenceFromDiameter;
+use CowshedWorks\Trees\Strategies\CircumferenceFromGrowthRate;
+use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
+use CowshedWorks\Trees\Strategies\HeightFromGrowthRate;
 use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Circumference;
 use CowshedWorks\Trees\UnitValues\Diameter;
@@ -58,7 +63,7 @@ class TreeData
         $this->unitValueFactory = new UnitValueFactory();
         $this->buildProvidedAttributes($treeData);
         $this->buildStrategies();
-        $this->runStrategies();
+        $this->executeStrategies();
         $this->calculateRates();
         $this->calculateWeights();
     }
@@ -83,9 +88,19 @@ class TreeData
         return $this->getSpeciesData('attributes.age.max-average.value');
     }
 
+    public function setAge(Age $age): void
+    {
+        $this->age = $age;
+    }
+
     public function getAge(): Age
     {
         return $this->age;
+    }
+
+    public function setCircumference(Circumference $circumference): void
+    {
+        $this->circumference = $circumference;
     }
 
     public function getCircumference(): Circumference
@@ -93,9 +108,19 @@ class TreeData
         return $this->circumference;
     }
 
+    public function setHeight(Height $height): void
+    {
+        $this->height = $height;
+    }
+
     public function getHeight(): Height
     {
         return $this->height;
+    }
+
+    public function setDiameter(Diameter $diameter): void
+    {
+        $this->diameter = $diameter;
     }
 
     public function getDiameter(): Diameter
@@ -281,43 +306,39 @@ class TreeData
         }
     }
     
-    private function runStrategies(): void
+    private function executeStrategies(): void
     {
+        foreach ($this->strategies as $strategy) {
+            $strategy->run($this);
+        }
 
+        if ($this->age === null) {
+            throw new Exception('Unable to resolve tree age');
+        }
     }
 
     private function buildStrategies(): void
     {
         if ($this->age === null) {
             if ($this->circumference) {
-                $this->strategies[] = new AgeFromCircumference($this->circumference, $this->getAverageAnnualCircumferenceGrowthRate());
-                
-                $this->age = $this->unitValueFactory->age($this->circumference->getValue() / $this->getAverageAnnualCircumferenceGrowthRate()->getValue(), 'years');
+                $this->strategies[] = new AgeFromCircumference();
             }
-
             if ($this->height) {
-                $this->age = $this->unitValueFactory->age($this->height->getValue() / $this->getAverageAnnualHeightGrowthRate()->getValue(), 'years');
+                $this->strategies[] = new AgeFromHeight();
             }
         }
-
-        if ($this->age === null) {
-            throw new Exception('Unable to resolve tree age');
-        }
-
         if ($this->circumference === null) {
             if ($this->diameter != null) {
-                $this->circumference = $this->unitValueFactory->circumference($this->diameter->getValue() * M_PI, 'cm');
+                $this->strategies[] = new CircumferenceFromDiameter();
             } else {
-                $this->circumference = $this->unitValueFactory->circumference($this->age->getValue() * $this->getAverageAnnualCircumferenceGrowthRate()->getValue(), 'cm');
+                $this->strategies[] = new CircumferenceFromGrowthRate();
             }
         }
-
         if ($this->diameter === null) {
-            $this->diameter = $this->unitValueFactory->diameter($this->circumference->getValue() / M_PI, 'cm');
+            $this->strategies[] = new DiameterFromCircumference();
         }
-
         if ($this->height === null) {
-            $this->height = $this->unitValueFactory->height($this->age->getValue() * $this->getAverageAnnualHeightGrowthRate()->getValue(), 'cm');
+            $this->strategies[] = new HeightFromGrowthRate();
         }
     }
 }

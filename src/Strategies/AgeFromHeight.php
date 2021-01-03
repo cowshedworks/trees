@@ -6,17 +6,18 @@ namespace CowshedWorks\Trees\Strategies;
 
 use CowshedWorks\Trees\TreeData;
 use CowshedWorks\Trees\UnitValueFactory;
+use CowshedWorks\Trees\UnitValues\Age;
 
-class AgeFromCircumference extends StrategyAbstract
+class AgeFromHeight extends StrategyAbstract
 {
     public function run(TreeData $treeData): void
     {
-        $circumference = $treeData->getCircumference();
-        $averageAnnualCircumferenceGrowthRate = $treeData->getAverageAnnualCircumferenceGrowthRate();
+        $treeHeight = $treeData->getHeight();
+        $averageAnnualHeightGrowthRate = $treeData->getAverageAnnualHeightGrowthRate();
 
         $treeData->setAge(
             $this->unitValueFactory->age(
-                $circumference->getValue() / $averageAnnualCircumferenceGrowthRate->getValue(),
+                $treeHeight->getValue() / $averageAnnualHeightGrowthRate->getValue(),
                 'years'
             )
         );

@@ -1,0 +1,24 @@
+<?php
+
+declare(strict_types=1);
+
+namespace CowshedWorks\Trees\Strategies;
+
+use CowshedWorks\Trees\TreeData;
+use CowshedWorks\Trees\UnitValueFactory;
+
+class CircumferenceFromGrowthRate extends StrategyAbstract
+{
+    public function run(TreeData $treeData): void
+    {
+        $treeAge = $treeData->getAge();
+        $annualAverageCircumferenceGrowthRate = $treeData->getAverageAnnualCircumferenceGrowthRate();
+
+        $treeData->setCircumference(
+            $this->unitValueFactory->circumference(
+                $treeAge->getValue() * $annualAverageCircumferenceGrowthRate->getValue(),
+                'cm'
+            )
+        );
+    }
+}
