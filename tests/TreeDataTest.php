@@ -64,9 +64,9 @@ class TreeDataTest extends TestCase
         $factory = $this->getTreeDataFactory();
         $data = $factory->testTree(['height' => '10cm']);
 
-        $this->assertEquals('0.17 years', $data->getAge()->describe());
+        $this->assertEquals('1.56 years', $data->getAge()->describe());
         $this->assertEquals('10 cm', $data->getHeight()->describe());
-        $this->assertEquals('0.43 cm', $data->getCircumference()->describe());
+        $this->assertEquals('3.9 cm', $data->getCircumference()->describe());
     }
 
     /**

@@ -13,6 +13,7 @@ use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
+use CowshedWorks\Trees\Strategies\AgeFromHeightRegression;
 use CowshedWorks\Trees\Strategies\CircumferenceFromDiameter;
 use CowshedWorks\Trees\Strategies\CircumferenceFromGrowthRate;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
@@ -22,6 +23,7 @@ use CowshedWorks\Trees\UnitValues\Circumference;
 use CowshedWorks\Trees\UnitValues\Diameter;
 use CowshedWorks\Trees\UnitValues\Height;
 use CowshedWorks\Trees\UnitValues\Weight;
+use Exception;
 
 class TreeData
 {
@@ -62,12 +64,15 @@ class TreeData
 
     private $growthRateCircumferenceActual;
 
+    private $heightRegressionData;
+
     private UnitValueFactory $unitValueFactory;
 
     public function __construct(array $speciesData, array $treeData)
     {
-        $this->speciesData = $speciesData;
         $this->unitValueFactory = new UnitValueFactory();
+        $this->speciesData = $speciesData;
+        $this->resolveRegressions();
         $this->resolveProvidedAttributes($treeData);
         $this->resolveStrategies();
         $this->executeStrategies();
@@ -123,6 +128,11 @@ class TreeData
     public function getHeight(): Height
     {
         return $this->height;
+    }
+
+    public function getHeightRegression(): array
+    {
+        return $this->heightRegressionData;
     }
 
     public function setDiameter(Diameter $diameter): void
@@ -189,13 +199,17 @@ class TreeData
 
     private function getSpeciesData(string $dataName)
     {
-        $currentValue = $this->speciesData;
+        try {
+            $currentValue = $this->speciesData;
 
-        foreach (explode('.', $dataName) as $key) {
-            $currentValue = $currentValue[$key];
+            foreach (explode('.', $dataName) as $key) {
+                $currentValue = $currentValue[$key];
+            }
+
+            return $currentValue;
+        } catch (Exception $exception) {
+            return null;
         }
-
-        return $currentValue;
     }
 
     private function calculateRates(): void
@@ -240,6 +254,11 @@ class TreeData
         $validParamsNotProvided = array_diff(self::$requiredvalidParameters, array_keys($treeParameters));
 
         return count($validParamsNotProvided) != $totalValidParams;
+    }
+
+    private function resolveRegressions(): void
+    {
+        $this->heightRegressionData = $this->getSpeciesData('attributes.growth-rate.height-regression-seed');
     }
 
     private function resolveProvidedAttributes(array $treeData): void
@@ -289,14 +308,21 @@ class TreeData
 
     private function resolveAgeStrategy(): void
     {
-        if ($this->circumference) {
-            $this->strategies[] = new AgeFromCircumference();
+        if ($this->height) {
+
+            if ($this->heightRegressionData != null) {
+                $this->strategies[] = new AgeFromHeightRegression();
+    
+                return;
+            }
+            
+            $this->strategies[] = new AgeFromHeight();
 
             return;
         }
 
-        if ($this->height) {
-            $this->strategies[] = new AgeFromHeight();
+        if ($this->circumference) {
+            $this->strategies[] = new AgeFromCircumference();
 
             return;
         }

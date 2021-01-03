@@ -13,7 +13,9 @@
             "email": "gavin@cowshedworks.co.uk"
         }
     ],
-    "require": {},
+    "require": {
+        "dr-que/polynomial-regression": "v1.2.1.1"
+    },
     "autoload": {
         "psr-4": {
             "CowshedWorks\\Trees\\" : "src/",

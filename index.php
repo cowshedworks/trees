@@ -7,8 +7,8 @@ use CowshedWorks\Trees\TreeDataFactory;
 $factory = new TreeDataFactory();
 
 $treeData = $factory->alder([
-    'age'      => '60years',
-    'diameter' => '8in',
+    // 'age'      => '60years',
+    // 'diameter' => '8in',
     'height'   => '15ft',
 ]);
 

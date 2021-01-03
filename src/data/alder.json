@@ -29,6 +29,7 @@
                 "value": 2.5
             },
             "height-regression-seed": [
+                {"year": 0, "value": { "unit": "m", "value": 0.0 }},
                 {"year": 5, "value": { "unit": "m", "value": 8.0 }},
                 {"year": 20, "value": { "unit": "m", "value": 18.8 }},
                 {"year": 30, "value": { "unit": "m", "value": 22.5 }},
