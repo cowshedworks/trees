@@ -7,9 +7,12 @@ namespace CowshedWorks\Trees;
 use CowshedWorks\Trees\Calculators\AboveGroundWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalBelowGroundWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequestered;
+use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonWeight;
+use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalDryWeight;
+use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
@@ -232,17 +235,17 @@ class TreeData
 
     private function calculateTotalCarbonSequestered(): void
     {
-        $this->totalCarbonSequestered = (new TotalCarbonSequestered)->calculate($this->totalCarbonWeight);
+        $this->totalCarbonSequestered = (new TotalCarbonSequesteredCalculator)->calculate($this->totalCarbonWeight);
     }
 
     private function calculateTotalCarbonWeight(): void
     {
-        $this->totalCarbonWeight = (new TotalCarbonWeight)->calculate($this->totalDryWeight);
+        $this->totalCarbonWeight = (new TotalCarbonWeightCalculator)->calculate($this->totalDryWeight);
     }
 
     private function calculateTotalDryWeight(): void
     {
-        $this->totalDryWeight = (new TotalDryWeight)->calculate($this->totalGreenWeight);
+        $this->totalDryWeight = (new TotalDryWeightCalculator)->calculate($this->totalGreenWeight);
     }
 
     private function calculateTotalGreenWeight(): void

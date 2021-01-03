@@ -6,12 +6,12 @@ namespace CowshedWorks\Trees\Calculators;
 
 use CowshedWorks\Trees\UnitValues\Weight;
 
-class TotalCarbonWeight extends CalculatorAbstract
+class TotalDryWeightCalculator extends CalculatorAbstract
 {    
-    public function calculate(Weight $totalDryWeight): Weight
+    public function calculate(Weight $totalGreenWeight): Weight
     {
         return $this->unitValueFactory->weight(
-            $totalDryWeight->getValueIn('lbs') * 0.5,
+            $totalGreenWeight->getValueIn('lbs') * 0.725,
             'lbs'
         );
     }
