@@ -8,7 +8,7 @@ use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Weight;
 
 class TotalCarbonSequesteredPerYearCalculator extends CalculatorAbstract
-{    
+{
     public function calculate(Age $age, Weight $totalCarbonSequestered): Weight
     {
         return $this->unitValueFactory->weight(

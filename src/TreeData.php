@@ -225,12 +225,12 @@ class TreeData
 
     private function calculateAboveGroundWeight(): void
     {
-        $this->aboveGroundWeight = (new AboveGroundWeightCalculator)->calculate($this->getDiameter(), $this->getHeight());
+        $this->aboveGroundWeight = (new AboveGroundWeightCalculator())->calculate($this->getDiameter(), $this->getHeight());
     }
 
     private function calculateTotalCarbonSequesteredPerYear(): void
     {
-        $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator)->calculate($this->getAge(), $this->totalCarbonSequestered);
+        $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator())->calculate($this->getAge(), $this->totalCarbonSequestered);
     }
 
     private function calculateTotalCarbonSequestered(): void
