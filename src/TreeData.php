@@ -6,12 +6,9 @@ namespace CowshedWorks\Trees;
 
 use CowshedWorks\Trees\Calculators\AboveGroundWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalBelowGroundWeightCalculator;
-use CowshedWorks\Trees\Calculators\TotalCarbonSequestered;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
-use CowshedWorks\Trees\Calculators\TotalCarbonWeight;
 use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
-use CowshedWorks\Trees\Calculators\TotalDryWeight;
 use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
@@ -235,27 +232,27 @@ class TreeData
 
     private function calculateTotalCarbonSequestered(): void
     {
-        $this->totalCarbonSequestered = (new TotalCarbonSequesteredCalculator)->calculate($this->totalCarbonWeight);
+        $this->totalCarbonSequestered = (new TotalCarbonSequesteredCalculator())->calculate($this->totalCarbonWeight);
     }
 
     private function calculateTotalCarbonWeight(): void
     {
-        $this->totalCarbonWeight = (new TotalCarbonWeightCalculator)->calculate($this->totalDryWeight);
+        $this->totalCarbonWeight = (new TotalCarbonWeightCalculator())->calculate($this->totalDryWeight);
     }
 
     private function calculateTotalDryWeight(): void
     {
-        $this->totalDryWeight = (new TotalDryWeightCalculator)->calculate($this->totalGreenWeight);
+        $this->totalDryWeight = (new TotalDryWeightCalculator())->calculate($this->totalGreenWeight);
     }
 
     private function calculateTotalGreenWeight(): void
     {
-        $this->totalGreenWeight = (new TotalGreenWeightCalculator)->calculate($this->aboveGroundWeight, $this->belowGroundWeight);
+        $this->totalGreenWeight = (new TotalGreenWeightCalculator())->calculate($this->aboveGroundWeight, $this->belowGroundWeight);
     }
 
     private function calculateBelowGroundWeight(): void
     {
-        $this->belowGroundWeight = (new TotalBelowGroundWeightCalculator)->calculate($this->aboveGroundWeight);
+        $this->belowGroundWeight = (new TotalBelowGroundWeightCalculator())->calculate($this->aboveGroundWeight);
     }
 
     public static function validateTreeParameters(array $treeParameters): bool

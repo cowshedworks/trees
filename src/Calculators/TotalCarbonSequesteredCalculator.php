@@ -7,7 +7,7 @@ namespace CowshedWorks\Trees\Calculators;
 use CowshedWorks\Trees\UnitValues\Weight;
 
 class TotalCarbonSequesteredCalculator extends CalculatorAbstract
-{    
+{
     public function calculate(Weight $totalCarbonWeight): Weight
     {
         return $this->unitValueFactory->weight(

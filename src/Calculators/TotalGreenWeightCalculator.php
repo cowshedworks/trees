@@ -7,7 +7,7 @@ namespace CowshedWorks\Trees\Calculators;
 use CowshedWorks\Trees\UnitValues\Weight;
 
 class TotalGreenWeightCalculator extends CalculatorAbstract
-{    
+{
     public function calculate(Weight $aboveGroundWeight, Weight $belowGroundWeight): Weight
     {
         return $this->unitValueFactory->weight(
