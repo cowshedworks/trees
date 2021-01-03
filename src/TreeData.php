@@ -61,8 +61,8 @@ class TreeData
     {
         $this->speciesData = $speciesData;
         $this->unitValueFactory = new UnitValueFactory();
-        $this->buildProvidedAttributes($treeData);
-        $this->buildStrategies();
+        $this->resolveProvidedAttributes($treeData);
+        $this->resolveStrategies();
         $this->executeStrategies();
         $this->calculateRates();
         $this->calculateWeights();
@@ -287,7 +287,7 @@ class TreeData
         return count($validParamsNotProvided) != $totalValidParams;
     }
 
-    private function buildProvidedAttributes(array $treeData): void
+    private function resolveProvidedAttributes(array $treeData): void
     {
         foreach (self::$requiredvalidParameters as $parameter) {
             if (false === isset($treeData[$parameter])) {
@@ -311,32 +311,48 @@ class TreeData
         foreach ($this->strategies as $strategy) {
             $strategy->run($this);
         }
-
-        if ($this->age === null) {
-            throw new Exception('Unable to resolve tree age');
-        }
     }
 
-    private function buildStrategies(): void
+    private function resolveAgeStrategy(): void
+    {
+        if ($this->circumference) {
+            $this->strategies[] = new AgeFromCircumference();
+            return;
+        }
+
+        if ($this->height) {
+            $this->strategies[] = new AgeFromHeight();
+            return;
+        }
+
+        // We're unable to calculate the age, this is fatal
+        throw new Exception('Unable to resolve tree age, unable to continue');
+    }
+
+    private function resolveCircumferenceStrategy(): void
+    {
+        if ($this->diameter != null) {
+            $this->strategies[] = new CircumferenceFromDiameter();
+            return;
+        }
+
+        $this->strategies[] = new CircumferenceFromGrowthRate();
+    }
+
+    private function resolveStrategies(): void
     {
         if ($this->age === null) {
-            if ($this->circumference) {
-                $this->strategies[] = new AgeFromCircumference();
-            }
-            if ($this->height) {
-                $this->strategies[] = new AgeFromHeight();
-            }
+            $this->resolveAgeStrategy();
         }
+
         if ($this->circumference === null) {
-            if ($this->diameter != null) {
-                $this->strategies[] = new CircumferenceFromDiameter();
-            } else {
-                $this->strategies[] = new CircumferenceFromGrowthRate();
-            }
+            $this->resolveCircumferenceStrategy();
         }
+
         if ($this->diameter === null) {
             $this->strategies[] = new DiameterFromCircumference();
         }
+
         if ($this->height === null) {
             $this->strategies[] = new HeightFromGrowthRate();
         }
