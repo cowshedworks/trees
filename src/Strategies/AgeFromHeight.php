@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees\Strategies;
 
 use CowshedWorks\Trees\TreeData;
-use CowshedWorks\Trees\UnitValueFactory;
-use CowshedWorks\Trees\UnitValues\Age;
 
 class AgeFromHeight extends StrategyAbstract
 {
