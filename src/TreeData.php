@@ -305,7 +305,7 @@ class TreeData
             }
         }
     }
-    
+
     private function executeStrategies(): void
     {
         foreach ($this->strategies as $strategy) {
