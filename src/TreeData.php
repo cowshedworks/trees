@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
+use CowshedWorks\Trees\Calculators\AboveGroundWeightCalculator;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\CircumferenceFromDiameter;
@@ -173,15 +174,6 @@ class TreeData
     }
 
     // PRIVATE API
-    private function getDiameterCoefficient(float $diameter): float
-    {
-        if ($diameter < 27.94) {
-            return 0.25;
-        }
-
-        return 0.15;
-    }
-
     private function getSpeciesDataUnitValue(string $key, string $unitValueClass)
     {
         return $this->unitValueFactory->$unitValueClass(
@@ -224,10 +216,7 @@ class TreeData
 
     private function calculateAboveGroundWeight(): void
     {
-        $this->aboveGroundWeight = $this->unitValueFactory->weight(
-            $this->getDiameterCoefficient($this->diameter->getValue()) * pow($this->diameter->getValueIn('in'), 2) * $this->height->getValueIn('ft'),
-            'lbs'
-        );
+        $this->aboveGroundWeight = (new AboveGroundWeightCalculator)->calculate($this->getDiameter(), $this->getHeight());
     }
 
     private function calculateTotalCarbonSequesteredPerYear(): void
