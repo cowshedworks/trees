@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees;
 
 use CowshedWorks\Trees\Calculators\AboveGroundWeightCalculator;
+use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\CircumferenceFromDiameter;
@@ -221,10 +222,7 @@ class TreeData
 
     private function calculateTotalCarbonSequesteredPerYear(): void
     {
-        $this->totalCarbonSequesteredPerYear = $this->unitValueFactory->weight(
-            $this->totalCarbonSequestered->getValue() / $this->age->getValue(),
-            'kg'
-        );
+        $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator)->calculate($this->getAge(), $this->totalCarbonSequestered);
     }
 
     private function calculateTotalCarbonSequestered(): void
