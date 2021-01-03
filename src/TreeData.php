@@ -222,37 +222,44 @@ class TreeData
 
     private function calculateAboveGroundWeight(): void
     {
-        $this->aboveGroundWeight = (new AboveGroundWeightCalculator())->calculate($this->getDiameter(), $this->getHeight());
+        $this->aboveGroundWeight = (new AboveGroundWeightCalculator())
+            ->calculate($this->getDiameter(), $this->getHeight());
     }
 
     private function calculateTotalCarbonSequesteredPerYear(): void
     {
-        $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator())->calculate($this->getAge(), $this->totalCarbonSequestered);
+        $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator())
+            ->calculate($this->getAge(), $this->totalCarbonSequestered);
     }
 
     private function calculateTotalCarbonSequestered(): void
     {
-        $this->totalCarbonSequestered = (new TotalCarbonSequesteredCalculator())->calculate($this->totalCarbonWeight);
+        $this->totalCarbonSequestered = (new TotalCarbonSequesteredCalculator())
+            ->calculate($this->totalCarbonWeight);
     }
 
     private function calculateTotalCarbonWeight(): void
     {
-        $this->totalCarbonWeight = (new TotalCarbonWeightCalculator())->calculate($this->totalDryWeight);
+        $this->totalCarbonWeight = (new TotalCarbonWeightCalculator())
+            ->calculate($this->totalDryWeight);
     }
 
     private function calculateTotalDryWeight(): void
     {
-        $this->totalDryWeight = (new TotalDryWeightCalculator())->calculate($this->totalGreenWeight);
+        $this->totalDryWeight = (new TotalDryWeightCalculator())
+            ->calculate($this->totalGreenWeight);
     }
 
     private function calculateTotalGreenWeight(): void
     {
-        $this->totalGreenWeight = (new TotalGreenWeightCalculator())->calculate($this->aboveGroundWeight, $this->belowGroundWeight);
+        $this->totalGreenWeight = (new TotalGreenWeightCalculator())
+            ->calculate($this->aboveGroundWeight, $this->belowGroundWeight);
     }
 
     private function calculateBelowGroundWeight(): void
     {
-        $this->belowGroundWeight = (new TotalBelowGroundWeightCalculator())->calculate($this->aboveGroundWeight);
+        $this->belowGroundWeight = (new TotalBelowGroundWeightCalculator())
+            ->calculate($this->aboveGroundWeight);
     }
 
     public static function validateTreeParameters(array $treeParameters): bool
