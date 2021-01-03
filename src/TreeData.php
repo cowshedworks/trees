@@ -211,55 +211,26 @@ class TreeData
 
     private function calculateWeights(): void
     {
-        $this->calculateAboveGroundWeight();
-        $this->calculateBelowGroundWeight();
-        $this->calculateTotalGreenWeight();
-        $this->calculateTotalDryWeight();
-        $this->calculateTotalCarbonWeight();
-        $this->calculateTotalCarbonSequestered();
-        $this->calculateTotalCarbonSequesteredPerYear();
-    }
-
-    private function calculateAboveGroundWeight(): void
-    {
         $this->aboveGroundWeight = (new AboveGroundWeightCalculator())
             ->calculate($this->getDiameter(), $this->getHeight());
-    }
 
-    private function calculateTotalCarbonSequesteredPerYear(): void
-    {
-        $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator())
-            ->calculate($this->getAge(), $this->totalCarbonSequestered);
-    }
-
-    private function calculateTotalCarbonSequestered(): void
-    {
-        $this->totalCarbonSequestered = (new TotalCarbonSequesteredCalculator())
-            ->calculate($this->totalCarbonWeight);
-    }
-
-    private function calculateTotalCarbonWeight(): void
-    {
-        $this->totalCarbonWeight = (new TotalCarbonWeightCalculator())
-            ->calculate($this->totalDryWeight);
-    }
-
-    private function calculateTotalDryWeight(): void
-    {
-        $this->totalDryWeight = (new TotalDryWeightCalculator())
-            ->calculate($this->totalGreenWeight);
-    }
-
-    private function calculateTotalGreenWeight(): void
-    {
-        $this->totalGreenWeight = (new TotalGreenWeightCalculator())
-            ->calculate($this->aboveGroundWeight, $this->belowGroundWeight);
-    }
-
-    private function calculateBelowGroundWeight(): void
-    {
         $this->belowGroundWeight = (new TotalBelowGroundWeightCalculator())
             ->calculate($this->aboveGroundWeight);
+
+        $this->totalGreenWeight = (new TotalGreenWeightCalculator())
+            ->calculate($this->aboveGroundWeight, $this->belowGroundWeight);
+
+        $this->totalDryWeight = (new TotalDryWeightCalculator())
+            ->calculate($this->totalGreenWeight);
+
+        $this->totalCarbonWeight = (new TotalCarbonWeightCalculator())
+            ->calculate($this->totalDryWeight);
+
+        $this->totalCarbonSequestered = (new TotalCarbonSequesteredCalculator())
+            ->calculate($this->totalCarbonWeight);
+
+        $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator())
+            ->calculate($this->getAge(), $this->totalCarbonSequestered);
     }
 
     public static function validateTreeParameters(array $treeParameters): bool
