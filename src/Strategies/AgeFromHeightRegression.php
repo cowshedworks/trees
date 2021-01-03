@@ -14,13 +14,13 @@ class AgeFromHeightRegression extends StrategyAbstract
         bcscale(10);
 
         $treeHeight = $treeData->getHeight();
-        $treeHeightRegesssionData = $treeData->getHeightRegression();
+        $treeHeightRegresssionData = $treeData->getHeightRegression();
 
         // 4th order Polynomial describes the relationship with an
         // r squared of 0.99251952888989
         $regression = new PolynomialRegression(4);
 
-        foreach ($treeHeightRegesssionData as $regressionData) {
+        foreach ($treeHeightRegresssionData as $regressionData) {
             $regression->addData($regressionData['year'], $regressionData['value']['value']);
         }
 
