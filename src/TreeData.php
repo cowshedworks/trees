@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
+use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Circumference;
 use CowshedWorks\Trees\UnitValues\Diameter;
@@ -18,6 +19,8 @@ class TreeData
         'height',
         'diameter',
     ];
+
+    private array $strategies = [];
 
     private array $speciesData;
 
@@ -47,12 +50,15 @@ class TreeData
 
     private $growthRateCircumferenceActual;
 
+    private UnitValueFactory $unitValueFactory;
+
     public function __construct(array $speciesData, array $treeData)
     {
         $this->speciesData = $speciesData;
         $this->unitValueFactory = new UnitValueFactory();
         $this->buildProvidedAttributes($treeData);
-        $this->resolveEmptyAttributes();
+        $this->buildStrategies();
+        $this->runStrategies();
         $this->calculateRates();
         $this->calculateWeights();
     }
@@ -274,11 +280,18 @@ class TreeData
             }
         }
     }
+    
+    private function runStrategies(): void
+    {
 
-    private function resolveEmptyAttributes(): void
+    }
+
+    private function buildStrategies(): void
     {
         if ($this->age === null) {
             if ($this->circumference) {
+                $this->strategies[] = new AgeFromCircumference($this->circumference, $this->getAverageAnnualCircumferenceGrowthRate());
+                
                 $this->age = $this->unitValueFactory->age($this->circumference->getValue() / $this->getAverageAnnualCircumferenceGrowthRate()->getValue(), 'years');
             }
 
