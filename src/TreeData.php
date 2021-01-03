@@ -317,11 +317,13 @@ class TreeData
     {
         if ($this->circumference) {
             $this->strategies[] = new AgeFromCircumference();
+
             return;
         }
 
         if ($this->height) {
             $this->strategies[] = new AgeFromHeight();
+
             return;
         }
 
@@ -333,6 +335,7 @@ class TreeData
     {
         if ($this->diameter != null) {
             $this->strategies[] = new CircumferenceFromDiameter();
+
             return;
         }
 
