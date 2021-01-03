@@ -18,7 +18,7 @@ class AboveGroundWeightCalculator extends CalculatorAbstract
 
         return 0.15;
     }
-    
+
     public function calculate(Diameter $diameter, Height $height): Weight
     {
         return $this->unitValueFactory->weight(
