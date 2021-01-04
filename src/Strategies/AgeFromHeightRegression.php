@@ -21,7 +21,7 @@ class AgeFromHeightRegression extends StrategyAbstract
         $regression = new PolynomialRegression(4);
 
         foreach ($treeHeightRegresssionData as $regressionData) {
-            $regression->addData($regressionData['year'], $regressionData['value']['value']);
+            $regression->addData($regressionData['value']['value'], $regressionData['year']);
         }
 
         $ageFromRegression = $regression->interpolate(
