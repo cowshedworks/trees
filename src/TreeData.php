@@ -11,7 +11,6 @@ use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
-use CowshedWorks\Trees\HeightAgeRegressionData;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromDiameter;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;

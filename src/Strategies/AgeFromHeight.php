@@ -16,7 +16,7 @@ class AgeFromHeight extends StrategyAbstract
 
             $treeHeight = $treeData->getHeight();
             $treeHeightRegresssionData = $treeData->getHeightAgeRegressionData()->getHeightX();
-            
+
             $regression = new PolynomialRegression(4);
 
             foreach ($treeHeightRegresssionData as $regressionData) {
