@@ -17,6 +17,7 @@ use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\AgeFromHeightRegression;
 use CowshedWorks\Trees\Strategies\CircumferenceFromAgeAndGrowthRate;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
+use CowshedWorks\Trees\Strategies\HeightFromAge;
 use CowshedWorks\Trees\Strategies\HeightFromAgeAndGrowthRate;
 use CowshedWorks\Trees\Strategies\HeightFromAgeRegression;
 use CowshedWorks\Trees\Strategies\RecalculateAgeFromObservedAge;
@@ -171,9 +172,14 @@ class TreeData
         return $this->height;
     }
 
-    public function getHeightRegression(): array
+    public function getHeightAgeRegressionData(): array
     {
         return $this->heightAgeRegressionData;
+    }
+
+    public function hasHeightAgeRegressionData(): bool
+    {
+        return $this->heightAgeRegressionData != null;
     }
 
     public function setDiameter(Diameter $diameter): void
@@ -356,9 +362,7 @@ class TreeData
         }
 
         if ($this->height === null) {
-            ($this->heightAgeRegressionData != null) ?
-                (new HeightFromAgeRegression())->run($this) :
-                (new HeightFromAgeAndGrowthRate())->run($this);
+            (new HeightFromAge())->run($this);
         }
 
         if ($this->circumference === null) {
@@ -372,12 +376,6 @@ class TreeData
 
     private function resolveAgeStrategy(): void
     {
-        if ($this->height && $this->heightAgeRegressionData != null) {
-            (new AgeFromHeightRegression())->run($this);
-
-            return;
-        }
-
         if ($this->height) {
             (new AgeFromHeight())->run($this);
 
