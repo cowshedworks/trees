@@ -29,6 +29,12 @@ class AgeFromHeightRegression extends StrategyAbstract
             $treeHeight->getValueIn('m')
         );
 
+        if ($ageFromRegression <= 0) {
+            // If the regression returns < 0 for the age, set it to around 6 months,
+            // this avoids division by 0 and is perfectly reasonable
+            $ageFromRegression = 0.5;
+        }
+
         $treeData->setAge(
             $this->unitValueFactory->age(
                 $ageFromRegression,
