@@ -19,6 +19,8 @@ use CowshedWorks\Trees\Strategies\CircumferenceFromAgeAndGrowthRate;
 use CowshedWorks\Trees\Strategies\CircumferenceFromGrowthRate;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
 use CowshedWorks\Trees\Strategies\HeightFromAgeAndGrowthRate;
+use CowshedWorks\Trees\Strategies\HeightFromAgeRegression;
+use CowshedWorks\Trees\Strategies\RecalculateAgeFromObservedAge;
 use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Circumference;
 use CowshedWorks\Trees\UnitValues\Diameter;
@@ -38,7 +40,7 @@ class TreeData
 
     public string $observationTimestampLabel = 'observed';
 
-    private array $strategies = [];
+    // private array $strategies = [];
 
     private array $speciesData;
 
@@ -68,13 +70,15 @@ class TreeData
 
     private $growthRateCircumferenceActual;
 
-    private $heightRegressionData;
+    private $heightAgeRegressionData;
 
     private UnitValueFactory $unitValueFactory;
 
     private array $buildLog = [];
 
     private DateTime $observedAt;
+
+    private bool $requiresParameterRecalculation = false;
 
     public function __construct(array $speciesData, array $treeData)
     {
@@ -83,7 +87,7 @@ class TreeData
         $this->resolveRegressions();
         $this->resolveObservationDate($treeData);
         $this->resolveProvidedAttributes($treeData);
-        $this->resolveStrategies();
+        // $this->resolveStrategies();
         $this->executeStrategies();
         $this->calculateRates();
         $this->calculateWeights();
@@ -92,6 +96,16 @@ class TreeData
     public function getObservedDate(): DateTime
     {
         return $this->observedAt;
+    }
+
+    public function getObservationDateDiffYears(): float
+    {
+        return (new DateTime())->diff($this->getObservedDate())->days / 365;
+    }
+
+    public function requiresParameterRecalculation(): bool
+    {
+        return $this->requiresParameterRecalculation;
     }
 
     public function getBuildLog(): array
@@ -156,7 +170,7 @@ class TreeData
 
     public function getHeightRegression(): array
     {
-        return $this->heightRegressionData;
+        return $this->heightAgeRegressionData;
     }
 
     public function setDiameter(Diameter $diameter): void
@@ -286,6 +300,8 @@ class TreeData
             $dateString = $treeData[$this->observationTimestampLabel];
             $this->observedAt = new DateTime($dateString);
 
+            $this->requiresParameterRecalculation = $this->observedAt < new DateTime();
+
             return;
         }
 
@@ -294,7 +310,7 @@ class TreeData
 
     private function resolveRegressions(): void
     {
-        $this->heightRegressionData = $this->getSpeciesData('attributes.growth-rate.height-regression-seed');
+        $this->heightAgeRegressionData = $this->getSpeciesData('attributes.growth-rate.height-regression-seed');
     }
 
     private function resolveProvidedAttributes(array $treeData): void
@@ -313,57 +329,69 @@ class TreeData
             if (count($values) === 1) {
                 $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0]);
             }
+            
+            $this->logBuild("{$parameter} set from provided parameters");
         }
     }
+
+    // private function executeStrategies(): void
+    // {
+    //     foreach ($this->strategies as $strategy) {
+    //         $strategy->run($this);
+    //     }
+    // }
 
     private function executeStrategies(): void
-    {
-        foreach ($this->strategies as $strategy) {
-            $strategy->run($this);
-        }
-    }
-
-    private function resolveStrategies(): void
     {
         if ($this->age === null) {
             $this->resolveAgeStrategy();
         }
 
-        if ($this->circumference === null) {
-            $this->strategies[] = new CircumferenceFromAgeAndGrowthRate();
-        }
-
-        if ($this->diameter === null) {
-            $this->strategies[] = new DiameterFromCircumference();
+        if ($this->requiresParameterRecalculation()) {
+            (new RecalculateAgeFromObservedAge())->run($this);
+            $this->circumference = null;
+            $this->height = null;
+            $this->diameter = null;
         }
 
         if ($this->height === null) {
-            $this->strategies[] = new HeightFromAgeAndGrowthRate();
+            if ($this->heightAgeRegressionData != null) {
+                (new HeightFromAgeRegression())->run($this);
+            } else {
+                (new HeightFromAgeAndGrowthRate())->run($this);
+            }
+        }
+
+        if ($this->circumference === null) {
+            (new CircumferenceFromAgeAndGrowthRate())->run($this);
+        }
+
+        if ($this->diameter === null) {
+            (new DiameterFromCircumference())->run($this);
         }
     }
 
     private function resolveAgeStrategy(): void
     {
-        if ($this->height && $this->heightRegressionData != null) {
-            $this->strategies[] = new AgeFromHeightRegression();
-
+        if ($this->height && $this->heightAgeRegressionData != null) {
+            (new AgeFromHeightRegression())->run($this);
             return;
         }
 
         if ($this->height) {
-            $this->strategies[] = new AgeFromHeight();
+            (new AgeFromHeight())->run($this);
 
             return;
         }
 
         if ($this->circumference) {
-            $this->strategies[] = new AgeFromCircumference();
+            (new AgeFromCircumference())->run($this);
 
             return;
         }
 
         if ($this->diameter) {
-            $this->strategies[] = new AgeFromDiameter();
+            (new AgeFromDiameter())->run($this);
 
             return;
         }

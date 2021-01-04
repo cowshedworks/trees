@@ -46,7 +46,7 @@ class TreeDataEstimatesTest extends TestCase
 
         $data = $factory->testTree(['circumference' => '42cm']);
 
-        $this->assertEquals('1008 cm', $data->getHeight()->describe());
+        $this->assertEquals('1419.67 cm', $data->getHeight()->describe());
         $this->assertEquals('16.8 years', $data->getAge()->describe());
         $this->assertEquals('42 cm', $data->getCircumference()->describe());
         $this->assertEquals('13.37 cm', $data->getDiameter()->describe());
@@ -61,7 +61,7 @@ class TreeDataEstimatesTest extends TestCase
 
         $data = $factory->testTree(['age' => '17years']);
 
-        $this->assertEquals('1020 cm', $data->getHeight()->describe());
+        $this->assertEquals('1431.27 cm', $data->getHeight()->describe());
         $this->assertEquals('17 years', $data->getAge()->describe());
         $this->assertEquals('42.5 cm', $data->getCircumference()->describe());
         $this->assertEquals('13.53 cm', $data->getDiameter()->describe());
