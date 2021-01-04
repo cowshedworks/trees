@@ -16,14 +16,14 @@ class HeightFromAgeRegression
     {
         $this->data = $data;
         $this->regression = new PolynomialRegression(3);
+
+        foreach ($this->data as $regressionData) {
+            $this->regression->addData($regressionData['x'], $regressionData['y']);
+        }
     }
 
     public function interpolate($x)
     {
-        foreach ($this->data as $regressionData) {
-            $this->regression->addData($regressionData['x'], $regressionData['y']);
-        }
-
         return $this->regression->interpolate($this->regression->getCoefficients(), $x) * 100;
     }
 }
