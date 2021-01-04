@@ -285,6 +285,7 @@ class TreeData
         if (array_key_exists($this->observationTimestampLabel, $treeData)) {
             $dateString = $treeData[$this->observationTimestampLabel];
             $this->observedAt = new DateTime($dateString);
+
             return;
         }
 

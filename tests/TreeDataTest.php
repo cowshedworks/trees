@@ -115,7 +115,7 @@ class TreeDataTest extends TestCase
         $factory = $this->getTreeDataFactory();
         $data = $factory->testTree(['height' => '10cm']);
 
-        $today = new DateTime;
+        $today = new DateTime();
 
         $this->assertEquals($today->format('Y-m-d'), $data->getObservedDate()->format('Y-m-d'));
     }
@@ -127,7 +127,7 @@ class TreeDataTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->testTree([
-            'height' => '10cm',
+            'height'   => '10cm',
             'observed' => '1977-11-21',
         ]);
 
