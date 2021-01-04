@@ -333,7 +333,7 @@ class TreeData
             if (count($values) === 1) {
                 $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0]);
             }
-            
+
             $this->logBuild("{$parameter} set from provided parameters");
         }
     }
@@ -379,6 +379,7 @@ class TreeData
     {
         if ($this->height && $this->heightAgeRegressionData != null) {
             (new AgeFromHeightRegression())->run($this);
+
             return;
         }
 
