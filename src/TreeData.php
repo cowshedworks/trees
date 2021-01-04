@@ -356,7 +356,7 @@ class TreeData
         }
 
         if ($this->height === null) {
-            ($this->heightAgeRegressionData != null) ? 
+            ($this->heightAgeRegressionData != null) ?
                 (new HeightFromAgeRegression())->run($this) :
                 (new HeightFromAgeAndGrowthRate())->run($this);
         }
