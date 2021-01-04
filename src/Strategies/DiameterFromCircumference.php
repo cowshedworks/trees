@@ -8,7 +8,7 @@ use CowshedWorks\Trees\TreeData;
 
 class DiameterFromCircumference extends StrategyAbstract
 {
-    public function run(TreeData $treeData): void
+    public function execute(TreeData $treeData): void
     {
         $treeCircumference = $treeData->getCircumference();
 

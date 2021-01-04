@@ -350,43 +350,43 @@ class TreeData
     private function executeStrategies(): void
     {
         if ($this->age === null) {
-            $this->resolveAgeStrategy();
+            $this->executeAgeStrategy();
         }
 
         if ($this->hasOlderObservedAge()) {
-            (new RecalculateAgeFromObservedAge())->run($this);
+            (new RecalculateAgeFromObservedAge())->execute($this);
             $this->resetAttributesForRecalculation();
         }
 
         if ($this->height === null) {
-            (new HeightFromAge())->run($this);
+            (new HeightFromAge())->execute($this);
         }
 
         if ($this->circumference === null) {
-            (new CircumferenceFromAgeAndGrowthRate())->run($this);
+            (new CircumferenceFromAgeAndGrowthRate())->execute($this);
         }
 
         if ($this->diameter === null) {
-            (new DiameterFromCircumference())->run($this);
+            (new DiameterFromCircumference())->execute($this);
         }
     }
 
-    private function resolveAgeStrategy(): void
+    private function executeAgeStrategy(): void
     {
         if ($this->height) {
-            (new AgeFromHeight())->run($this);
+            (new AgeFromHeight())->execute($this);
 
             return;
         }
 
         if ($this->circumference) {
-            (new AgeFromCircumference())->run($this);
+            (new AgeFromCircumference())->execute($this);
 
             return;
         }
 
         if ($this->diameter) {
-            (new AgeFromDiameter())->run($this);
+            (new AgeFromDiameter())->execute($this);
 
             return;
         }

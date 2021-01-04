@@ -16,5 +16,5 @@ abstract class StrategyAbstract
         $this->unitValueFactory = new UnitValueFactory();
     }
 
-    abstract public function run(TreeData $treeData): void;
+    abstract public function execute(TreeData $treeData): void;
 }

@@ -9,7 +9,7 @@ use DrQue\PolynomialRegression;
 
 class HeightFromAge extends StrategyAbstract
 {
-    public function run(TreeData $treeData): void
+    public function execute(TreeData $treeData): void
     {
         if ($treeData->hasHeightAgeRegressionData()) {
             bcscale(10);

@@ -8,7 +8,7 @@ use CowshedWorks\Trees\TreeData;
 
 class CircumferenceFromAgeAndGrowthRate extends StrategyAbstract
 {
-    public function run(TreeData $treeData): void
+    public function execute(TreeData $treeData): void
     {
         $treeAge = $treeData->getAge();
         $annualAverageCircumferenceGrowthRate = $treeData->getAverageAnnualCircumferenceGrowthRate();
