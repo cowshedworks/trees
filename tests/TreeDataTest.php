@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees\Tests;
 
+use DateTime;
 use PHPUnit\Framework\TestCase;
 
 class TreeDataTest extends TestCase
@@ -104,5 +105,32 @@ class TreeDataTest extends TestCase
         $this->assertEquals('280 cm', $data->getHeight()->describe());
         $this->assertEquals('33 cm', $data->getCircumference()->describe());
         $this->assertEquals('10.5 cm', $data->getDiameter()->describe());
+    }
+
+    /**
+     * @test
+     */
+    public function tree_observation_timestamp_is_set_to_today_if_not_provided(): void
+    {
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree(['height' => '10cm']);
+
+        $today = new DateTime;
+
+        $this->assertEquals($today->format('Y-m-d'), $data->getObservedDate()->format('Y-m-d'));
+    }
+
+    /**
+     * @test
+     */
+    public function tree_observation_timestamp_is_set_to_date_if_provided(): void
+    {
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree([
+            'height' => '10cm',
+            'observed' => '1977-11-21',
+        ]);
+
+        $this->assertEquals('1977-11-21', $data->getObservedDate()->format('Y-m-d'));
     }
 }

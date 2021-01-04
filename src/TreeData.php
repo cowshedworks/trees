@@ -24,6 +24,7 @@ use CowshedWorks\Trees\UnitValues\Circumference;
 use CowshedWorks\Trees\UnitValues\Diameter;
 use CowshedWorks\Trees\UnitValues\Height;
 use CowshedWorks\Trees\UnitValues\Weight;
+use DateTime;
 use Exception;
 
 class TreeData
@@ -34,6 +35,8 @@ class TreeData
         'height',
         'diameter',
     ];
+
+    public string $observationTimestampLabel = 'observed';
 
     private array $strategies = [];
 
@@ -71,16 +74,24 @@ class TreeData
 
     private array $buildLog = [];
 
+    private DateTime $observedAt;
+
     public function __construct(array $speciesData, array $treeData)
     {
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
         $this->resolveRegressions();
+        $this->resolveObservationDate($treeData);
         $this->resolveProvidedAttributes($treeData);
         $this->resolveStrategies();
         $this->executeStrategies();
         $this->calculateRates();
         $this->calculateWeights();
+    }
+
+    public function getObservedDate(): DateTime
+    {
+        return $this->observedAt;
     }
 
     public function getBuildLog(): array
@@ -267,6 +278,17 @@ class TreeData
         $validParamsNotProvided = array_diff(self::$requiredvalidParameters, array_keys($treeParameters));
 
         return count($validParamsNotProvided) != $totalValidParams;
+    }
+
+    private function resolveObservationDate(array $treeData): void
+    {
+        if (array_key_exists($this->observationTimestampLabel, $treeData)) {
+            $dateString = $treeData[$this->observationTimestampLabel];
+            $this->observedAt = new DateTime($dateString);
+            return;
+        }
+
+        $this->observedAt = new DateTime();
     }
 
     private function resolveRegressions(): void
