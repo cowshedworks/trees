@@ -30,6 +30,7 @@
       font-size: 1.2em;
   }
   table {
+      width: 100%;
       font-size: 0.9em;
   }
   table tr td {

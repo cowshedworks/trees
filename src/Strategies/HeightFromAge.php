@@ -15,11 +15,11 @@ class HeightFromAge extends StrategyAbstract
             bcscale(10);
 
             $treeAge = $treeData->getAge();
-            $treeHeightRegresssionData = $treeData->getHeightAgeRegressionData();
+            $treeHeightRegresssionData = $treeData->getHeightAgeRegressionData()->getYearX();
             $regression = new PolynomialRegression(3);
 
             foreach ($treeHeightRegresssionData as $regressionData) {
-                $regression->addData($regressionData['year'], $regressionData['value']['value']);
+                $regression->addData($regressionData['x'], $regressionData['y']);
             }
 
             $heightFromRegression = ($regression->interpolate(

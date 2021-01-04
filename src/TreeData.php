@@ -11,6 +11,7 @@ use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
+use CowshedWorks\Trees\HeightAgeRegressionData;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromDiameter;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
@@ -67,7 +68,7 @@ class TreeData
 
     private $growthRateCircumferenceActual;
 
-    private $heightAgeRegressionData;
+    private HeightAgeRegressionData $heightAgeRegressionData;
 
     private UnitValueFactory $unitValueFactory;
 
@@ -169,7 +170,7 @@ class TreeData
         return $this->height;
     }
 
-    public function getHeightAgeRegressionData(): array
+    public function getHeightAgeRegressionData(): HeightAgeRegressionData
     {
         return $this->heightAgeRegressionData;
     }
@@ -316,7 +317,7 @@ class TreeData
 
     private function resolveRegressions(): void
     {
-        $this->heightAgeRegressionData = $this->getSpeciesData('attributes.growth-rate.height-regression-seed');
+        $this->heightAgeRegressionData = new HeightAgeRegressionData($this->getSpeciesData('attributes.growth-rate.height-regression-seed'));
     }
 
     private function resolveProvidedAttributes(array $treeData): void
