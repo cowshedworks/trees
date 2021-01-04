@@ -42,7 +42,7 @@ class TreeDataFactory
         }
 
         if (false === in_array($treeName, $this->availableTrees)) {
-            throw new Exception("{$treeName} not available");
+            throw new Exception("{$treeName} tree not available");
         }
     }
 

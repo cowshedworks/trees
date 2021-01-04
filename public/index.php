@@ -40,11 +40,28 @@
 <body>
 
 <?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use CowshedWorks\Trees\TreeDataFactory;
+
+$factory = new TreeDataFactory();
+
+$species = $_GET['species'] ?? 'alder';
 $currentDiameter = $_GET['diameter'] ?? '8in';
 $currentCircumference = $_GET['circumference'] ?? '20cm';
 $currentHeight = $_GET['height'] ?? '28m';
 $currentAge = $_GET['age'] ?? '20years';
 $currentObservedDate = $_GET['observed'] ?? '2001-01-01';
+
+$treeParameters = [
+    'age'             => $currentAge,
+    'diameter'        => $currentDiameter,
+    'circumference'   => $currentCircumference,
+    'height'          => $currentHeight,
+    'observed'        => $currentObservedDate,
+];
+
 ?>
 
 <h1>Tree Data Testing Tool</h1>
@@ -53,39 +70,32 @@ $currentObservedDate = $_GET['observed'] ?? '2001-01-01';
   <div class="grid-item">
     <h4>Parameters</h4>
     <form action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <input type="text" name="height" placeholder="height" value="<?php echo $currentHeight; ?>"">
-    <br>
-    <input type="text" name="diameter" placeholder="diameter" value="<?php echo $currentDiameter; ?>"">
-    <br>
-    <input type="text" name="circumference" placeholder="circumference" value="<?php echo $currentCircumference; ?>"">
-    <br>
-    <input type="text" name="age" placeholder="age" value="<?php echo $currentAge; ?>"">
-    <br>
-    <input type="text" name="observed" placeholder="observed date 1990-01-04" value="<?php echo $currentObservedDate; ?>"">
-    <hr>
-    <input type="submit">
+        <select name="species">
+            <?php
+                foreach ($factory->getTrees() as $tree) {
+                    echo "<option value='{$tree}'>{$tree}</option>";
+                }
+            ?>
+        </select>
+        <br>
+        <input type="text" name="height" placeholder="height" value="<?php echo $currentHeight; ?>"">
+        <br>
+        <input type="text" name="diameter" placeholder="diameter" value="<?php echo $currentDiameter; ?>"">
+        <br>
+        <input type="text" name="circumference" placeholder="circumference" value="<?php echo $currentCircumference; ?>"">
+        <br>
+        <input type="text" name="age" placeholder="age" value="<?php echo $currentAge; ?>"">
+        <br>
+        <input type="text" name="observed" placeholder="observed date 1990-01-04" value="<?php echo $currentObservedDate; ?>"">
+        <hr>
+        <input type="submit" value="Build Tree Data">
     </form>
   
   </div>
   <div class="grid-item">
 <?php
-
-require __DIR__.'/../vendor/autoload.php';
-
-use CowshedWorks\Trees\TreeDataFactory;
-
-$factory = new TreeDataFactory();
-
-$parameters = [
-    'age'             => $currentAge,
-    'diameter'        => $currentDiameter,
-    'circumference'   => $currentCircumference,
-    'height'          => $currentHeight,
-    'observed'        => $currentObservedDate,
-];
-
 try {
-    $treeData = $factory->alder($parameters);
+    $treeData = $factory->{$species}($treeParameters);
 
     echo '<table>';
     echo "<tr class='title'><td colspan='2'>Tree Attributes</td></tr>";
