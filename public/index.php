@@ -87,7 +87,7 @@ $treeParameters = [
         <br>
         <input type="text" name="age" placeholder="age" value="<?php echo $currentAge; ?>"">
         <br>
-        <input type="text" name="observed" placeholder="observed date 1990-01-04" value="<?php echo $currentObservedDate; ?>"">
+        <input type="date" name="observed" placeholder="observed date 1990-01-04" value="<?php echo $currentObservedDate; ?>"">
         <hr>
         <input type="submit" value="Build Tree Data">
     </form>
@@ -116,7 +116,18 @@ try {
                 echo "<tr><td>Carbon in tree:</td><td>{$treeData->getCarbonWeight()}</td></tr>";
                 echo "<tr><td>CO2 Sequestered per year:</td><td>{$treeData->getCO2SequestrationPerYear()}</td></tr>";
                 echo "<tr><td>CO2 Sequestered to date:</td><td>{$treeData->getCO2SequestrationToDate()}</td></tr>";
+                echo "<tr><td>Build Log:</td><td><ol>";
+                foreach($treeData->getBuildLog() as $logMessage) {
+                    echo '<li>' . $logMessage . '</li>';
+                }
+                echo "</ol></td></tr>";
                 echo '</table>';
+
+                if ($treeData->hasHeightAgeRegressionData()) {
+                    echo "<h4>Height from Age Regression Data:</h4>";
+
+                    echo "";
+                }
             } catch (\Exception $exception) {
                 echo $exception->getMessage();
             }
