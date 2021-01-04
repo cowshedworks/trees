@@ -322,7 +322,7 @@ class TreeData
     private function resolveProvidedAttributes(array $treeData): void
     {
         foreach ($treeData as $parameter => $data) {
-            if ($treeData[$parameter] == "") {
+            if ($treeData[$parameter] == '') {
                 unset($treeData[$parameter]);
             }
         }
