@@ -16,7 +16,6 @@ use CowshedWorks\Trees\Strategies\AgeFromDiameter;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\AgeFromHeightRegression;
 use CowshedWorks\Trees\Strategies\CircumferenceFromAgeAndGrowthRate;
-use CowshedWorks\Trees\Strategies\CircumferenceFromGrowthRate;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
 use CowshedWorks\Trees\Strategies\HeightFromAgeAndGrowthRate;
 use CowshedWorks\Trees\Strategies\HeightFromAgeRegression;
