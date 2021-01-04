@@ -22,10 +22,10 @@ class HeightFromAge extends StrategyAbstract
                 $regression->addData($regressionData['year'], $regressionData['value']['value']);
             }
 
-            $heightFromRegression = $regression->interpolate(
+            $heightFromRegression = ($regression->interpolate(
                 $regression->getCoefficients(),
                 $treeAge->getValue()
-            );
+            ) * 100);
 
             if ($heightFromRegression <= 0) {
                 $heightFromRegression = $treeData->getMaxHeight();
@@ -33,7 +33,7 @@ class HeightFromAge extends StrategyAbstract
 
             $treeData->setHeight(
                 $this->unitValueFactory->height(
-                    $heightFromRegression * 100,
+                    $heightFromRegression,
                     'cm'
                 )
             );
