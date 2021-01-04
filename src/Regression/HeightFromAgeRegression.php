@@ -9,7 +9,7 @@ use DrQue\PolynomialRegression;
 class HeightFromAgeRegression
 {
     private array $data;
-    
+
     private PolynomialRegression $regression;
 
     public function __construct(array $data)

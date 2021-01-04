@@ -15,7 +15,6 @@ class HeightFromAge extends StrategyAbstract
 
             $treeAge = $treeData->getAge();
 
-
             $regression = $treeData->getHeightFromAgeRegression();
 
             $heightFromRegression = $regression->interpolate($treeAge->getValue());
