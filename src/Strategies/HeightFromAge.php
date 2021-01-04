@@ -39,9 +39,10 @@ class HeightFromAge extends StrategyAbstract
             );
 
             $treeData->logBuild('Height calculated from age regression');
+
             return;
         }
-        
+
         $treeAge = $treeData->getAge();
         $averageAnnualHeightGrowthRate = $treeData->getAverageAnnualHeightGrowthRate();
 
