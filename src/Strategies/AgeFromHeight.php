@@ -19,5 +19,7 @@ class AgeFromHeight extends StrategyAbstract
                 'years'
             )
         );
+
+        $treeData->logBuild('Age calculated from height');
     }
 }

@@ -18,5 +18,7 @@ class DiameterFromCircumference extends StrategyAbstract
                 'cm'
             )
         );
+
+        $treeData->logBuild('Diameter calculated from circumference');
     }
 }

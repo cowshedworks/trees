@@ -12,6 +12,7 @@ use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
+use CowshedWorks\Trees\Strategies\AgeFromDiameter;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\AgeFromHeightRegression;
 use CowshedWorks\Trees\Strategies\CircumferenceFromDiameter;
@@ -68,6 +69,8 @@ class TreeData
 
     private UnitValueFactory $unitValueFactory;
 
+    private array $buildLog = [];
+
     public function __construct(array $speciesData, array $treeData)
     {
         $this->unitValueFactory = new UnitValueFactory();
@@ -78,6 +81,16 @@ class TreeData
         $this->executeStrategies();
         $this->calculateRates();
         $this->calculateWeights();
+    }
+
+    public function getBuildLog(): array
+    {
+        return $this->buildLog;
+    }
+
+    public function logBuild(string $logMessage): void
+    {
+        $this->buildLog[] = $logMessage;
     }
 
     public function getPopularName(): string
@@ -322,6 +335,12 @@ class TreeData
 
         if ($this->circumference) {
             $this->strategies[] = new AgeFromCircumference();
+
+            return;
+        }
+
+        if ($this->diameter) {
+            $this->strategies[] = new AgeFromDiameter();
 
             return;
         }

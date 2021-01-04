@@ -19,5 +19,7 @@ class CircumferenceFromGrowthRate extends StrategyAbstract
                 'cm'
             )
         );
+
+        $treeData->logBuild('Circumference calculated from growth rate');
     }
 }

@@ -41,5 +41,7 @@ class AgeFromHeightRegression extends StrategyAbstract
                 'years'
             )
         );
+
+        $treeData->logBuild('Age calculated from height regression');
     }
 }

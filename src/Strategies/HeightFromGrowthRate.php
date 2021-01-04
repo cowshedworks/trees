@@ -19,5 +19,7 @@ class HeightFromGrowthRate extends StrategyAbstract
                 'cm'
             )
         );
+
+        $treeData->logBuild('Height calculated from growth rate');
     }
 }
