@@ -73,14 +73,15 @@ $currentObservedDate = $_GET['observed'] ?? '2001-01-01';
 require __DIR__.'/../vendor/autoload.php';
 
 use CowshedWorks\Trees\TreeDataFactory;
+
 $factory = new TreeDataFactory();
 
 $parameters = [
-    'age'      => $currentAge,
-    'diameter'   => $currentDiameter,
+    'age'             => $currentAge,
+    'diameter'        => $currentDiameter,
     'circumference'   => $currentCircumference,
-    'height'   => $currentHeight,
-    'observed' => $currentObservedDate,
+    'height'          => $currentHeight,
+    'observed'        => $currentObservedDate,
 ];
 
 $treeData = $factory->alder($parameters);
@@ -103,7 +104,7 @@ echo "<tr class='title'><td colspan='2'>Carbon Data</td></tr>";
 echo "<tr><td>Carbon in tree:</td><td>{$treeData->getCarbonWeight()}</td></tr>";
 echo "<tr><td>CO2 Sequestered per year:</td><td>{$treeData->getCO2SequestrationPerYear()}</td></tr>";
 echo "<tr><td>CO2 Sequestered to date:</td><td>{$treeData->getCO2SequestrationToDate()}</td></tr>";
-echo "</table>";
+echo '</table>';
 
 ?>
     </div>
