@@ -57,7 +57,7 @@ class TreeDataTest extends TestCase
 
         $this->assertEquals('12.57 years', $data->getAge()->describe());
         $this->assertEquals('754.2 cm', $data->getHeight()->describe());
-        $this->assertEquals('31.42 cm', $data->getCircumference()->describe());
+        $this->assertEquals('31.43 cm', $data->getCircumference()->describe());
         $this->assertEquals('10 cm', $data->getDiameter()->describe());
     }
 
@@ -132,5 +132,20 @@ class TreeDataTest extends TestCase
         ]);
 
         $this->assertEquals('1977-11-21', $data->getObservedDate()->format('Y-m-d'));
+    }
+
+    /**
+     * @test
+     */
+    public function tree_age_uses_observation_date_when_resolving(): void
+    {
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree([
+            'height'   => '10cm',
+            'observed' => '1977-11-21',
+        ]);
+
+        $this->assertEquals('1977-11-21', $data->getObservedDate()->format('Y-m-d'));
+        $this->assertEquals('40 years', $data->getAge()->describe());
     }
 }

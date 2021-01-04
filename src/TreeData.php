@@ -15,10 +15,10 @@ use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromDiameter;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\AgeFromHeightRegression;
-use CowshedWorks\Trees\Strategies\CircumferenceFromDiameter;
+use CowshedWorks\Trees\Strategies\CircumferenceFromAgeAndGrowthRate;
 use CowshedWorks\Trees\Strategies\CircumferenceFromGrowthRate;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
-use CowshedWorks\Trees\Strategies\HeightFromGrowthRate;
+use CowshedWorks\Trees\Strategies\HeightFromAgeAndGrowthRate;
 use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Circumference;
 use CowshedWorks\Trees\UnitValues\Diameter;
@@ -330,7 +330,7 @@ class TreeData
         }
 
         if ($this->circumference === null) {
-            $this->resolveCircumferenceStrategy();
+            $this->strategies[] = new CircumferenceFromAgeAndGrowthRate();
         }
 
         if ($this->diameter === null) {
@@ -338,7 +338,7 @@ class TreeData
         }
 
         if ($this->height === null) {
-            $this->strategies[] = new HeightFromGrowthRate();
+            $this->strategies[] = new HeightFromAgeAndGrowthRate();
         }
     }
 
@@ -370,16 +370,5 @@ class TreeData
 
         // We're unable to calculate the age, this is fatal
         throw new Exception('Unable to resolve tree age, unable to continue');
-    }
-
-    private function resolveCircumferenceStrategy(): void
-    {
-        if ($this->diameter != null) {
-            $this->strategies[] = new CircumferenceFromDiameter();
-
-            return;
-        }
-
-        $this->strategies[] = new CircumferenceFromGrowthRate();
     }
 }

@@ -6,7 +6,7 @@ namespace CowshedWorks\Trees\Strategies;
 
 use CowshedWorks\Trees\TreeData;
 
-class CircumferenceFromGrowthRate extends StrategyAbstract
+class CircumferenceFromAgeAndGrowthRate extends StrategyAbstract
 {
     public function run(TreeData $treeData): void
     {
