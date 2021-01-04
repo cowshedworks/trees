@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "65318e77eba829e4b32c501462618021",
+    "content-hash": "3c7922312a1910cc5e320e98e356ef98",
     "packages": [
         {
             "name": "dr-que/polynomial-regression",
@@ -2251,7 +2251,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.4"
+        "php": ">=7.4"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
