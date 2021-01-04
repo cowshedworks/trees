@@ -77,7 +77,7 @@ class TreeData
 
     private DateTime $observedAt;
 
-    private bool $requiresParameterRecalculation = false;
+    private bool $hasOlderObservedAge = false;
 
     public function __construct(array $speciesData, array $treeData)
     {
@@ -86,7 +86,6 @@ class TreeData
         $this->resolveRegressions();
         $this->resolveObservationDate($treeData);
         $this->resolveProvidedAttributes($treeData);
-        // $this->resolveStrategies();
         $this->executeStrategies();
         $this->calculateRates();
         $this->calculateWeights();
@@ -102,9 +101,9 @@ class TreeData
         return (new DateTime())->diff($this->getObservedDate())->days / 365;
     }
 
-    public function requiresParameterRecalculation(): bool
+    public function hasOlderObservedAge(): bool
     {
-        return $this->requiresParameterRecalculation;
+        return $this->hasOlderObservedAge;
     }
 
     public function getBuildLog(): array
@@ -304,7 +303,7 @@ class TreeData
             $dateString = $treeData[$this->observationTimestampLabel];
             $this->observedAt = new DateTime($dateString);
 
-            $this->requiresParameterRecalculation = $this->observedAt < new DateTime();
+            $this->hasOlderObservedAge = $this->observedAt < new DateTime();
 
             return;
         }
@@ -338,12 +337,12 @@ class TreeData
         }
     }
 
-    // private function executeStrategies(): void
-    // {
-    //     foreach ($this->strategies as $strategy) {
-    //         $strategy->run($this);
-    //     }
-    // }
+    private function resetAttributesForRecalculation(): void
+    {
+        $this->circumference = null;
+        $this->height = null;
+        $this->diameter = null;
+    }
 
     private function executeStrategies(): void
     {
@@ -351,19 +350,15 @@ class TreeData
             $this->resolveAgeStrategy();
         }
 
-        if ($this->requiresParameterRecalculation()) {
+        if ($this->hasOlderObservedAge()) {
             (new RecalculateAgeFromObservedAge())->run($this);
-            $this->circumference = null;
-            $this->height = null;
-            $this->diameter = null;
+            $this->resetAttributesForRecalculation();
         }
 
         if ($this->height === null) {
-            if ($this->heightAgeRegressionData != null) {
-                (new HeightFromAgeRegression())->run($this);
-            } else {
+            ($this->heightAgeRegressionData != null) ? 
+                (new HeightFromAgeRegression())->run($this) :
                 (new HeightFromAgeAndGrowthRate())->run($this);
-            }
         }
 
         if ($this->circumference === null) {
