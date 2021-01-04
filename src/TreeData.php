@@ -321,6 +321,12 @@ class TreeData
 
     private function resolveProvidedAttributes(array $treeData): void
     {
+        foreach ($treeData as $parameter => $data) {
+            if ($treeData[$parameter] == "") {
+                unset($treeData[$parameter]);
+            }
+        }
+
         foreach (self::$requiredvalidParameters as $parameter) {
             if (false === isset($treeData[$parameter])) {
                 continue;
@@ -392,6 +398,6 @@ class TreeData
         }
 
         // We're unable to calculate the age, this is fatal
-        throw new Exception('Unable to resolve tree age, unable to continue');
+        throw new Exception('Unable to resolve tree age.');
     }
 }
