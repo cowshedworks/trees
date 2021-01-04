@@ -15,9 +15,6 @@ class HeightFromAgeRegression extends StrategyAbstract
 
         $treeAge = $treeData->getAge();
         $treeHeightRegresssionData = $treeData->getHeightRegression();
-
-        // 4th order Polynomial describes the relationship with an
-        // r squared of 0.99251952888989
         $regression = new PolynomialRegression(3);
 
         foreach ($treeHeightRegresssionData as $regressionData) {
