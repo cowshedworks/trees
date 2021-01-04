@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees\Strategies;
 
 use CowshedWorks\Trees\TreeData;
-use DrQue\PolynomialRegression;
 
 class HeightFromAge extends StrategyAbstract
 {
@@ -15,17 +14,11 @@ class HeightFromAge extends StrategyAbstract
             bcscale(10);
 
             $treeAge = $treeData->getAge();
-            $treeHeightRegresssionData = $treeData->getHeightAgeRegressionData()->getYearX();
-            $regression = new PolynomialRegression(3);
 
-            foreach ($treeHeightRegresssionData as $regressionData) {
-                $regression->addData($regressionData['x'], $regressionData['y']);
-            }
 
-            $heightFromRegression = ($regression->interpolate(
-                $regression->getCoefficients(),
-                $treeAge->getValue()
-            ) * 100);
+            $regression = $treeData->getHeightFromAgeRegression();
+
+            $heightFromRegression = $regression->interpolate($treeAge->getValue());
 
             if ($heightFromRegression <= 0) {
                 $heightFromRegression = $treeData->getMaxHeight();

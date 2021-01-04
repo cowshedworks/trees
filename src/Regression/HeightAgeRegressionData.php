@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CowshedWorks\Trees;
+namespace CowshedWorks\Trees\Regression;
 
 class HeightAgeRegressionData
 {

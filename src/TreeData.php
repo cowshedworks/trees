@@ -11,6 +11,10 @@ use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
+use CowshedWorks\Trees\Regression\HeightAgeRegression;
+use CowshedWorks\Trees\Regression\HeightAgeRegressionData;
+use CowshedWorks\Trees\Regression\HeightFromAgeRegression;
+use CowshedWorks\Trees\Regression\Regression;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromDiameter;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
@@ -172,6 +176,13 @@ class TreeData
     public function getHeightAgeRegressionData(): HeightAgeRegressionData
     {
         return $this->heightAgeRegressionData;
+    }
+
+    public function getHeightFromAgeRegression(): HeightFromAgeRegression
+    {
+        return new HeightFromAgeRegression(
+            $this->getHeightAgeRegressionData()->getYearX()
+        );
     }
 
     public function hasHeightAgeRegressionData(): bool
