@@ -137,6 +137,11 @@ class TreeData
         return $this->getSpeciesData('attributes.age.max-average.value');
     }
 
+    public function getMaxHeight(): float
+    {
+        return $this->getSpeciesData('attributes.dimensions.max-height.value');
+    }
+
     public function setAge(Age $age): void
     {
         $this->age = $age;

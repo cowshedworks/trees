@@ -29,6 +29,10 @@ class HeightFromAgeRegression extends StrategyAbstract
             $treeAge->getValue()
         );
 
+        if ($heightFromRegression <= 0) {
+            $heightFromRegression = $treeData->getMaxHeight();
+        }
+
         $treeData->setHeight(
             $this->unitValueFactory->height(
                 $heightFromRegression * 100,
