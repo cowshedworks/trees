@@ -30,9 +30,9 @@ class AgeFromHeightRegression extends StrategyAbstract
         );
 
         if ($ageFromRegression <= 0) {
-            // If the regression returns < 0 for the age, set it to around 6 months,
+            // If the regression returns < 0 for the age, set it to around 3 months,
             // this avoids division by 0 and is perfectly reasonable
-            $ageFromRegression = 0.5;
+            $ageFromRegression = 0.25;
         }
 
         $treeData->setAge(
