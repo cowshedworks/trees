@@ -14,19 +14,9 @@ class AgeFromHeight extends StrategyAbstract
         if ($treeData->hasHeightAgeRegressionData()) {
             bcscale(10);
 
-            $treeHeight = $treeData->getHeight();
-            $treeHeightRegresssionData = $treeData->getHeightAgeRegressionData()->getHeightX();
-
-            $regression = new PolynomialRegression(4);
-
-            foreach ($treeHeightRegresssionData as $regressionData) {
-                $regression->addData($regressionData['x'], $regressionData['y']);
-            }
-
-            $ageFromRegression = $regression->interpolate(
-                $regression->getCoefficients(),
-                $treeHeight->getValueIn('m')
-            );
+            $ageFromRegression = $treeData
+                ->getAgeFromHeightRegression()
+                ->interpolate($treeData->getHeight()->getValueIn('m'));
 
             if ($ageFromRegression <= 0) {
                 // If the regression returns < 0 for the age, set it to around 3 months,
