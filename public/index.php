@@ -9,7 +9,7 @@
   <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
-<body class="bg-green-400">
+<body class="bg-green-800">
 <div class="container mx-auto p-4">
 <?php
 
@@ -36,7 +36,7 @@ $treeParameters = [
 
 ?>
 
-<h1 class="text-4xl font-black text-white text-center mb-5">Tree Data Testing Tool</h1>
+<h1 class="text-4xl font-black text-white text-center mb-5 text-shadow-lg">Tree Data Testing Tool</h1>
 
 <div class="grid grid-cols-1 gap-4 lg:grid-cols-6 p-4">
 
@@ -89,7 +89,7 @@ try {
                 echo '<div class="w-full bg-white rounded shadow-lg p-8">';
 
                 echo '<table class="table-auto bg-white border">';
-                echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Tree Information</td></tr>";
+                echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Tree Information</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Tree Name</td><td class='p-3'>{$treeData->getPopularName()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Family</td><td class='p-3'>{$treeData->getFamilyName()}</td></tr>";
                 echo '<tr class="border"><td class="p-3">Common Name(s)</td><td class="p-3">';
@@ -103,19 +103,19 @@ try {
                 }
                 echo '</td></tr>';
                 echo "<tr class='border'><td class='p-3'>Habitat</td><td class='p-3'>{$treeData->getHabitat()}</td></tr>";
-                echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Tree Attributes</td></tr>";
+                echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Tree Attributes</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Average Max Age</td><td class='p-3'>{$treeData->getMaxAge()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Current Age</td><td class='p-3'>{$treeData->getAge()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>{$treeData->getHeight()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Circumference:</td><td class='p-3'>{$treeData->getCircumference()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Diameter:</td><td class='p-3'>{$treeData->getDiameter()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Weight:</td><td class='p-3'>{$treeData->getWeight()}</td></tr>";
-                echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Growth Rates</td></tr>";
+                echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Growth Rates</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Actual Average Height Growth Rate:</td><td class='p-3'>{$treeData->getActualAnnualHeightGrowthRate()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Default Average Height Growth Rate:</td><td class='p-3'>{$treeData->getAverageAnnualHeightGrowthRate()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Actual Average Circumference Growth Rate:</td><td class='p-3'>{$treeData->getActualAverageCircumferenceGrowthRate()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Default Average Circumference Growth Rates:</td><td class='p-3'>{$treeData->getAverageAnnualCircumferenceGrowthRate()}</td></tr>";
-                echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Carbon Data</td></tr>";
+                echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Carbon Data</td></tr>";
                 echo "<tr class='border'><td class='p-3'>Carbon in tree:</td><td class='p-3'>{$treeData->getCarbonWeight()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>CO2 Sequestered per year:</td><td class='p-3'>{$treeData->getCO2SequestrationPerYear()}</td></tr>";
                 echo "<tr class='border'><td class='p-3'>CO2 Sequestered to date:</td><td class='p-3'>{$treeData->getCO2SequestrationToDate()}</td></tr>";
