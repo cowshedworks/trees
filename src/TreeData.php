@@ -369,7 +369,7 @@ class TreeData
                 $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0]);
             }
 
-            $this->logBuild(ucfirst($parameter) ." set from provided parameters");
+            $this->logBuild(ucfirst($parameter).' set from provided parameters');
         }
     }
 
