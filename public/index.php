@@ -125,7 +125,7 @@ try {
                     }
                     echo '</td></tr>';
                     if ($treeData->hasHeightAgeRegressionData()) {
-                        echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Regressions</td></tr>";
+                        echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Regression Data</td></tr>";
                         echo "<tr class='border'><td class='p-3'>Height from Age Function</td><td class='p-3 text-xs'>{$treeData->getHeightAgeRegression()->buildHeightFromAge()->getFunctionHtml()}</td></tr>";
                         echo "<tr class='border'><td class='p-3'>R-Squared</td><td class='p-3 text-xs'>{$treeData->getHeightAgeRegression()->buildHeightFromAge()->getRsquared()}</td></tr>";
                         echo "<tr class='border'><td class='p-3'>Age from Height Function</td><td class='p-3 text-xs'>{$treeData->getHeightAgeRegression()->buildAgeFromHeight()->getFunctionHtml()}</td></tr>";
