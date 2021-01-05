@@ -32,7 +32,7 @@ class HeightAgeRegression
 
     public function buildHeightFromAge(): HeightAgeRegression
     {
-        $this->regression = new PolynomialRegression(3);
+        $this->regression = new PolynomialRegression(6);
 
         foreach ($this->data->getAgeAsX() as $regressionData) {
             $this->regression->addData($regressionData['x'], $regressionData['y']);

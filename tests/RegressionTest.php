@@ -24,6 +24,10 @@ class RegressionTest extends TestCase
             ->getHeightAgeRegression()
             ->buildAgeFromHeight();
 
+        $heightInputInM = 0.5;
+        $expectedAgeOutput = 0;
+        $this->assertEquals($expectedAgeOutput, round($regression->interpolate($heightInputInM)));
+
         $heightInputInM = 1;
         $expectedAgeOutput = 1;
         $this->assertEquals($expectedAgeOutput, round($regression->interpolate($heightInputInM)));
@@ -39,5 +43,44 @@ class RegressionTest extends TestCase
         $heightInputInM = 31;
         $expectedAgeOutput = 80;
         $this->assertEquals($expectedAgeOutput, round($regression->interpolate($heightInputInM)));
+    }
+
+    /**
+     * @test
+     */
+    public function height_from_age_regression(): void
+    {
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->testTree([
+            'height'   => '10cm',
+        ]);
+
+        $regression = $data
+            ->getHeightAgeRegression()
+            ->buildHeightFromAge();
+
+        $ageInputInYears = 0;
+        $expectedHeightOutputInCm = 19;
+        $this->assertEquals($expectedHeightOutputInCm, round($regression->interpolate($ageInputInYears)));
+
+        $ageInputInYears = 1;
+        $expectedHeightOutputInCm = 190;
+        $this->assertEquals($expectedHeightOutputInCm, round($regression->interpolate($ageInputInYears)));
+
+        $ageInputInYears = 5;
+        $expectedHeightOutputInCm = 764;
+        $this->assertEquals($expectedHeightOutputInCm, round($regression->interpolate($ageInputInYears)));
+
+        $ageInputInYears = 10;
+        $expectedHeightOutputInCm = 1287;
+        $this->assertEquals($expectedHeightOutputInCm, round($regression->interpolate($ageInputInYears)));
+
+        $ageInputInYears = 60;
+        $expectedHeightOutputInCm = 2944;
+        $this->assertEquals($expectedHeightOutputInCm, round($regression->interpolate($ageInputInYears)));
+
+        $ageInputInYears = 80;
+        $expectedHeightOutputInCm = 3123;
+        $this->assertEquals($expectedHeightOutputInCm, round($regression->interpolate($ageInputInYears)));
     }
 }
