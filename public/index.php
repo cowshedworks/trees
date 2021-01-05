@@ -127,22 +127,21 @@ try {
                     echo '</table>';
 
                     if ($treeData->hasHeightAgeRegressionData()) {
-                      echo '<br><table class="bg-white border">';
-                      echo "<tr class='border'><td class='p-3'>Age</td><td class='p-3'>Height</td></tr>";
-                      foreach($treeData->getHeightFromAgeRegression()->getRegressionLine($treeData->getMaxAge()) as $a => $b) {
-                        echo "<tr class='border'><td class='p-3'>{$a}</td><td class='p-3'>{$b}</td></tr>";
-                      }
-                      echo '</table>';
-                      echo '<br><table class="bg-white border">';
-                      echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>Age</td></tr>";
-                      foreach($treeData->getAgeFromHeightRegression()->getRegressionLine($treeData->getMaxHeight()) as $a => $b) {
-                        echo "<tr class='border'><td class='p-3'>{$a}</td><td class='p-3'>{$b}</td></tr>";
-                      }
-                      echo '</table>';
+                        echo '<br><table class="bg-white border">';
+                        echo "<tr class='border'><td class='p-3'>Age</td><td class='p-3'>Height</td></tr>";
+                        foreach ($treeData->getHeightFromAgeRegression()->getRegressionLine($treeData->getMaxAge()) as $a => $b) {
+                            echo "<tr class='border'><td class='p-3'>{$a}</td><td class='p-3'>{$b}</td></tr>";
+                        }
+                        echo '</table>';
+                        echo '<br><table class="bg-white border">';
+                        echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>Age</td></tr>";
+                        foreach ($treeData->getAgeFromHeightRegression()->getRegressionLine($treeData->getMaxHeight()) as $a => $b) {
+                            echo "<tr class='border'><td class='p-3'>{$a}</td><td class='p-3'>{$b}</td></tr>";
+                        }
+                        echo '</table>';
                     }
 
-                echo '</div>';
-
+                    echo '</div>';
                 } catch (\Exception $exception) {
                     echo $exception->getMessage();
                 }
