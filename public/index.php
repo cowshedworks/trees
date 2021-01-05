@@ -84,9 +84,9 @@ $treeParameters = [
   <div class="lg:col-span-4">
 <?php
 try {
-                $treeData = $factory->{$species}($treeParameters);
+                    $treeData = $factory->{$species}($treeParameters);
 
-                echo '<div class="w-full bg-white rounded shadow-lg p-8">';
+                    echo '<div class="w-full bg-white rounded shadow-lg p-8">';
 
                 echo '<table class="table-auto bg-white border">';
                 echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Tree Information</td></tr>";
@@ -126,10 +126,10 @@ try {
                 echo '</td></tr>';
                 echo '</table>';
 
-                echo '</div>';
+                    echo '</div>';
 
-                if ($treeData->hasHeightAgeRegressionData()) {
-                    ?>
+                    if ($treeData->hasHeightAgeRegressionData()) {
+                        ?>
 <h4 class="text-xl font-black text-white my-5">Age to Height Regression Charts</h4>
 <script type="text/javascript">
   google.charts.load("current", {packages:["corechart"]});
@@ -198,10 +198,10 @@ try {
      }
    </script>
 <?php
+                    }
+                } catch (\Exception $exception) {
+                    echo $exception->getMessage();
                 }
-            } catch (\Exception $exception) {
-                echo $exception->getMessage();
-            }
 ?>
 <div class="w-full bg-white rounded shadow-lg p-8">
   <div id='polynomial3_div' style='width: 100%; height: 400px;'></div>
