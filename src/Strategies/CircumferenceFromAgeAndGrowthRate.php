@@ -28,7 +28,7 @@ class CircumferenceFromAgeAndGrowthRate extends StrategyAbstract
         );
 
         $treeData->logBuild(sprintf(
-            "Circumference %dcm%s calculated from growth rate",
+            'Circumference %dcm%s calculated from growth rate',
             round($circumference),
             $maxed ? ' (max) ' : ''
         ));
