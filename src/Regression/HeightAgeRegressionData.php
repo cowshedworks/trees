@@ -13,7 +13,7 @@ class HeightAgeRegressionData
         $this->data = $data;
     }
 
-    public function getYearX(): array
+    public function getAgeAsX(): array
     {
         $returnData = [];
 
@@ -27,7 +27,7 @@ class HeightAgeRegressionData
         return $returnData;
     }
 
-    public function getHeightX(): array
+    public function getHeightAsX(): array
     {
         $returnData = [];
 

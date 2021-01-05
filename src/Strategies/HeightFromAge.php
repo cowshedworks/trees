@@ -14,7 +14,8 @@ class HeightFromAge extends StrategyAbstract
             bcscale(10);
 
             $heightFromRegression = $treeData
-                ->getHeightFromAgeRegression()
+                ->getHeightAgeRegression()
+                ->buildHeightFromAge()
                 ->interpolate($treeData->getAge()->getValue());
 
             if ($heightFromRegression <= 0) {

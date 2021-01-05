@@ -126,86 +126,27 @@ try {
                 echo '</td></tr>';
                 echo '</table>';
 
-                    echo '</div>';
-
                     if ($treeData->hasHeightAgeRegressionData()) {
-                        ?>
-<h4 class="text-xl font-black text-white my-5">Age to Height Regression Charts</h4>
-<script type="text/javascript">
-  google.charts.load("current", {packages:["corechart"]});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Height', 'Age'],
-      <?php
-      foreach ($treeData->getHeightAgeRegressionData()->getHeightX() as $data) {
-          echo '['.$data['x'].','.$data['y'].'],';
-      } ?>
-    ]);
-
-    var options = {
-      title: 'Height from Age Regression Data',
-      hAxis: {title: 'Height (m)'},
-      vAxis: {title: 'Age (years)'},
-      crosshair: { trigger: 'both', orientation: 'both' },
-      colors: ['#7F9A65'],
-      trendlines: {
-        0: {
-          type: 'polynomial',
-          degree: 3,
-          visibleInLegend: false,
-        }
-      }
-    };
-
-    var chart = new google.visualization.ScatterChart(document.getElementById('polynomial2_div'));
-    chart.draw(data, options);
-  }
-</script>
-<div class="w-full bg-white rounded shadow-lg p-8">
-  <div id='polynomial2_div' style='width: 100%; height: 400px;'></div>
-</div>
-
-<script type="text/javascript">
-     google.charts.load("current", {packages:["corechart"]});
-     google.charts.setOnLoadCallback(drawChart);
-     function drawChart() {
-       var data = google.visualization.arrayToDataTable([
-         ['Age', 'Height'],
-         <?php
-         foreach ($treeData->getHeightAgeRegressionData()->getYearX() as $data) {
-             echo '['.$data['x'].','.$data['y'].'],';
-         } ?>
-       ]);
-
-       var options = {
-         title: 'Age from Height Regression Data',
-         hAxis: {title: 'Age (years)'},
-         vAxis: {title: 'Height (m)'},
-         crosshair: { trigger: 'both', orientation: 'both' },
-         colors: ['#7F9A65'],
-         trendlines: {
-           0: {
-             type: 'polynomial',
-             degree: 4,
-             visibleInLegend: false,
-           }
-         }
-       };
-
-       var chart = new google.visualization.ScatterChart(document.getElementById('polynomial3_div'));
-       chart.draw(data, options);
-     }
-   </script>
-<?php
+                      echo '<br><table class="bg-white border">';
+                      echo "<tr class='border'><td class='p-3'>Age</td><td class='p-3'>Height</td></tr>";
+                      foreach($treeData->getHeightFromAgeRegression()->getRegressionLine($treeData->getMaxAge()) as $a => $b) {
+                        echo "<tr class='border'><td class='p-3'>{$a}</td><td class='p-3'>{$b}</td></tr>";
+                      }
+                      echo '</table>';
+                      echo '<br><table class="bg-white border">';
+                      echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>Age</td></tr>";
+                      foreach($treeData->getAgeFromHeightRegression()->getRegressionLine($treeData->getMaxHeight()) as $a => $b) {
+                        echo "<tr class='border'><td class='p-3'>{$a}</td><td class='p-3'>{$b}</td></tr>";
+                      }
+                      echo '</table>';
                     }
+
+                echo '</div>';
+
                 } catch (\Exception $exception) {
                     echo $exception->getMessage();
                 }
 ?>
-<div class="w-full bg-white rounded shadow-lg p-8">
-  <div id='polynomial3_div' style='width: 100%; height: 400px;'></div>
-</div>
 
     </div>
 </div>

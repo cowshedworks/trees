@@ -14,7 +14,7 @@
             }
         },
         "age": {
-            "max": {
+            "max-average": {
                 "unit": "years",
                 "value": 60
             }
