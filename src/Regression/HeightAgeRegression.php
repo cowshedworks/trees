@@ -72,9 +72,9 @@ class HeightAgeRegression
     {
         $dataForRSquared = [];
         foreach ($this->data->{$this->dataGetMethod}() as $valuePair) {
-            $dataForRSquared[] = [$valuePair['x'],$valuePair['y']];
+            $dataForRSquared[] = [$valuePair['x'], $valuePair['y']];
         }
-        
+
         return $this->regression->RSquared($dataForRSquared, $this->regression->getCoefficients());
     }
 
@@ -83,11 +83,11 @@ class HeightAgeRegression
         $coef = [];
         $power = 0;
         foreach ($this->regression->getCoefficients() as $coefficient) {
-            $coef[] = $coefficient . (($power <= 0) ? ' ' : "x<sup>{$power}</sup>  ");
+            $coef[] = $coefficient.(($power <= 0) ? ' ' : "x<sup>{$power}</sup>  ");
             $power++;
         }
-        $printedFunction = 'f(x) = ' . implode(' + ', $coef);
-        
+        $printedFunction = 'f(x) = '.implode(' + ', $coef);
+
         return $printedFunction;
     }
 
