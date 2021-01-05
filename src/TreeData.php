@@ -25,6 +25,7 @@ use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Circumference;
 use CowshedWorks\Trees\UnitValues\Diameter;
 use CowshedWorks\Trees\UnitValues\Height;
+use CowshedWorks\Trees\UnitValues\Length;
 use CowshedWorks\Trees\UnitValues\Weight;
 use DateTime;
 use Exception;
@@ -40,35 +41,33 @@ class TreeData
 
     public string $observationTimestampLabel = 'observed';
 
-    // private array $strategies = [];
-
     private array $speciesData;
 
-    private $age;
+    private ?Age $age = null;
 
-    private $circumference;
+    private ?Circumference $circumference = null;
 
-    private $diameter;
+    private ?Diameter $diameter = null;
 
-    private $height;
+    private ?Height $height = null;
 
-    private $aboveGroundWeight;
+    private ?Weight $aboveGroundWeight = null;
 
-    private $belowGroundWeight;
+    private ?Weight $belowGroundWeight = null;
 
-    private $totalGreenWeight;
+    private ?Weight $totalGreenWeight = null;
 
-    private $totalDryWeight;
+    private ?Weight $totalDryWeight = null;
 
-    private $totalCarbonWeight;
+    private ?Weight $totalCarbonWeight = null;
 
-    private $totalCarbonSequestered;
+    private ?Weight $totalCarbonSequestered = null;
 
-    private $totalCarbonSequesteredPerYear;
+    private ?Weight $totalCarbonSequesteredPerYear = null;
 
-    private $growthRateHeightActual;
+    private ?Height $growthRateHeightActual = null;
 
-    private $growthRateCircumferenceActual;
+    private ?Length $growthRateCircumferenceActual = null;
 
     private HeightAgeRegressionData $heightAgeRegressionData;
 
@@ -241,7 +240,7 @@ class TreeData
         return $this->growthRateHeightActual;
     }
 
-    public function getActualAverageCircumferenceGrowthRate(): Height
+    public function getActualAverageCircumferenceGrowthRate(): Length
     {
         return $this->growthRateCircumferenceActual;
     }
@@ -253,9 +252,9 @@ class TreeData
         );
     }
 
-    public function getAverageAnnualCircumferenceGrowthRate(): Circumference
+    public function getAverageAnnualCircumferenceGrowthRate(): Length
     {
-        return $this->unitValueFactory->circumference(
+        return $this->unitValueFactory->length(
             $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value')
         );
     }
@@ -289,7 +288,7 @@ class TreeData
             $this->height->getValue() / $this->age->getValue()
         );
 
-        $this->growthRateCircumferenceActual = $this->unitValueFactory->height(
+        $this->growthRateCircumferenceActual = $this->unitValueFactory->length(
             $this->circumference->getValue() / $this->age->getValue()
         );
     }

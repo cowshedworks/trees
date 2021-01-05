@@ -18,7 +18,7 @@ class UnitValueFactory
         'circumference' => Circumference::class,
         'diameter'      => Diameter::class,
         'height'        => Height::class,
-        'lenth'         => Length::class,
+        'length'         => Length::class,
         'weight'        => Weight::class,
     ];
 
