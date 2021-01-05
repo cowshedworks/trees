@@ -108,7 +108,7 @@ try {
                 echo '</table>';
 
                 if ($treeData->hasHeightAgeRegressionData()) {
-?>
+                    ?>
 <h4 class="text-xl font-black text-green-600 mt-5">Age to Height Regression Charts</h4>
 <script type="text/javascript">
   google.charts.load("current", {packages:["corechart"]});
