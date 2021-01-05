@@ -122,9 +122,19 @@ class TreeData
         return $this->getSpeciesData('name.popular');
     }
 
+    public function getFamilyName(): string
+    {
+        return $this->getSpeciesData('name.family');
+    }
+
     public function getCommonNames(): array
     {
         return $this->getSpeciesData('name.common');
+    }
+
+    public function getHabitat(): string
+    {
+        return $this->getSpeciesData('information.habitat');
     }
 
     public function getScientificName(): array
@@ -321,14 +331,14 @@ class TreeData
     {
         if (array_key_exists($this->observationTimestampLabel, $treeData)) {
             $dateString = $treeData[$this->observationTimestampLabel];
-            $this->observedAt = new DateTime($dateString);
+            $this->observedAt = (new DateTime($dateString))->settime(0, 0);
 
-            $this->hasOlderObservedAge = $this->observedAt < new DateTime();
+            $this->hasOlderObservedAge = $this->observedAt < new DateTime('midnight');
 
             return;
         }
 
-        $this->observedAt = new DateTime();
+        $this->observedAt = new DateTime('midnight');
     }
 
     private function resolveRegressions(): void
