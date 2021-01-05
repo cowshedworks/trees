@@ -20,10 +20,10 @@ use CowshedWorks\Trees\TreeDataFactory;
 $factory = new TreeDataFactory();
 
 $species = $_GET['species'] ?? 'alder';
-$currentDiameter = $_GET['diameter'] ?? '8in';
-$currentCircumference = $_GET['circumference'] ?? '20cm';
+$currentDiameter = $_GET['diameter'] ?? null;
+$currentCircumference = $_GET['circumference'] ?? null;
 $currentHeight = $_GET['height'] ?? '28m';
-$currentAge = $_GET['age'] ?? '20years';
+$currentAge = $_GET['age'] ?? null;
 $currentObservedDate = $_GET['observed'] ?? '2001-01-01';
 
 $treeParameters = [
@@ -67,15 +67,16 @@ $treeParameters = [
             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="circumference">Circumference</label>
             <input class="border py-2 px-3 text-grey-darkest" type="text" name="circumference" placeholder="circumference" value="<?php echo $currentCircumference; ?>"">
           </div>
-          <!-- <div class="flex flex-col mb-4">
-            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="age">Age</label>
-            <input class="border py-2 px-3 text-grey-darkest" type="text" name="age" placeholder="age" value="<?php echo $currentAge; ?>"">
-          </div> -->
           <div class="flex flex-col mb-4">
             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="observed">Observed</label>
             <input class="border py-2 px-3 text-grey-darkest" type="text" name="observed" placeholder="eg 1990-01-04" value="<?php echo $currentObservedDate; ?>"">
           </div>
           <button class="block bg-green-600 hover:bg-green-700 uppercase text-lg text-white mx-auto p-4 rounded" type="submit">Build Tree Data</button>
+          <br><br>
+          <div class="flex flex-col mb-4">
+            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="age">Age</label>
+            <input class="border py-2 px-3 text-grey-darkest" type="text" name="age" placeholder="age" value="<?php echo $currentAge; ?>"">
+          </div>
         </form>
       </div>
     </div>
