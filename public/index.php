@@ -50,7 +50,7 @@ $treeParameters = [
               <select class="border py-2 px-3 text-grey-darkest" name="species">
                 <?php
                     foreach ($factory->getTrees() as $tree) {
-                        echo "<option value='{$tree}'>{$tree}</option>";
+                        echo "<option value='{$tree}'>".ucfirst($tree)."</option>";
                     }
                 ?>
             </select>
