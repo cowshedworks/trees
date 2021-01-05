@@ -124,29 +124,19 @@ try {
                         echo ''.$logMessage.'<br>';
                     }
                     echo '</td></tr>';
-                    echo '</table>';
-
                     if ($treeData->hasHeightAgeRegressionData()) {
-                        echo '<br><table class="bg-white border">';
-                        echo "<tr class='border'><td class='p-3'>Age</td><td class='p-3'>Height</td></tr>";
-                        foreach ($treeData->getHeightFromAgeRegression()->getRegressionLine($treeData->getMaxAge()) as $a => $b) {
-                            echo "<tr class='border'><td class='p-3'>{$a}</td><td class='p-3'>{$b}</td></tr>";
-                        }
-                        echo '</table>';
-                        echo '<br><table class="bg-white border">';
-                        echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>Age</td></tr>";
-                        foreach ($treeData->getAgeFromHeightRegression()->getRegressionLine($treeData->getMaxHeight()) as $a => $b) {
-                            echo "<tr class='border'><td class='p-3'>{$a}</td><td class='p-3'>{$b}</td></tr>";
-                        }
-                        echo '</table>';
-                    }
-
+                      echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Regressions</td></tr>";
+                      echo "<tr class='border'><td class='p-3'>Height from Age Function</td><td class='p-3 text-xs'>{$treeData->getHeightAgeRegression()->buildHeightFromAge()->getFunctionHtml()}</td></tr>";
+                      echo "<tr class='border'><td class='p-3'>R-Squared</td><td class='p-3 text-xs'>{$treeData->getHeightAgeRegression()->buildHeightFromAge()->getRsquared()}</td></tr>";
+                      echo "<tr class='border'><td class='p-3'>Age from Height Function</td><td class='p-3 text-xs'>{$treeData->getHeightAgeRegression()->buildAgeFromHeight()->getFunctionHtml()}</td></tr>";
+                      echo "<tr class='border'><td class='p-3'>R-Squared</td><td class='p-3 text-xs'>{$treeData->getHeightAgeRegression()->buildAgeFromHeight()->getRsquared()}</td></tr>";
+                  }
+                    echo '</table>';
                     echo '</div>';
                 } catch (\Exception $exception) {
                     echo $exception->getMessage();
                 }
 ?>
-
     </div>
 </div>
 

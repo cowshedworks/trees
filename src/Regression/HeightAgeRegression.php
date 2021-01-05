@@ -14,6 +14,8 @@ class HeightAgeRegression
 
     private $interpolateFunction;
 
+    private $dataGetMethod;
+
     public function __construct(HeightAgeRegressionData $data)
     {
         $this->data = $data;
@@ -23,9 +25,9 @@ class HeightAgeRegression
     {
         $this->regression = new PolynomialRegression(4);
 
-        foreach ($this->data->getHeightAsX() as $regressionData) {
-            $this->regression->addData($regressionData['x'], $regressionData['y']);
-        }
+        $this->dataGetMethod = 'getHeightAsX';
+
+        $this->getData();
 
         return $this;
     }
@@ -34,13 +36,20 @@ class HeightAgeRegression
     {
         $this->regression = new PolynomialRegression(6);
 
-        foreach ($this->data->getAgeAsX() as $regressionData) {
-            $this->regression->addData($regressionData['x'], $regressionData['y']);
-        }
+        $this->dataGetMethod = 'getAgeAsX';
+
+        $this->getData();
 
         $this->interpolateFunction = fn ($value) => $value * 100;
 
         return $this;
+    }
+
+    private function getData(): void
+    {
+        foreach ($this->data->{$this->dataGetMethod}() as $regressionData) {
+            $this->regression->addData($regressionData['x'], $regressionData['y']);
+        }
     }
 
     private function getInterpolateFunction(): callable
@@ -57,6 +66,29 @@ class HeightAgeRegression
         $interpolationCallback = $this->getInterpolateFunction();
 
         return $interpolationCallback($this->regression->interpolate($this->regression->getCoefficients(), $x));
+    }
+
+    public function getRSquared(): float
+    {
+        $dataForRSquared = [];
+        foreach ($this->data->{$this->dataGetMethod}() as $valuePair) {
+            $dataForRSquared[] = [$valuePair['x'],$valuePair['y']];
+        }
+        
+        return $this->regression->RSquared($dataForRSquared, $this->regression->getCoefficients());
+    }
+
+    public function getFunctionHtml(): string
+    {
+        $coef = [];
+        $power = 0;
+        foreach ($this->regression->getCoefficients() as $coefficient) {
+            $coef[] = $coefficient . (($power <= 0) ? ' ' : "x<sup>{$power}</sup>  ");
+            $power++;
+        }
+        $printedFunction = 'f(x) = ' . implode(' + ', $coef);
+        
+        return $printedFunction;
     }
 
     public function getRegressionLine($toX): array
