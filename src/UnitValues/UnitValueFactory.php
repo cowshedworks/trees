@@ -14,12 +14,12 @@ use CowshedWorks\Trees\UnitValues\Weight;
 class UnitValueFactory
 {
     protected array $unitValues = [
-        'age'           => Age::class,
-        'circumference' => Circumference::class,
-        'diameter'      => Diameter::class,
-        'height'        => Height::class,
+        'age'            => Age::class,
+        'circumference'  => Circumference::class,
+        'diameter'       => Diameter::class,
+        'height'         => Height::class,
         'length'         => Length::class,
-        'weight'        => Weight::class,
+        'weight'         => Weight::class,
     ];
 
     public function __construct()
