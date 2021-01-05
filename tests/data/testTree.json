@@ -11,6 +11,14 @@
             "max-height": {
                 "unit": "cm",
                 "value": 280
+            },
+            "max-circumference": {
+                "unit": "cm",
+                "value": 175
+            },
+            "max-diameter": {
+                "unit": "cm",
+                "value": 55
             }
         },
         "age": {

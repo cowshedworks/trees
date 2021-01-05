@@ -13,13 +13,18 @@ class CircumferenceFromAgeAndGrowthRate extends StrategyAbstract
         $treeAge = $treeData->getAge();
         $annualAverageCircumferenceGrowthRate = $treeData->getAverageAnnualCircumferenceGrowthRate();
 
+        $circumference = $treeAge->getValue() * $annualAverageCircumferenceGrowthRate->getValue();
+        if ($circumference > $treeData->getMaxCircumference()) {
+            $circumference = $treeData->getMaxCircumference();
+        }
+
         $treeData->setCircumference(
             $this->unitValueFactory->circumference(
-                $treeAge->getValue() * $annualAverageCircumferenceGrowthRate->getValue(),
+                $circumference,
                 'cm'
             )
         );
 
-        $treeData->logBuild('Circumference calculated from growth rate');
+        $treeData->logBuild("Circumference {$circumference} calculated from growth rate");
     }
 }

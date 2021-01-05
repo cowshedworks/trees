@@ -12,13 +12,18 @@ class DiameterFromCircumference extends StrategyAbstract
     {
         $treeCircumference = $treeData->getCircumference();
 
+        $diameter = $treeCircumference->getValue() / M_PI;
+        if ($diameter > $treeData->getMaxDiameter()) {
+            $diameter = $treeData->getMaxDiameter();
+        }
+
         $treeData->setDiameter(
             $this->unitValueFactory->diameter(
-                $treeCircumference->getValue() / M_PI,
+                $diameter,
                 'cm'
             )
         );
 
-        $treeData->logBuild('Diameter calculated from circumference');
+        $treeData->logBuild("Diameter {$diameter} calculated from circumference");
     }
 }

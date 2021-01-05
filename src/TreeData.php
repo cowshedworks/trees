@@ -151,6 +151,16 @@ class TreeData
         return $this->getSpeciesData('attributes.dimensions.max-height.value');
     }
 
+    public function getMaxCircumference(): float
+    {
+        return $this->getSpeciesData('attributes.dimensions.max-circumference.value');
+    }
+
+    public function getMaxDiameter(): float
+    {
+        return $this->getSpeciesData('attributes.dimensions.max-diameter.value');
+    }
+
     public function setAge(Age $age): void
     {
         $this->age = $age;
