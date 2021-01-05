@@ -27,7 +27,7 @@ class DiameterFromCircumference extends StrategyAbstract
         );
 
         $treeData->logBuild(sprintf(
-            "Diameter %dcm%s calculated from circumference",
+            'Diameter %dcm%s calculated from circumference',
             round($diameter),
             $maxed ? ' (max) ' : ''
         ));
