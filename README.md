@@ -6,8 +6,6 @@ The provided PHP utilities can be used to get data about a range of tree species
 
 ## Installation
 
-### NOT YET AVAILABLE ON PACKAGIST
-
 Use the package manager [composer](https://getcomposer.org/) to install.
 
 ```bash
