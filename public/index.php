@@ -67,10 +67,10 @@ $treeParameters = [
             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="circumference">Circumference</label>
             <input class="border py-2 px-3 text-grey-darkest" type="text" name="circumference" placeholder="circumference" value="<?php echo $currentCircumference; ?>"">
           </div>
-          <div class="flex flex-col mb-4">
+          <!-- <div class="flex flex-col mb-4">
             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="age">Age</label>
             <input class="border py-2 px-3 text-grey-darkest" type="text" name="age" placeholder="age" value="<?php echo $currentAge; ?>"">
-          </div>
+          </div> -->
           <div class="flex flex-col mb-4">
             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="observed">Observed</label>
             <input class="border py-2 px-3 text-grey-darkest" type="text" name="observed" placeholder="eg 1990-01-04" value="<?php echo $currentObservedDate; ?>"">

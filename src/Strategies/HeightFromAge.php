@@ -18,8 +18,10 @@ class HeightFromAge extends StrategyAbstract
                 ->buildHeightFromAge()
                 ->interpolate($treeData->getAge()->getValue());
 
-            if ($heightFromRegression <= 0) {
+            $maxed = false;
+            if ($heightFromRegression <= 0 || $heightFromRegression > $treeData->getMaxHeight()) {
                 $heightFromRegression = $treeData->getMaxHeight();
+                $maxed = true;
             }
 
             $treeData->setHeight(
@@ -29,21 +31,36 @@ class HeightFromAge extends StrategyAbstract
                 )
             );
 
-            $treeData->logBuild('Height calculated from age regression');
+            $treeData->logBuild(sprintf(
+                "Height %dcm%s calculated from age regression",
+                round($heightFromRegression),
+                $maxed ? ' (max) ' : ''
+            ));
 
             return;
         }
 
         $treeAge = $treeData->getAge();
         $averageAnnualHeightGrowthRate = $treeData->getAverageAnnualHeightGrowthRate();
+        $heightFromGrowthRate = $treeAge->getValue() * $averageAnnualHeightGrowthRate->getValue();
+
+        $maxed = false;
+        if ($heightFromGrowthRate > $treeData->getMaxHeight()) {
+            $heightFromGrowthRate = $treeData->getMaxHeight();
+            $maxed = true;
+        }
 
         $treeData->setHeight(
             $this->unitValueFactory->height(
-                $treeAge->getValue() * $averageAnnualHeightGrowthRate->getValue(),
+                $heightFromGrowthRate,
                 'cm'
             )
         );
 
-        $treeData->logBuild('Height calculated from growth rate');
+        $treeData->logBuild(sprintf(
+            "Height %dcm%s calculated from growth rate",
+            round($heightFromGrowthRate),
+            $maxed ? ' (max) ' : ''
+        ));
     }
 }
