@@ -84,52 +84,52 @@ $treeParameters = [
   <div class="lg:col-span-4">
 <?php
 try {
-                $treeData = $factory->{$species}($treeParameters);
+                    $treeData = $factory->{$species}($treeParameters);
 
-                echo '<div class="w-full bg-white rounded shadow-lg p-8">';
+                    echo '<div class="w-full bg-white rounded shadow-lg p-8">';
 
-                echo '<table class="table-auto bg-white border">';
-                echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Tree Information</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Tree Name</td><td class='p-3'>{$treeData->getPopularName()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Family</td><td class='p-3'>{$treeData->getFamilyName()}</td></tr>";
-                echo '<tr class="border"><td class="p-3">Common Name(s)</td><td class="p-3">';
-                foreach ($treeData->getCommonNames() as $name) {
-                    echo $name.'<br>';
-                }
-                echo '</td></tr>';
-                echo '<tr class="border"><td class="p-3">Scientific Name(s)</td><td class="p-3">';
-                foreach ($treeData->getScientificName() as $name) {
-                    echo $name.'<br>';
-                }
-                echo '</td></tr>';
-                echo "<tr class='border'><td class='p-3'>Habitat</td><td class='p-3'>{$treeData->getHabitat()}</td></tr>";
-                echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Tree Attributes</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Average Max Age</td><td class='p-3'>{$treeData->getMaxAge()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Current Age</td><td class='p-3'>{$treeData->getAge()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>{$treeData->getHeight()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Circumference:</td><td class='p-3'>{$treeData->getCircumference()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Diameter:</td><td class='p-3'>{$treeData->getDiameter()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Weight:</td><td class='p-3'>{$treeData->getWeight()}</td></tr>";
-                echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Growth Rates</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Actual Average Height Growth Rate:</td><td class='p-3'>{$treeData->getActualAnnualHeightGrowthRate()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Default Average Height Growth Rate:</td><td class='p-3'>{$treeData->getAverageAnnualHeightGrowthRate()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Actual Average Circumference Growth Rate:</td><td class='p-3'>{$treeData->getActualAverageCircumferenceGrowthRate()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Default Average Circumference Growth Rates:</td><td class='p-3'>{$treeData->getAverageAnnualCircumferenceGrowthRate()}</td></tr>";
-                echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Carbon Data</td></tr>";
-                echo "<tr class='border'><td class='p-3'>Carbon in tree:</td><td class='p-3'>{$treeData->getCarbonWeight()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>CO2 Sequestered per year:</td><td class='p-3'>{$treeData->getCO2SequestrationPerYear()}</td></tr>";
-                echo "<tr class='border'><td class='p-3'>CO2 Sequestered to date:</td><td class='p-3'>{$treeData->getCO2SequestrationToDate()}</td></tr>";
-                echo '<tr class="border"><td class="p-3">Build Log:</td><td class="p-3">';
-                foreach ($treeData->getBuildLog() as $logMessage) {
-                    echo ''.$logMessage.'<br>';
-                }
-                echo '</td></tr>';
-                echo '</table>';
+                    echo '<table class="table-auto bg-white border">';
+                    echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Tree Information</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Tree Name</td><td class='p-3'>{$treeData->getPopularName()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Family</td><td class='p-3'>{$treeData->getFamilyName()}</td></tr>";
+                    echo '<tr class="border"><td class="p-3">Common Name(s)</td><td class="p-3">';
+                    foreach ($treeData->getCommonNames() as $name) {
+                        echo $name.'<br>';
+                    }
+                    echo '</td></tr>';
+                    echo '<tr class="border"><td class="p-3">Scientific Name(s)</td><td class="p-3">';
+                    foreach ($treeData->getScientificName() as $name) {
+                        echo $name.'<br>';
+                    }
+                    echo '</td></tr>';
+                    echo "<tr class='border'><td class='p-3'>Habitat</td><td class='p-3'>{$treeData->getHabitat()}</td></tr>";
+                    echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Tree Attributes</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Average Max Age</td><td class='p-3'>{$treeData->getMaxAge()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Current Age</td><td class='p-3'>{$treeData->getAge()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>{$treeData->getHeight()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Circumference:</td><td class='p-3'>{$treeData->getCircumference()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Diameter:</td><td class='p-3'>{$treeData->getDiameter()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Weight:</td><td class='p-3'>{$treeData->getWeight()}</td></tr>";
+                    echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Growth Rates</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Actual Average Height Growth Rate:</td><td class='p-3'>{$treeData->getActualAnnualHeightGrowthRate()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Default Average Height Growth Rate:</td><td class='p-3'>{$treeData->getAverageAnnualHeightGrowthRate()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Actual Average Circumference Growth Rate:</td><td class='p-3'>{$treeData->getActualAverageCircumferenceGrowthRate()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Default Average Circumference Growth Rates:</td><td class='p-3'>{$treeData->getAverageAnnualCircumferenceGrowthRate()}</td></tr>";
+                    echo "<tr class='font-black bg-green-400'><td class='p-2' colspan='2'>Carbon Data</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Carbon in tree:</td><td class='p-3'>{$treeData->getCarbonWeight()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>CO2 Sequestered per year:</td><td class='p-3'>{$treeData->getCO2SequestrationPerYear()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>CO2 Sequestered to date:</td><td class='p-3'>{$treeData->getCO2SequestrationToDate()}</td></tr>";
+                    echo '<tr class="border"><td class="p-3">Build Log:</td><td class="p-3">';
+                    foreach ($treeData->getBuildLog() as $logMessage) {
+                        echo ''.$logMessage.'<br>';
+                    }
+                    echo '</td></tr>';
+                    echo '</table>';
 
-                echo '</div>';
+                    echo '</div>';
 
-                if ($treeData->hasHeightAgeRegressionData()) {
-                    ?>
+                    if ($treeData->hasHeightAgeRegressionData()) {
+                        ?>
 <h4 class="text-xl font-black text-white my-5">Age to Height Regression Charts</h4>
 <script type="text/javascript">
   google.charts.load("current", {packages:["corechart"]});
@@ -198,10 +198,10 @@ try {
      }
    </script>
 <?php
+                    }
+                } catch (\Exception $exception) {
+                    echo $exception->getMessage();
                 }
-            } catch (\Exception $exception) {
-                echo $exception->getMessage();
-            }
 ?>
 <div class="w-full bg-white rounded shadow-lg p-8">
   <div id='polynomial3_div' style='width: 100%; height: 400px;'></div>
