@@ -38,15 +38,15 @@ class HeightAgeRegression
             $this->regression->addData($regressionData['x'], $regressionData['y']);
         }
 
-        $this->interpolateFunction = fn($value) => $value * 100;
+        $this->interpolateFunction = fn ($value) => $value * 100;
 
         return $this;
     }
 
-    private function getInterpolateFunction(): Callable
+    private function getInterpolateFunction(): callable
     {
         if ($this->interpolateFunction === null) {
-            return fn($value) => $value;
+            return fn ($value) => $value;
         }
 
         return $this->interpolateFunction;
