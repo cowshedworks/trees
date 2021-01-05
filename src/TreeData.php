@@ -26,6 +26,7 @@ use CowshedWorks\Trees\UnitValues\Circumference;
 use CowshedWorks\Trees\UnitValues\Diameter;
 use CowshedWorks\Trees\UnitValues\Height;
 use CowshedWorks\Trees\UnitValues\Length;
+use CowshedWorks\Trees\UnitValues\UnitValueFactory;
 use CowshedWorks\Trees\UnitValues\Weight;
 use DateTime;
 use Exception;

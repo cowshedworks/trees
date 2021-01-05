@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace CowshedWorks\Trees;
+namespace CowshedWorks\Trees\UnitValues;
 
 use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Circumference;
