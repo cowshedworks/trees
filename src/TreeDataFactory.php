@@ -54,6 +54,11 @@ class TreeDataFactory
         );
     }
 
+    public function getSpeciesFileData(string $fileName)
+    {
+        return $this->configLoader->getConfigFor($fileName);
+    }
+
     public function __call($method, $userParameters)
     {
         $this->checkCanBuild($method, $userParameters);

@@ -62,4 +62,15 @@ class FactoryTest extends TestCase
         $this->assertEquals(['Test Tree', 'Common Test Tree', 'Black Test Tree', 'European Test Tree'], $data->getCommonNames());
         $this->assertEquals(['TestTree glutinosa'], $data->getScientificName());
     }
+
+    /**
+     * @test
+     */
+    public function the_factory_can_get_species_file_data(): void
+    {
+        $factory = $this->getTreeDataFactory();
+        $fileData = $factory->getSpeciesFileData('testTree');
+
+        $this->assertEquals('Test Tree', $fileData['name']['popular']);
+    }
 }
