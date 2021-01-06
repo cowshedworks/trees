@@ -140,7 +140,7 @@ class TreeDataTest extends TestCase
     public function tree_age_uses_observation_date(): void
     {
         $this->markTestIncomplete();
-        
+
         $factory = $this->getTreeDataFactory();
         $data = $factory->testTree([
             'height'   => '10cm',
