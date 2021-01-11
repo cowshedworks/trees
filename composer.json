@@ -2,6 +2,7 @@
     "name": "cowshedworks/trees",
     "description": "Tree Database",
     "type": "library",
+    "keywords": ["trees", "CO2", "carbon", "sequestration"],
     "require-dev": {
         "phpunit/phpunit": "^9.5",
         "symfony/var-dumper": "^5.2"
