@@ -2,7 +2,7 @@
 
 Tree data for UK native trees
 
-The provided PHP utilities can be used to get data about a range of tree species. It can work out the CO2 sequestration rate for trees. The data is used as the base data in the Plant a Tree Project.
+The provided PHP utilities can be used to get data about a range of tree species. It can work out the CO2 sequestration rate for trees. The data is used as the base data in the Forest Of One Project.
 
 ## Installation
 
