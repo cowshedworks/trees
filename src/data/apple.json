@@ -1,0 +1,51 @@
+{
+    "name": {
+        "popular": "Apple",
+        "common": ["Apple"],
+        "scientific": ["Malus x domestica"],
+        "family": "Rosaceae"
+    },
+    "attributes": {
+        "shape": "",
+        "dimensions": {
+            "max-height": {
+                "unit": "cm",
+                "value": 1000
+            },
+            "max-circumference": {
+                "unit": "cm",
+                "value": 175
+            },
+            "max-diameter": {
+                "unit": "cm",
+                "value": 55
+            }
+        },
+        "age": {
+            "max-average": {
+                "unit": "years",
+                "value": 100
+            }
+        },
+        "growth-rate": {
+            "annual-average-height": {
+                "unit": "cm",
+                "value": 60
+            },
+            "annual-average-circumference": {
+                "unit": "cm",
+                "value": 2.5
+            },
+            "height-regression-seed": null
+        },
+    },
+    "information": {
+        "origin": "Non-native",
+        "habitat": "Wildly planted, also found in hedgerows.",
+        "leaves": null,
+        "flowers": null,
+        "fruits": null,
+        "wildlife": null,
+        "uses": null
+    }
+}

@@ -48,12 +48,6 @@
                 {"year": 100, "value": { "unit": "m", "value": 32.3 }}
             ]
         },
-        "carbon-sequestration": {
-            "annual": {
-                "metric": "kg",
-                "value": 21
-            }
-        }
     },
     "information": {
         "origin": "Native",
