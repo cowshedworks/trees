@@ -1,0 +1,51 @@
+{
+    "name": {
+        "popular": "Crab apple",
+        "common": ["Crab apple"],
+        "scientific": ["Malus sylvestris"],
+        "family": "Rosaceae"
+    },
+    "attributes": {
+        "shape": "Round Irregular",
+        "dimensions": {
+            "max-height": {
+                "unit": "cm",
+                "value": 1000
+            },
+            "max-circumference": {
+                "unit": "cm",
+                "value": 175
+            },
+            "max-diameter": {
+                "unit": "cm",
+                "value": 55
+            }
+        },
+        "age": {
+            "max-average": {
+                "unit": "years",
+                "value": 100
+            }
+        },
+        "growth-rate": {
+            "annual-average-height": {
+                "unit": "cm",
+                "value": 60
+            },
+            "annual-average-circumference": {
+                "unit": "cm",
+                "value": 2.5
+            },
+            "height-regression-seed": null
+        },
+    },
+    "information": {
+        "origin": "Native",
+        "habitat": "Wildly planted.",
+        "leaves": null,
+        "flowers": null,
+        "fruits": null,
+        "wildlife": null,
+        "uses": null
+    }
+}
