@@ -1,0 +1,51 @@
+{
+    "name": {
+        "popular": "Ash",
+        "common": ["Ash", "Common Ash", "European Ash"],
+        "scientific": ["Fraxinus excelsior"],
+        "family": "Oleaceae"
+    },
+    "attributes": {
+        "shape": "Conical",
+        "dimensions": {
+            "max-height": {
+                "unit": "cm",
+                "value": 3500
+            },
+            "max-circumference": {
+                "unit": "cm",
+                "value": 300
+            },
+            "max-diameter": {
+                "unit": "cm",
+                "value": 100
+            }
+        },
+        "age": {
+            "max-average": {
+                "unit": "years",
+                "value": 400
+            }
+        },
+        "growth-rate": {
+            "annual-average-height": {
+                "unit": "cm",
+                "value": 60
+            },
+            "annual-average-circumference": {
+                "unit": "cm",
+                "value": 2.5
+            },
+            "height-regression-seed": null
+        },
+    },
+    "information": {
+        "origin": "Native",
+        "habitat": "Very common in Britain, likes deep well-drained soil.",
+        "leaves": null,
+        "flowers": null,
+        "fruits": null,
+        "wildlife": null,
+        "uses": null
+    }
+}
