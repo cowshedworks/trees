@@ -351,7 +351,7 @@ class TreeData
     {
         if (null === $this->getSpeciesData('attributes.growth-rate.height-regression-seed')) {
             $this->heightAgeRegressionData = null;
-            
+
             return;
         }
 
