@@ -34,6 +34,7 @@
         }
     },
     "information": {
+        "type": "Deciduous",
         "origin": "Native",
         "habitat": "Common in Britain in woodland, likes damp soils and can live in peat bogs.",
         "leaves": null,

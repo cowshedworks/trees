@@ -34,6 +34,7 @@
         }
     },
     "information": {
+        "type": "Deciduous",
         "origin": "Non-Native",
         "habitat": "Generally planted as an ornamental tree in Britain, likes fertile, calcified soils.",
         "leaves": null,
