@@ -280,6 +280,10 @@ class TreeData
             $currentValue = $this->speciesData;
 
             foreach (explode('.', $dataName) as $key) {
+
+                if (isset($currentValue[$key]) === false) {
+                    throw new Exception('Species data key does not exist');
+                }
                 $currentValue = $currentValue[$key];
             }
 
