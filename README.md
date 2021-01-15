@@ -33,7 +33,7 @@ If any of 'circumference', 'diameter', 'age', or 'height' are not provided when 
 That said, these are general calculations intended for approximations, there are lots of factors that will affect these values in the real world.
 
 ```PHP
-$treeData = $factory->alder([
+$treeData = $factory->build('alder', [
     'age'      => '10years',
     'diameter' => '8in',
     'height'   => '15ft'

@@ -85,7 +85,7 @@ $treeParameters = [
   <div class="lg:col-span-4">
 <?php
 try {
-                    $treeData = $factory->{$species}($treeParameters);
+                    $treeData = $factory->build($species, $treeParameters);
 
                     echo '<div class="w-full bg-white rounded shadow-lg p-8">';
 
