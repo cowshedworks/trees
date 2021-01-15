@@ -1,0 +1,45 @@
+{
+    "name": {
+        "popular": "Beech (Copper)",
+        "common": ["Copper Beech"],
+        "scientific": ["Fagus sylvatica f. purpurea"],
+        "family": "Fagaceae"
+    },
+    "attributes": {
+        "shape": "",
+        "dimensions": {
+            "max-height": {
+                "unit": "cm",
+                "value": 4000
+            },
+            "max-circumference": {
+                "unit": "cm",
+                "value": 600
+            },
+            "max-diameter": {
+                "unit": "cm",
+                "value": 200
+            }
+        },
+        "age": {
+            "max-average": {
+                "unit": "years",
+                "value": 300
+            }
+        },
+        "growth-rate": {
+            "annual-average-height": null,
+            "annual-average-circumference": null,
+            "height-regression-seed": null
+        }
+    },
+    "information": {
+        "origin": "Non-Native",
+        "habitat": "Generally planted as an ornamental tree in Britain, likes fertile, calcified soils.",
+        "leaves": null,
+        "flowers": null,
+        "fruits": null,
+        "wildlife": null,
+        "uses": null
+    }
+}
