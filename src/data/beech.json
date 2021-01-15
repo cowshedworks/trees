@@ -1,0 +1,45 @@
+{
+    "name": {
+        "popular": "Beech (Common)",
+        "common": ["Common Beech"],
+        "scientific": ["Fagus sylvatica"],
+        "family": "Fagaceae"
+    },
+    "attributes": {
+        "shape": "",
+        "dimensions": {
+            "max-height": {
+                "unit": "cm",
+                "value": 4000
+            },
+            "max-circumference": {
+                "unit": "cm",
+                "value": 600
+            },
+            "max-diameter": {
+                "unit": "cm",
+                "value": 200
+            }
+        },
+        "age": {
+            "max-average": {
+                "unit": "years",
+                "value": 300
+            }
+        },
+        "growth-rate": {
+            "annual-average-height": null,
+            "annual-average-circumference": null,
+            "height-regression-seed": null
+        }
+    },
+    "information": {
+        "origin": "Native",
+        "habitat": "Common in Britain in woodland, likes dry, free-draining soil.",
+        "leaves": null,
+        "flowers": null,
+        "fruits": null,
+        "wildlife": null,
+        "uses": null
+    }
+}
