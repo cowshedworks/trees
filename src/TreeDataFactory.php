@@ -57,7 +57,6 @@ class TreeDataFactory
             $userParameters ?? []
         );
     }
-    
 
     public function getSpeciesFileData(string $fileName)
     {
