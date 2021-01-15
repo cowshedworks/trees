@@ -47,7 +47,7 @@
                 {"year": 80, "value": { "unit": "m", "value": 31.3 }},
                 {"year": 100, "value": { "unit": "m", "value": 32.3 }}
             ]
-        },
+        }
     },
     "information": {
         "origin": "Native",

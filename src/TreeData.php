@@ -32,6 +32,10 @@ use Exception;
 
 class TreeData
 {
+    const DEFAULT_HEIGHT_GROWTH_RATE = 60;
+
+    const DEFAULT_CIRCUMFERENCE_GROWTH_RATE = 2.5;
+
     public static array $requiredvalidParameters = [
         'circumference',
         'age',
@@ -250,16 +254,16 @@ class TreeData
 
     public function getAverageAnnualHeightGrowthRate(): Height
     {
-        return $this->unitValueFactory->height(
-            $this->getSpeciesData('attributes.growth-rate.annual-average-height.value')
-        );
+        $heightGrowthRate = $this->getSpeciesData('attributes.growth-rate.annual-average-height.value') ?? self::DEFAULT_HEIGHT_GROWTH_RATE;
+
+        return $this->unitValueFactory->height($heightGrowthRate);
     }
 
     public function getAverageAnnualCircumferenceGrowthRate(): Length
     {
-        return $this->unitValueFactory->length(
-            $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value')
-        );
+        $circumferenceGrowthRate = $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value') ?? self::DEFAULT_CIRCUMFERENCE_GROWTH_RATE;
+
+        return $this->unitValueFactory->length($circumferenceGrowthRate);
     }
 
     // PRIVATE API
