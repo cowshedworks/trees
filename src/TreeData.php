@@ -73,7 +73,7 @@ class TreeData
 
     private ?Length $growthRateCircumferenceActual = null;
 
-    private HeightAgeRegressionData $heightAgeRegressionData;
+    private ?HeightAgeRegressionData $heightAgeRegressionData;
 
     private UnitValueFactory $unitValueFactory;
 
@@ -349,6 +349,12 @@ class TreeData
 
     private function resolveRegressions(): void
     {
+        if (null === $this->getSpeciesData('attributes.growth-rate.height-regression-seed')) {
+            $this->heightAgeRegressionData = null;
+            
+            return;
+        }
+
         $this->heightAgeRegressionData = new HeightAgeRegressionData($this->getSpeciesData('attributes.growth-rate.height-regression-seed'));
     }
 

@@ -16,4 +16,12 @@ trait TestTreeFactory
 
         return new TreeDataFactory($configLoader);
     }
+
+    protected function getTreeDataFactoryWithEmptyData(): TreeDataFactory
+    {
+        $configLoader = new ConfigLoader();
+        $configLoader->setDataDir(__DIR__.'/data/empty');
+
+        return new TreeDataFactory($configLoader);
+    }
 }
