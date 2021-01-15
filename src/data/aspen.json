@@ -1,0 +1,45 @@
+{
+    "name": {
+        "popular": "Aspen",
+        "common": ["Aspen", "Quaking aspen", "Common aspen", "European aspen"],
+        "scientific": ["Populus tremula"],
+        "family": "Salicaceae"
+    },
+    "attributes": {
+        "shape": "",
+        "dimensions": {
+            "max-height": {
+                "unit": "cm",
+                "value": 2500
+            },
+            "max-circumference": {
+                "unit": "cm",
+                "value": 140
+            },
+            "max-diameter": {
+                "unit": "cm",
+                "value": 45
+            }
+        },
+        "age": {
+            "max-average": {
+                "unit": "years",
+                "value": 400
+            }
+        },
+        "growth-rate": {
+            "annual-average-height": null,
+            "annual-average-circumference": null,
+            "height-regression-seed": null
+        }
+    },
+    "information": {
+        "origin": "Native",
+        "habitat": "Common in Britain, likes open sunlight and moist soil, intolerant of shade.",
+        "leaves": null,
+        "flowers": null,
+        "fruits": null,
+        "wildlife": null,
+        "uses": null
+    }
+}
