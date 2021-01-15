@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees\Tests;
 
+use ArgumentCountError;
+use CowshedWorks\Trees\ConfigLoader;
 use Exception;
 use PHPUnit\Framework\TestCase;
 
@@ -29,11 +31,10 @@ class FactoryTest extends TestCase
      */
     public function the_factory_will_not_build_when_no_params_are_provided(): void
     {
-        $this->expectException(Exception::class);
-        $this->expectExceptionMessage('No config provided');
+        $this->expectException(ArgumentCountError::class);
 
         $factory = $this->getTreeDataFactory();
-        $data = $factory->testTree();
+        $data = $factory->build('testTree');
     }
 
     /**
@@ -45,7 +46,7 @@ class FactoryTest extends TestCase
         $this->expectExceptionMessage('Cannot build testTree data without one of these parameters: age, height, circumference');
 
         $factory = $this->getTreeDataFactory();
-        $data = $factory->testTree(['wat' => '100cm']);
+        $data = $factory->build('testTree', ['wat' => '100cm']);
     }
 
     /**
@@ -55,7 +56,26 @@ class FactoryTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
 
-        $data = $factory->testTree(['circumference' => '33cm']);
+        $data = $factory->build('testTree', ['circumference' => '33cm']);
+
+        $this->assertNotNull($data);
+        $this->assertEquals('Test Tree', $data->getPopularName());
+        $this->assertEquals(['Test Tree', 'Common Test Tree', 'Black Test Tree', 'European Test Tree'], $data->getCommonNames());
+        $this->assertEquals(['TestTree glutinosa'], $data->getScientificName());
+    }
+
+    /**
+     * @test
+     */
+    public function the_factory_can_build_tree_data_with_a_provided_species_config_file(): void
+    {
+        $factory = $this->getTreeDataFactory();
+
+        $configLoader = new ConfigLoader();
+        $configLoader->setDataDir(__DIR__.'/data');
+        $treeConfig = $configLoader->getConfigFor('testTree');
+
+        $data = $factory->buildFromConfig($treeConfig, ['circumference' => '33cm']);
 
         $this->assertNotNull($data);
         $this->assertEquals('Test Tree', $data->getPopularName());

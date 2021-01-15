@@ -16,7 +16,7 @@ class RegressionTest extends TestCase
     public function age_from_height_regression(): void
     {
         $factory = $this->getTreeDataFactory();
-        $data = $factory->testTree([
+        $data = $factory->build('testTree', [
             'height'   => '10cm',
         ]);
 
@@ -51,7 +51,7 @@ class RegressionTest extends TestCase
     public function height_from_age_regression(): void
     {
         $factory = $this->getTreeDataFactory();
-        $data = $factory->testTree([
+        $data = $factory->build('testTree', [
             'height'   => '10cm',
         ]);
 

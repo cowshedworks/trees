@@ -16,7 +16,7 @@ class TreeDataEstimatesTest extends TestCase
     public function growth_rates_are_expected(): void
     {
         $factory = $this->getTreeDataFactory();
-        $data = $factory->testTree(['height' => '10m']);
+        $data = $factory->build('testTree', ['height' => '10m']);
 
         $this->assertEquals('65 cm', $data->getAverageAnnualHeightGrowthRate()->describe());
         $this->assertEquals('2.4 cm', $data->getAverageAnnualCircumferenceGrowthRate()->describe());
@@ -28,7 +28,7 @@ class TreeDataEstimatesTest extends TestCase
     public function growth_rates_are_default_when_not_provided(): void
     {
         $factory = $this->getTreeDataFactoryWithEmptyData();
-        $data = $factory->testTree(['height' => '10m']);
+        $data = $factory->build('testTree', ['height' => '10m']);
 
         $this->assertEquals('60 cm', $data->getAverageAnnualHeightGrowthRate()->describe());
         $this->assertEquals('2.5 cm', $data->getAverageAnnualCircumferenceGrowthRate()->describe());
@@ -41,7 +41,7 @@ class TreeDataEstimatesTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
 
-        $data = $factory->testTree(['height' => '10m']);
+        $data = $factory->build('testTree', ['height' => '10m']);
 
         $this->assertEquals('1000 cm', $data->getHeight()->describe());
         $this->assertEquals('8.69 years', $data->getAge()->describe());
@@ -56,7 +56,7 @@ class TreeDataEstimatesTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
 
-        $data = $factory->testTree(['circumference' => '42cm']);
+        $data = $factory->build('testTree', ['circumference' => '42cm']);
 
         $this->assertEquals('1791.21 cm', $data->getHeight()->describe());
         $this->assertEquals('17.5 years', $data->getAge()->describe());
@@ -71,7 +71,7 @@ class TreeDataEstimatesTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
 
-        $data = $factory->testTree(['age' => '17years']);
+        $data = $factory->build('testTree', ['age' => '17years']);
 
         $this->assertEquals('1765.11 cm', $data->getHeight()->describe());
         $this->assertEquals('17 years', $data->getAge()->describe());

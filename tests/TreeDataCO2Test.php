@@ -16,7 +16,7 @@ class TreeDataCO2Test extends TestCase
     public function co2_sequestration_can_be_calculated(): void
     {
         $factory = $this->getTreeDataFactory();
-        $data = $factory->testTree([
+        $data = $factory->build('testTree', [
             'age'      => '10years',
             'diameter' => '8in',
             'height'   => '15ft',

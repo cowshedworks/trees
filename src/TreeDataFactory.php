@@ -23,17 +23,11 @@ class TreeDataFactory
 
     private function checkCanBuild(string $treeName, array $userParameters): void
     {
-        try {
-            $configParameter = $userParameters[0];
-        } catch (Exception $exception) {
-            throw new Exception('No config provided');
-        }
-
-        if (false === is_array($configParameter) || count($configParameter) < 1) {
+        if (false === is_array($userParameters) || count($userParameters) < 1) {
             throw new Exception("Cannot build {$treeName} data without one of these parameters: age, height, circumference");
         }
 
-        if (false === TreeData::validateTreeParameters($configParameter)) {
+        if (false === TreeData::validateTreeParameters($userParameters)) {
             throw new Exception("Cannot build {$treeName} data without one of these parameters: age, height, circumference");
         }
 
@@ -46,23 +40,27 @@ class TreeDataFactory
         }
     }
 
-    private function build(string $treeName, array $userParameters): TreeData
+    public function build(string $treeName, array $userParameters): TreeData
     {
+        $this->checkCanBuild($treeName, $userParameters);
+
         return new TreeData(
             $this->configLoader->getConfigFor($treeName),
-            $userParameters[0] ?? []
+            $userParameters ?? []
         );
     }
+
+    public function buildFromConfig(array $treeConfigData, array $userParameters): TreeData
+    {
+        return new TreeData(
+            $treeConfigData,
+            $userParameters ?? []
+        );
+    }
+    
 
     public function getSpeciesFileData(string $fileName)
     {
         return $this->configLoader->getConfigFor($fileName);
-    }
-
-    public function __call($method, $userParameters)
-    {
-        $this->checkCanBuild($method, $userParameters);
-
-        return $this->build($method, $userParameters);
     }
 }
