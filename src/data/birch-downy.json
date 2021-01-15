@@ -1,0 +1,45 @@
+{
+    "name": {
+        "popular": "Birch (Downy)",
+        "common": ["Downy birch", "Hairy birch", "Moor birch", "White birch", "Common white birch", "European white birch"],
+        "scientific": ["Betula pubescens"],
+        "family": "Betulaceae"
+    },
+    "attributes": {
+        "shape": "",
+        "dimensions": {
+            "max-height": {
+                "unit": "cm",
+                "value": 3000
+            },
+            "max-circumference": {
+                "unit": "cm",
+                "value": 300
+            },
+            "max-diameter": {
+                "unit": "cm",
+                "value": 100
+            }
+        },
+        "age": {
+            "max-average": {
+                "unit": "years",
+                "value": 50
+            }
+        },
+        "growth-rate": {
+            "annual-average-height": null,
+            "annual-average-circumference": null,
+            "height-regression-seed": null
+        }
+    },
+    "information": {
+        "origin": "Native",
+        "habitat": "Common in Britain in woodland, likes damp soils and can live in peat bogs.",
+        "leaves": null,
+        "flowers": null,
+        "fruits": null,
+        "wildlife": null,
+        "uses": null
+    }
+}
