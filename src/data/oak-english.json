@@ -1,0 +1,46 @@
+{
+    "name": {
+        "popular": "Oak (English) (Incomplete)",
+        "common": [""],
+        "scientific": [""],
+        "family": ""
+    },
+    "attributes": {
+        "shape": "",
+        "dimensions": {
+            "max-height": {
+                "unit": "cm",
+                "value": null
+            },
+            "max-circumference": {
+                "unit": "cm",
+                "value": null
+            },
+            "max-diameter": {
+                "unit": "cm",
+                "value": null
+            }
+        },
+        "age": {
+            "max-average": {
+                "unit": "years",
+                "value": null
+            }
+        },
+        "growth-rate": {
+            "annual-average-height": null,
+            "annual-average-circumference": null,
+            "height-regression-seed": null
+        }
+    },
+    "information": {
+        "type": "Deciduous|Evergreen",
+        "origin": "Native|Non-native",
+        "habitat": "",
+        "leaves": null,
+        "flowers": null,
+        "fruits": null,
+        "wildlife": null,
+        "uses": null
+    }
+}
