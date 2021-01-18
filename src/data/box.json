@@ -1,16 +1,16 @@
 {
     "name": {
         "popular": "Box (Incomplete)",
-        "common": [""],
-        "scientific": [""],
-        "family": ""
+        "common": ["Common box","European box"],
+        "scientific": ["Buxus sempervirens"],
+        "family": "Buxaceae"
     },
     "attributes": {
         "shape": "",
         "dimensions": {
             "max-height": {
                 "unit": "cm",
-                "value": null
+                "value": 800
             },
             "max-circumference": {
                 "unit": "cm",
@@ -24,7 +24,7 @@
         "age": {
             "max-average": {
                 "unit": "years",
-                "value": null
+                "value": 200
             }
         },
         "growth-rate": {
@@ -34,13 +34,13 @@
         }
     },
     "information": {
-        "type": "Deciduous|Evergreen",
-        "origin": "Native|Non-native",
-        "habitat": "",
-        "leaves": null,
-        "flowers": null,
-        "fruits": null,
-        "wildlife": null,
+        "type": "Evergreen",
+        "origin": "Native",
+        "habitat": "A popular hedging plant in large and formal gardens, it is native to the clay and sandy soils of southern England and can be found in the wild across Box Hill in Surrey, the North Downs, the Chilterns and the Cotswolds",
+        "leaves": "The box tree has simple, leathery, shiny leaves followed by pale green to brown fruits,
+        "flowers": "Clusters of subtle, pale, yellow flowers"
+        "fruits": "Pale green and brown fruits"
+        "wildlife": "Bees are attractive by the leaves' sweet smell, whilst the dense nature of its foliage makes it ideal as a cover for birds and small mammals",
         "uses": null
     }
 }
