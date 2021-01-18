@@ -1,16 +1,16 @@
 {
     "name": {
         "popular": "Blackthorn (Incomplete)",
-        "common": [""],
-        "scientific": [""],
-        "family": ""
+        "common": ["Sloe"],
+        "scientific": ["Prunus spinosa","Prunus platyphylla","Prunus stilboacantha"],
+        "family": "Rosaceae"
     },
     "attributes": {
         "shape": "",
         "dimensions": {
             "max-height": {
                 "unit": "cm",
-                "value": null
+                "value": 4000
             },
             "max-circumference": {
                 "unit": "cm",
@@ -24,7 +24,7 @@
         "age": {
             "max-average": {
                 "unit": "years",
-                "value": null
+                "value": 50
             }
         },
         "growth-rate": {
@@ -34,13 +34,13 @@
         }
     },
     "information": {
-        "type": "Deciduous|Evergreen",
-        "origin": "Native|Non-native",
-        "habitat": "",
-        "leaves": null,
-        "flowers": null,
-        "fruits": null,
+        "type": "Deciduous",
+        "origin": "Native",
+        "habitat": "The Blackthorn tree is commonly found in well-drained, damp soil enjoying full sunlight. Although it is commonly found as a hedging plant in gardens, it also grows naturally in scrub, copses and woodland.",
+        "leaves": "Dark green ovate leaves",
+        "flowers": "Small white flowers emerge in early spring",
+        "fruits": "Black, rounded black fruits known as Sloe berries emerge following flowering",
         "wildlife": null,
-        "uses": null
+        "uses": "Sloe berries are used most commonly as an integral element of Christmas sloe gin. Hawthorn wood has traditionally been used for making walking and horse riding sticks.", 
     }
 }
