@@ -1,9 +1,9 @@
 {
     "name": {
         "popular": "Blackthorn (Incomplete)",
-        "common": [""],
-        "scientific": [""],
-        "family": ""
+        "common": ["Sloe"],
+        "scientific": ["Prunus spinosa"],
+        "family": "Rosaceae"
     },
     "attributes": {
         "shape": "",
