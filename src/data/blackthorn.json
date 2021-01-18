@@ -10,7 +10,7 @@
         "dimensions": {
             "max-height": {
                 "unit": "cm",
-                "value": null
+                "value": 2000
             },
             "max-circumference": {
                 "unit": "cm",
