@@ -2,7 +2,7 @@
     "name": {
         "popular": "Blackthorn (Incomplete)",
         "common": ["Sloe"],
-        "scientific": ["Prunus spinosa"],
+        "scientific": ["Prunus spinosa","Prunus platyphylla","Prunus stilboacantha"],
         "family": "Rosaceae"
     },
     "attributes": {
@@ -10,7 +10,7 @@
         "dimensions": {
             "max-height": {
                 "unit": "cm",
-                "value": 2000
+                "value": 4000
             },
             "max-circumference": {
                 "unit": "cm",
@@ -24,7 +24,7 @@
         "age": {
             "max-average": {
                 "unit": "years",
-                "value": null
+                "value": 50
             }
         },
         "growth-rate": {
