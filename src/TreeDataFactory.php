@@ -24,11 +24,11 @@ class TreeDataFactory
     private function checkCanBuild(string $treeName, array $userParameters): void
     {
         if (false === is_array($userParameters) || count($userParameters) < 1) {
-            throw new Exception("Cannot build {$treeName} data without one of these parameters: age, height, circumference");
+            throw new Exception("Cannot build {$treeName} data without at least these parameters: height, circumference");
         }
 
         if (false === TreeData::validateTreeParameters($userParameters)) {
-            throw new Exception("Cannot build {$treeName} data without one of these parameters: age, height, circumference");
+            throw new Exception("Cannot build {$treeName} data without at least these parameters: height, circumference");
         }
 
         if (count($this->availableTrees) === 0) {

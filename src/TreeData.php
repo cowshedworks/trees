@@ -34,11 +34,9 @@ class TreeData
 
     const DEFAULT_CIRCUMFERENCE_GROWTH_RATE = 2.5;
 
-    public static array $requiredvalidParameters = [
+    public static array $requiredParameters = [
         'circumference',
-        'age',
         'height',
-        'diameter',
     ];
 
     public string $observationTimestampLabel = 'observed';
@@ -83,8 +81,8 @@ class TreeData
     {
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
-        $this->resolveObservationDate($treeData);
         $this->resolveProvidedAttributes($treeData);
+        $this->resolveObservationDate($treeData);
         $this->executeStrategies();
         $this->calculateRates();
         $this->calculateWeights();
@@ -307,11 +305,9 @@ class TreeData
 
     public static function validateTreeParameters(array $treeParameters): bool
     {
-        $totalValidParams = count(self::$requiredvalidParameters);
+        $missingRequiredParameters = array_diff(self::$requiredParameters, array_keys($treeParameters));
 
-        $validParamsNotProvided = array_diff(self::$requiredvalidParameters, array_keys($treeParameters));
-
-        return count($validParamsNotProvided) != $totalValidParams;
+        return count($missingRequiredParameters) === 0;
     }
 
     private function resolveObservationDate(array $treeData): void
@@ -336,7 +332,7 @@ class TreeData
             }
         }
 
-        foreach (self::$requiredvalidParameters as $parameter) {
+        foreach (self::$requiredParameters as $parameter) {
             if (false === isset($treeData[$parameter])) {
                 continue;
             }

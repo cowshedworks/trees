@@ -43,7 +43,7 @@ class FactoryTest extends TestCase
     public function the_factory_will_not_build_when_unknown_params_are_provided(): void
     {
         $this->expectException(Exception::class);
-        $this->expectExceptionMessage('Cannot build testTree data without one of these parameters: age, height, circumference');
+        $this->expectExceptionMessage('Cannot build testTree data without at least these parameters: height, circumference');
 
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', ['wat' => '100cm']);
@@ -56,7 +56,7 @@ class FactoryTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
 
-        $data = $factory->build('testTree', ['circumference' => '33cm']);
+        $data = $factory->build('testTree', ['circumference' => '33cm', 'height' => '2000cm']);
 
         $this->assertNotNull($data);
         $this->assertEquals('Test Tree', $data->getPopularName());
