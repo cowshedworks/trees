@@ -9,8 +9,7 @@
         "shape": "",
         "dimensions": {
             "max-height": null,
-            "max-circumference": null,
-            "max-diameter": null
+            "max-circumference": null
         },
         "growth-rate": {
             "annual-average-height": null,

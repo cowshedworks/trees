@@ -15,10 +15,6 @@
             "max-circumference": {
                 "unit": "cm",
                 "value": 300
-            },
-            "max-diameter": {
-                "unit": "cm",
-                "value": 100
             }
         },
         "growth-rate": {
