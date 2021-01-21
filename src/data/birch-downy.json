@@ -21,13 +21,7 @@
                 "value": 100
             }
         },
-        "age": {
-            "max-average": {
-                "unit": "years",
-                "value": 50
-            }
-        },
-        "growth-rate": {
+        "annual-growth-rate": {
             "annual-average-height": null,
             "annual-average-circumference": null
         }
@@ -35,6 +29,7 @@
     "information": {
         "type": "Deciduous",
         "origin": "Native",
+        "about": "",
         "habitat": "Common in Britain in woodland, likes damp soils and can live in peat bogs.",
         "leaves": null,
         "flowers": null,

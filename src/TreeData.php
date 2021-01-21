@@ -143,11 +143,6 @@ class TreeData
         return $this->getSpeciesData('name.scientific');
     }
 
-    public function getMaxAge(): float
-    {
-        return $this->getSpeciesData('attributes.age.max-average.value');
-    }
-
     public function getMaxHeight(): float
     {
         return $this->getSpeciesData('attributes.dimensions.max-height.value');

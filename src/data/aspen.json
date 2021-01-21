@@ -21,13 +21,7 @@
                 "value": 45
             }
         },
-        "age": {
-            "max-average": {
-                "unit": "years",
-                "value": 400
-            }
-        },
-        "growth-rate": {
+        "annual-growth-rate": {
             "annual-average-height": null,
             "annual-average-circumference": null
         }
@@ -35,6 +29,7 @@
     "information": {
         "type": "Deciduous",
         "origin": "Native",
+        "about": "",
         "habitat": "Common in Britain, likes open sunlight and moist soil, intolerant of shade.",
         "leaves": null,
         "flowers": null,

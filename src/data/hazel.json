@@ -21,13 +21,7 @@
                 "value": null
             }
         },
-        "age": {
-            "max-average": {
-                "unit": "years",
-                "value": null
-            }
-        },
-        "growth-rate": {
+        "annual-growth-rate": {
             "annual-average-height": null,
             "annual-average-circumference": null
         }
@@ -35,6 +29,7 @@
     "information": {
         "type": "Deciduous|Evergreen",
         "origin": "Native|Non-native",
+"about": "",
         "habitat": "",
         "leaves": null,
         "flowers": null,

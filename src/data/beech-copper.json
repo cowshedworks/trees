@@ -21,13 +21,7 @@
                 "value": 200
             }
         },
-        "age": {
-            "max-average": {
-                "unit": "years",
-                "value": 300
-            }
-        },
-        "growth-rate": {
+        "annual-growth-rate": {
             "annual-average-height": null,
             "annual-average-circumference": null
         }
@@ -35,6 +29,7 @@
     "information": {
         "type": "Deciduous",
         "origin": "Non-Native",
+        "about": "",
         "habitat": "Generally planted as an ornamental tree in Britain, likes fertile, calcified soils.",
         "leaves": null,
         "flowers": null,

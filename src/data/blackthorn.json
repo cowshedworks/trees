@@ -21,13 +21,7 @@
                 "value": null
             }
         },
-        "age": {
-            "max-average": {
-                "unit": "years",
-                "value": 50
-            }
-        },
-        "growth-rate": {
+        "annual-growth-rate": {
             "annual-average-height": null,
             "annual-average-circumference": null
         }
@@ -35,6 +29,7 @@
     "information": {
         "type": "Deciduous",
         "origin": "Native",
+        "about": "",
         "habitat": "The Blackthorn tree is commonly found in well-drained, damp soil enjoying full sunlight. Although it is commonly found as a hedging plant in gardens, it also grows naturally in scrub, copses and woodland.",
         "leaves": "Dark green ovate leaves",
         "flowers": "Small white flowers emerge in early spring",

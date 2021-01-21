@@ -21,13 +21,7 @@
                 "value": 55
             }
         },
-        "age": {
-            "max-average": {
-                "unit": "years",
-                "value": 100
-            }
-        },
-        "growth-rate": {
+        "annual-growth-rate": {
             "annual-average-height": {
                 "unit": "cm",
                 "value": 60
@@ -41,6 +35,7 @@
     "information": {
         "type": "Deciduous",
         "origin": "Native",
+        "about": "",
         "habitat": "Wildly planted.",
         "leaves": null,
         "flowers": null,

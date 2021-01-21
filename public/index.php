@@ -99,7 +99,6 @@ try {
                     echo '</td></tr>';
                     echo "<tr class='border'><td class='p-3'>Habitat</td><td class='p-3'>{$treeData->getHabitat()}</td></tr>";
                     echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Tree Attributes</td></tr>";
-                    echo "<tr class='border'><td class='p-3'>Average Max Age</td><td class='p-3'>{$treeData->getMaxAge()}</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Current Age</td><td class='p-3'>{$treeData->getAge()}</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>{$treeData->getHeight()}</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Circumference:</td><td class='p-3'>{$treeData->getCircumference()}</td></tr>";
