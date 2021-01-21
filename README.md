@@ -26,17 +26,18 @@ print_r($factory->getTrees());
 // prints ['alder', 'birch', 'oak']
 ```
 
-To instantiate a tree data object you need to pass parameters to the constructor, it will require one of 'circumference', 'diameter', 'age', or 'height' in order to build the object.
+To instantiate a tree data object you need to pass parameters to the constructor, it requires 'circumference' and 'height' in order to build the object. You can also pass it a known 'age' in years and an observed date 'YYYY-MM-DD'.
 
-If any of 'circumference', 'diameter', 'age', or 'height' are not provided when building the object it will attempt to guess them using values from the species data. These values are needed for the CO2 sequestration calculations, the more accurate the data you provide when building the object the more accurate the calculations will be.
+If age if omitted from the parameters it will attempt to calculate it from species growth rates.
 
-That said, these are general calculations intended for approximations, there are lots of factors that will affect these values in the real world.
+If an observed date is provided it will recalculate the tree age and then estimate circumference and height based on growth rates for the time since the observed date.
+
 
 ```PHP
 $treeData = $factory->build('alder', [
-    'age'      => '10years',
-    'diameter' => '8in',
-    'height'   => '15ft'
+  'age'      => '10years',
+  'circumference' => '22in',
+  'height'   => '15ft'
 ]);
 
 echo $treeData->getPopularName();
@@ -57,11 +58,11 @@ print_r($treeData->getScientificName());
 echo $treeData->getAge();
 // 10 years
 echo $treeData->getCarbonWeight();
-// 47.15 kg
+// 36.3 kg
 echo $treeData->getCO2SequestrationPerYear();
-// 17.29 kg
+// 13.31 kg
 echo $treeData->getCO2SequestrationToDate();
-// 172.87 kg
+// 133.09
 ```
 
 
