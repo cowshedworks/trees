@@ -137,7 +137,7 @@ class TreeDataTest extends TestCase
         $this->assertEquals($observationDate, $data->getObservedDate()->format('Y-m-d'));
         $this->assertEquals('34.64 years', $data->getAge()->describe());
         $this->assertEquals('2251.42 cm', $data->getHeight()->describe());
-        $this->assertEquals('83.14 cm', $data->getCircumference()->describe());
-        $this->assertEquals('26.46 cm', $data->getDiameter()->describe());
+        $this->assertEquals('82.05 cm', $data->getCircumference()->describe());
+        $this->assertEquals('26.12 cm', $data->getDiameter()->describe());
     }
 }

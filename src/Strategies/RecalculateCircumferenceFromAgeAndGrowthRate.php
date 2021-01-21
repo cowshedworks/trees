@@ -10,26 +10,31 @@ class RecalculateCircumferenceFromAgeAndGrowthRate extends StrategyAbstract
 {
     public function execute(TreeData $treeData): void
     {
-        $treeAge = $treeData->getAge();
-        $annualAverageCircumferenceGrowthRate = $treeData->getAverageAnnualCircumferenceGrowthRate();
+        $treeCircumference = $treeData->getCircumference();
+        $averageAnnualCircumferenceGrowthRate = $treeData->getAverageAnnualCircumferenceGrowthRate();
 
-        $circumference = $treeAge->getValue() * $annualAverageCircumferenceGrowthRate->getValue();
+        $yearsCircumferenceGrowthToEstimate = $treeData->getObservationDateDiffYears();
+        $growthForEstimate = $yearsCircumferenceGrowthToEstimate * $averageAnnualCircumferenceGrowthRate->getValue();
+
+        $newCircumferenceFromCircumferenceAndEstimate = $treeCircumference->getValue() + $growthForEstimate;
+
+
         $maxed = false;
-        if ($circumference > $treeData->getMaxCircumference()) {
-            $circumference = $treeData->getMaxCircumference();
+        if ($newCircumferenceFromCircumferenceAndEstimate > $treeData->getMaxCircumference()) {
+            $newCircumferenceFromCircumferenceAndEstimate = $treeData->getMaxCircumference();
             $maxed = true;
         }
 
         $treeData->setCircumference(
             $this->unitValueFactory->circumference(
-                $circumference,
+                $newCircumferenceFromCircumferenceAndEstimate,
                 'cm'
             )
         );
 
         $treeData->logBuild(sprintf(
             'Circumference (%dcm%s) calculated from growth rate',
-            round($circumference),
+            round($newCircumferenceFromCircumferenceAndEstimate),
             $maxed ? ' (max) ' : ''
         ));
     }
