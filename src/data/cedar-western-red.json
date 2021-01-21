@@ -12,14 +12,8 @@
                 "unit": "cm",
                 "value": 3500
             },
-            "max-circumference": {
-                "unit": "cm",
-                "value": null
-            },
-            "max-diameter": {
-                "unit": "cm",
-                "value": null
-            }
+            "max-circumference": null,
+            "max-diameter": null
         },
         "growth-rate": {
             "annual-average-height": 70,

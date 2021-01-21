@@ -8,18 +8,9 @@
     "attributes": {
         "shape": "",
         "dimensions": {
-            "max-height": {
-                "unit": "cm",
-                "value": null
-            },
-            "max-circumference": {
-                "unit": "cm",
-                "value": null
-            },
-            "max-diameter": {
-                "unit": "cm",
-                "value": null
-            }
+            "max-height": null,
+            "max-circumference": null,
+            "max-diameter": null
         },
         "growth-rate": {
             "annual-average-height": null,
