@@ -44,7 +44,7 @@ class TreeDataFactory
     {
         $this->checkCanBuild($treeName, $userParameters);
 
-        return new TreeData(
+        return $this->buildFromConfig(
             $this->configLoader->getConfigFor($treeName),
             $userParameters ?? []
         );

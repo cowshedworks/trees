@@ -353,26 +353,35 @@ class TreeData
 
     private function executeStrategies(): void
     {
+        // Step 1 - resolve the age of the tree for the provided attributes
         if ($this->age === null) {
             $this->executeAgeStrategy();
         }
 
+        // Step 2 - if the data is from a known date re-calculate the attributes
+        // and age based on that date 
         if ($this->hasOlderObservedAge()) {
-            (new RecalculateAgeFromObservedAge())->execute($this);
-            $this->resetAttributesForRecalculation();
+
+            $this->executeRecalculateStrategy();
+
+            return;
         }
 
-        if ($this->height === null) {
-            (new HeightFromAgeAndGrowthRate())->execute($this);
-        }
+        // if ($this->height === null) {
+        //     (new HeightFromAgeAndGrowthRate())->execute($this);
+        // }
 
-        if ($this->circumference === null) {
-            (new CircumferenceFromAgeAndGrowthRate())->execute($this);
-        }
+        // if ($this->circumference === null) {
+        //     (new CircumferenceFromAgeAndGrowthRate())->execute($this);
+        // }
 
-        if ($this->diameter === null) {
-            (new DiameterFromCircumference())->execute($this);
-        }
+        // Step 3 - calculate the diameter, this is always a function of the circumference
+        (new DiameterFromCircumference())->execute($this);
+    }
+
+    private function executeRecalculateStrategy(): void
+    {
+        (new RecalculateAgeFromObservedAge())->execute($this);
     }
 
     private function executeAgeStrategy(): void

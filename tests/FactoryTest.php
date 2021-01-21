@@ -56,7 +56,11 @@ class FactoryTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
 
-        $data = $factory->build('testTree', ['circumference' => '33cm', 'height' => '2000cm']);
+        $data = $factory->build('testTree', [
+            'circumference' => '33cm',
+            'height' => '2000cm'
+            ]
+        );
 
         $this->assertNotNull($data);
         $this->assertEquals('Test Tree', $data->getPopularName());
@@ -75,7 +79,11 @@ class FactoryTest extends TestCase
         $configLoader->setDataDir(__DIR__.'/data');
         $treeConfig = $configLoader->getConfigFor('testTree');
 
-        $data = $factory->buildFromConfig($treeConfig, ['circumference' => '33cm']);
+        $data = $factory->buildFromConfig($treeConfig, [
+                'circumference' => '33cm',
+                'height' => '2000cm'
+            ]
+        );
 
         $this->assertNotNull($data);
         $this->assertEquals('Test Tree', $data->getPopularName());
