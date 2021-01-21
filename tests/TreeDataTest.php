@@ -19,7 +19,7 @@ class TreeDataTest extends TestCase
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
             'circumference' => '33cm',
-            'height' => '300cm'
+            'height'        => '300cm',
         ]);
 
         $this->assertEquals('4.62 years', $data->getAge()->describe());
@@ -30,7 +30,7 @@ class TreeDataTest extends TestCase
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
             'circumference' => '33 cm',
-            'height' => '300 cm'
+            'height'        => '300 cm',
         ]);
 
         $this->assertEquals('4.62 years', $data->getAge()->describe());
@@ -47,7 +47,7 @@ class TreeDataTest extends TestCase
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
             'circumference' => '33cm',
-            'height' => '300 cm'
+            'height'        => '300 cm',
         ]);
 
         $this->assertEquals('4.62 years', $data->getAge()->describe());
@@ -82,7 +82,7 @@ class TreeDataTest extends TestCase
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
             'circumference' => '33cm',
-            'height' => '300 cm'
+            'height'        => '300 cm',
         ]);
 
         $today = new DateTime();
@@ -97,9 +97,9 @@ class TreeDataTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
-            'height'   => '300cm',
+            'height'        => '300cm',
             'circumference' => '33cm',
-            'observed' => '1977-11-21',
+            'observed'      => '1977-11-21',
         ]);
 
         $this->assertEquals('1977-11-21', $data->getObservedDate()->format('Y-m-d'));
