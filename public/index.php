@@ -20,7 +20,6 @@ use CowshedWorks\Trees\TreeDataFactory;
 $factory = new TreeDataFactory();
 
 $species = $_GET['species'] ?? 'alder';
-$currentDiameter = $_GET['diameter'] ?? null;
 $currentCircumference = $_GET['circumference'] ?? null;
 $currentHeight = $_GET['height'] ?? '28m';
 $currentAge = $_GET['age'] ?? null;
@@ -28,7 +27,6 @@ $currentObservedDate = $_GET['observed'] ?? '2001-01-01';
 
 $treeParameters = [
     'age'             => $currentAge,
-    'diameter'        => $currentDiameter,
     'circumference'   => $currentCircumference,
     'height'          => $currentHeight,
     'observed'        => $currentObservedDate,
@@ -56,27 +54,23 @@ $treeParameters = [
             </select>
           </div>
           <div class="flex flex-col mb-4">
-            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="height">Height</label>
-            <input class="border py-2 px-3 text-grey-darkest" type="text" name="height" placeholder="height" value="<?php echo $currentHeight; ?>"">
+            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="height">Height *</label>
+            <input class="border py-2 px-3 text-grey-darkest" type="text" name="height" placeholder="height" required value="<?php echo $currentHeight; ?>"">
           </div>
           <div class="flex flex-col mb-4">
-            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="diameter">Diameter</label>
-            <input class="border py-2 px-3 text-grey-darkest" type="text" name="diameter" placeholder="diameter" value="<?php echo $currentDiameter; ?>"">
+            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="circumference">Circumference *</label>
+            <input class="border py-2 px-3 text-grey-darkest" type="text" name="circumference" placeholder="circumference" required value="<?php echo $currentCircumference; ?>"">
           </div>
-          <div class="flex flex-col mb-4">
-            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="circumference">Circumference</label>
-            <input class="border py-2 px-3 text-grey-darkest" type="text" name="circumference" placeholder="circumference" value="<?php echo $currentCircumference; ?>"">
-          </div>
+          <hr class="my-5">
           <div class="flex flex-col mb-4">
             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="observed">Observed</label>
             <input class="border py-2 px-3 text-grey-darkest" type="text" name="observed" placeholder="eg 1990-01-04" value="<?php echo $currentObservedDate; ?>"">
           </div>
-          <button class="block bg-green-600 hover:bg-green-700 uppercase text-lg text-white mx-auto p-4 rounded" type="submit">Build Tree Data</button>
-          <br><br>
           <div class="flex flex-col mb-4">
             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="age">Age</label>
             <input class="border py-2 px-3 text-grey-darkest" type="text" name="age" placeholder="age" value="<?php echo $currentAge; ?>"">
           </div>
+          <button class="block bg-green-600 hover:bg-green-700 uppercase text-lg text-white mx-auto p-4 rounded" type="submit">Build Tree Data</button>
         </form>
       </div>
     </div>
