@@ -18,7 +18,6 @@ class RecalculateCircumferenceFromAgeAndGrowthRate extends StrategyAbstract
 
         $newCircumferenceFromCircumferenceAndEstimate = $treeCircumference->getValue() + $growthForEstimate;
 
-
         $maxed = false;
         if ($newCircumferenceFromCircumferenceAndEstimate > $treeData->getMaxCircumference()) {
             $newCircumferenceFromCircumferenceAndEstimate = $treeData->getMaxCircumference();
