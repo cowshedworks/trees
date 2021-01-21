@@ -20,7 +20,7 @@ use CowshedWorks\Trees\TreeDataFactory;
 $factory = new TreeDataFactory();
 
 $species = $_GET['species'] ?? 'alder';
-$currentCircumference = $_GET['circumference'] ?? null;
+$currentCircumference = $_GET['circumference'] ?? '170cm';
 $currentHeight = $_GET['height'] ?? '28m';
 $currentAge = $_GET['age'] ?? null;
 $currentObservedDate = $_GET['observed'] ?? '2001-01-01';

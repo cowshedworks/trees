@@ -31,8 +31,9 @@ use Exception;
 class TreeData
 {
     const DEFAULT_HEIGHT_GROWTH_RATE = 60;
-
     const DEFAULT_CIRCUMFERENCE_GROWTH_RATE = 2.5;
+    const DEFAULT_MAX_HEIGHT = 40;
+    const DEFAULT_MAX_CIRCUMFERENCE = 400;
 
     public static array $requiredParameters = [
         'circumference',
@@ -145,12 +146,16 @@ class TreeData
 
     public function getMaxHeight(): float
     {
-        return $this->getSpeciesData('attributes.dimensions.max-height.value');
+        $maxHeightFromData = $this->getSpeciesData('attributes.dimensions.max-height.value');
+
+        return $maxHeightFromData ?? self::DEFAULT_MAX_HEIGHT;
     }
 
     public function getMaxCircumference(): float
     {
-        return $this->getSpeciesData('attributes.dimensions.max-circumference.value');
+        $maxCircumferenceFromData = $this->getSpeciesData('attributes.dimensions.max-circumference.value');
+
+        return $maxCircumferenceFromData ?? self::DEFAULT_MAX_CIRCUMFERENCE;
     }
 
     public function setAge(Age $age): void
