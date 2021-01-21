@@ -361,10 +361,7 @@ class TreeData
         // Step 2 - if the data is from a known date re-calculate the attributes
         // and age based on that date 
         if ($this->hasOlderObservedAge()) {
-
             $this->executeRecalculateStrategy();
-
-            return;
         }
 
         // if ($this->height === null) {
