@@ -14,9 +14,9 @@ use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromDiameter;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
-use CowshedWorks\Trees\Strategies\CircumferenceFromAgeAndGrowthRate;
+use CowshedWorks\Trees\Strategies\RecalculateCircumferenceFromAgeAndGrowthRate;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
-use CowshedWorks\Trees\Strategies\HeightFromAgeAndGrowthRate;
+use CowshedWorks\Trees\Strategies\RecalculateHeightFromAgeAndGrowthRate;
 use CowshedWorks\Trees\Strategies\RecalculateAgeFromObservedAge;
 use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Circumference;
@@ -353,32 +353,22 @@ class TreeData
 
     private function executeStrategies(): void
     {
-        // Step 1 - resolve the age of the tree for the provided attributes
         if ($this->age === null) {
             $this->executeAgeStrategy();
         }
 
-        // Step 2 - if the data is from a known date re-calculate the attributes
-        // and age based on that date 
         if ($this->hasOlderObservedAge()) {
             $this->executeRecalculateStrategy();
         }
 
-        // if ($this->height === null) {
-        //     (new HeightFromAgeAndGrowthRate())->execute($this);
-        // }
-
-        // if ($this->circumference === null) {
-        //     (new CircumferenceFromAgeAndGrowthRate())->execute($this);
-        // }
-
-        // Step 3 - calculate the diameter, this is always a function of the circumference
         (new DiameterFromCircumference())->execute($this);
     }
 
     private function executeRecalculateStrategy(): void
     {
         (new RecalculateAgeFromObservedAge())->execute($this);
+        (new RecalculateHeightFromAgeAndGrowthRate())->execute($this);
+        (new RecalculateCircumferenceFromAgeAndGrowthRate())->execute($this);
     }
 
     private function executeAgeStrategy(): void
