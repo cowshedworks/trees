@@ -21,7 +21,7 @@
                 "value": 100
             }
         },
-        "annual-growth-rate": {
+        "growth-rate": {
             "annual-average-height": {
                 "unit": "cm",
                 "value": 60
