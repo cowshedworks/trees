@@ -343,13 +343,6 @@ class TreeData
         }
     }
 
-    private function resetAttributesForRecalculation(): void
-    {
-        $this->circumference = null;
-        $this->height = null;
-        $this->diameter = null;
-    }
-
     private function executeStrategies(): void
     {
         if ($this->age === null) {
