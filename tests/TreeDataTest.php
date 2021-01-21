@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees\Tests;
 
+use DateInterval;
 use DateTime;
 use PHPUnit\Framework\TestCase;
 
@@ -98,7 +99,7 @@ class TreeDataTest extends TestCase
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
             'height'        => '300cm',
-            'circumference' => '33cm',
+            'circumference' => '10cm',
             'observed'      => '1977-11-21',
         ]);
 
@@ -108,20 +109,35 @@ class TreeDataTest extends TestCase
     /**
      * @test
      */
-    public function tree_age_uses_observation_date(): void
+    public function calculates_using_uses_observation_date_if_provided(): void
     {
-        $this->markTestIncomplete();
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->build('testTree', [
+            'height'        => '300cm',
+            'circumference' => '10cm',
+        ]);
+
+        $this->assertEquals('4.62 years', $data->getAge()->describe());
+        $this->assertEquals('300 cm', $data->getHeight()->describe());
+        $this->assertEquals('10 cm', $data->getCircumference()->describe());
+        $this->assertEquals('3.18 cm', $data->getDiameter()->describe());
+
+        // Set an observation date of 30 years ago from now
+        $date = new DateTime();
+        $date->sub(new DateInterval('P30Y'));
+        $observationDate = $date->format('Y-m-d');
 
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
-            'height'   => '10cm',
-            'observed' => '1977-01-04',
+            'height'        => '300cm',
+            'circumference' => '10cm',
+            'observed'      => $observationDate,
         ]);
 
-        $this->assertEquals('1977-01-04', $data->getObservedDate()->format('Y-m-d'));
-        $this->assertEquals('44.29 years', $data->getAge()->describe());
-        $this->assertEquals('2608.7 cm', $data->getHeight()->describe());
-        $this->assertEquals('110.73 cm', $data->getCircumference()->describe());
-        $this->assertEquals('35.25 cm', $data->getDiameter()->describe());
+        $this->assertEquals($observationDate, $data->getObservedDate()->format('Y-m-d'));
+        $this->assertEquals('34.64 years', $data->getAge()->describe());
+        $this->assertEquals('2251.42 cm', $data->getHeight()->describe());
+        $this->assertEquals('83.14 cm', $data->getCircumference()->describe());
+        $this->assertEquals('26.46 cm', $data->getDiameter()->describe());
     }
 }

@@ -10,26 +10,30 @@ class RecalculateHeightFromAgeAndGrowthRate extends StrategyAbstract
 {
     public function execute(TreeData $treeData): void
     {
-        $treeAge = $treeData->getAge();
+        $treeHeight = $treeData->getHeight();
         $averageAnnualHeightGrowthRate = $treeData->getAverageAnnualHeightGrowthRate();
-        $heightFromGrowthRate = $treeAge->getValue() * $averageAnnualHeightGrowthRate->getValue();
+
+        $yearsHeightGrowthToEstimate = $treeData->getObservationDateDiffYears();
+        $growthForEstimate = $yearsHeightGrowthToEstimate * $averageAnnualHeightGrowthRate->getValue();
+
+        $newHeightFromHeightAndEstimate = $treeHeight->getValue() + $growthForEstimate;
 
         $maxed = false;
-        if ($heightFromGrowthRate > $treeData->getMaxHeight()) {
-            $heightFromGrowthRate = $treeData->getMaxHeight();
+        if ($newHeightFromHeightAndEstimate > $treeData->getMaxHeight()) {
+            $newHeightFromHeightAndEstimate = $treeData->getMaxHeight();
             $maxed = true;
         }
 
         $treeData->setHeight(
             $this->unitValueFactory->height(
-                $heightFromGrowthRate,
+                $newHeightFromHeightAndEstimate,
                 'cm'
             )
         );
 
         $treeData->logBuild(sprintf(
             'Height (%dcm%s) calculated from growth rate',
-            round($heightFromGrowthRate),
+            round($newHeightFromHeightAndEstimate),
             $maxed ? ' (max) ' : ''
         ));
     }
