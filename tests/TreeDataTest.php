@@ -17,7 +17,10 @@ class TreeDataTest extends TestCase
     public function tree_data_will_be_calculated_regardless_of_unit_spacing(): void
     {
         $factory = $this->getTreeDataFactory();
-        $data = $factory->build('testTree', ['circumference' => '33cm']);
+        $data = $factory->build('testTree', [
+            'circumference' => '33cm',
+            'height' => '300cm'
+        ]);
 
         $this->assertEquals('13.75 years', $data->getAge()->describe());
         $this->assertEquals('1572.01 cm', $data->getHeight()->describe());
@@ -25,21 +28,10 @@ class TreeDataTest extends TestCase
         $this->assertEquals('10.5 cm', $data->getDiameter()->describe());
 
         $factory = $this->getTreeDataFactory();
-        $data = $factory->build('testTree', ['circumference' => '33 cm']);
-
-        $this->assertEquals('13.75 years', $data->getAge()->describe());
-        $this->assertEquals('1572.01 cm', $data->getHeight()->describe());
-        $this->assertEquals('33 cm', $data->getCircumference()->describe());
-        $this->assertEquals('10.5 cm', $data->getDiameter()->describe());
-    }
-
-    /**
-     * @test
-     */
-    public function tree_data_will_be_calculated_from_circumference(): void
-    {
-        $factory = $this->getTreeDataFactory();
-        $data = $factory->build('testTree', ['circumference' => '33cm']);
+        $data = $factory->build('testTree', [
+            'circumference' => '33 cm',
+            'height' => '300 cm'
+        ]);
 
         $this->assertEquals('13.75 years', $data->getAge()->describe());
         $this->assertEquals('1572.01 cm', $data->getHeight()->describe());
@@ -50,43 +42,18 @@ class TreeDataTest extends TestCase
     /**
      * @test
      */
-    public function tree_data_will_be_calculated_from_diameter(): void
+    public function tree_data_will_be_calculated_from_circumference_and_height(): void
     {
         $factory = $this->getTreeDataFactory();
-        $data = $factory->build('testTree', ['diameter' => '10cm']);
+        $data = $factory->build('testTree', [
+            'circumference' => '33cm',
+            'height' => '300 cm'
+        ]);
 
-        $this->assertEquals('13.09 years', $data->getAge()->describe());
-        $this->assertEquals('1527.16 cm', $data->getHeight()->describe());
-        $this->assertEquals('31.42 cm', $data->getCircumference()->describe());
-        $this->assertEquals('10 cm', $data->getDiameter()->describe());
-    }
-
-    /**
-     * @test
-     */
-    public function tree_data_will_be_calculated_from_age(): void
-    {
-        $factory = $this->getTreeDataFactory();
-        $data = $factory->build('testTree', ['age' => '75years']);
-
-        $this->assertEquals('75 years', $data->getAge()->describe());
-        $this->assertEquals('2800 cm', $data->getHeight()->describe());
-        $this->assertEquals('175 cm', $data->getCircumference()->describe());
-        $this->assertEquals('55 cm', $data->getDiameter()->describe());
-    }
-
-    /**
-     * @test
-     */
-    public function tree_data_will_be_calculated_from_height(): void
-    {
-        $factory = $this->getTreeDataFactory();
-        $data = $factory->build('testTree', ['height' => '10cm']);
-
-        $this->assertEquals('0.25 years', $data->getAge()->describe());
-        $this->assertEquals('10 cm', $data->getHeight()->describe());
-        $this->assertEquals('0.6 cm', $data->getCircumference()->describe());
-        $this->assertEquals('0.19 cm', $data->getDiameter()->describe());
+        $this->assertEquals('13.75 years', $data->getAge()->describe());
+        $this->assertEquals('1572.01 cm', $data->getHeight()->describe());
+        $this->assertEquals('33 cm', $data->getCircumference()->describe());
+        $this->assertEquals('10.5 cm', $data->getDiameter()->describe());
     }
 
     /**
@@ -113,7 +80,10 @@ class TreeDataTest extends TestCase
     public function tree_observation_timestamp_is_set_to_today_if_not_provided(): void
     {
         $factory = $this->getTreeDataFactory();
-        $data = $factory->build('testTree', ['height' => '10cm']);
+        $data = $factory->build('testTree', [
+            'circumference' => '33cm',
+            'height' => '300 cm'
+        ]);
 
         $today = new DateTime();
 
@@ -127,7 +97,8 @@ class TreeDataTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
-            'height'   => '10cm',
+            'height'   => '300cm',
+            'circumference' => '33cm',
             'observed' => '1977-11-21',
         ]);
 

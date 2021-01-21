@@ -39,7 +39,12 @@ class TreeData
         'height',
     ];
 
-    public string $observationTimestampLabel = 'observed';
+    public static array $acceptedParameters = [
+        'circumference',
+        'height',
+        'age',
+        'observed'
+    ];
 
     private array $speciesData;
 
@@ -82,7 +87,6 @@ class TreeData
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
         $this->resolveProvidedAttributes($treeData);
-        $this->resolveObservationDate($treeData);
         $this->executeStrategies();
         $this->calculateRates();
         $this->calculateWeights();
@@ -310,20 +314,6 @@ class TreeData
         return count($missingRequiredParameters) === 0;
     }
 
-    private function resolveObservationDate(array $treeData): void
-    {
-        if (array_key_exists($this->observationTimestampLabel, $treeData)) {
-            $dateString = $treeData[$this->observationTimestampLabel];
-            $this->observedAt = (new DateTime($dateString))->settime(0, 0);
-
-            $this->hasOlderObservedAge = $this->observedAt < new DateTime('midnight');
-
-            return;
-        }
-
-        $this->observedAt = new DateTime('midnight');
-    }
-
     private function resolveProvidedAttributes(array $treeData): void
     {
         foreach ($treeData as $parameter => $data) {
@@ -331,8 +321,18 @@ class TreeData
                 unset($treeData[$parameter]);
             }
         }
+        
+        if (array_key_exists('observed', $treeData)) {
+            $dateString = $treeData['observed'];
+            $this->observedAt = (new DateTime($dateString))->settime(0, 0);
+            $this->hasOlderObservedAge = $this->observedAt < new DateTime('midnight');
 
-        foreach (self::$requiredParameters as $parameter) {
+            return;
+        } else {
+            $this->observedAt = new DateTime('midnight');
+        }
+
+        foreach (self::$acceptedParameters as $parameter) {
             if (false === isset($treeData[$parameter])) {
                 continue;
             }
@@ -370,7 +370,7 @@ class TreeData
         }
 
         if ($this->height === null) {
-            (new HeightFromAge())->execute($this);
+            (new HeightFromAgeAndGrowthRate())->execute($this);
         }
 
         if ($this->circumference === null) {
@@ -389,6 +389,10 @@ class TreeData
 
             return;
         }
+
+        // Height should always be present so these aren't needed
+        // leaving in place as we may add logic to pick the most
+        // accurate based on the tree species
 
         if ($this->circumference) {
             (new AgeFromCircumference())->execute($this);

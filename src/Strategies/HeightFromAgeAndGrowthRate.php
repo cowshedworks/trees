@@ -6,7 +6,7 @@ namespace CowshedWorks\Trees\Strategies;
 
 use CowshedWorks\Trees\TreeData;
 
-class HeightFromAge extends StrategyAbstract
+class HeightFromAgeAndGrowthRate extends StrategyAbstract
 {
     public function execute(TreeData $treeData): void
     {
