@@ -12,7 +12,6 @@ use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
-use CowshedWorks\Trees\Strategies\AgeFromDiameter;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
 use CowshedWorks\Trees\Strategies\RecalculateAgeFromObservedAge;
@@ -385,12 +384,6 @@ class TreeData
 
         if ($this->circumference) {
             (new AgeFromCircumference())->execute($this);
-
-            return;
-        }
-
-        if ($this->diameter) {
-            (new AgeFromDiameter())->execute($this);
 
             return;
         }
