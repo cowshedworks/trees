@@ -1,16 +1,16 @@
 {
     "name": {
         "popular": "Cedar (Western Red) (Incomplete)",
-        "common": [""],
-        "scientific": [""],
-        "family": ""
+        "common": ["Cedar of Lebanon"],
+        "scientific": ["Cedrus libani"],
+        "family": "Pinaceae"
     },
     "attributes": {
         "shape": "",
         "dimensions": {
             "max-height": {
                 "unit": "cm",
-                "value": null
+                "value": 3500
             },
             "max-circumference": {
                 "unit": "cm",
@@ -28,19 +28,19 @@
             }
         },
         "growth-rate": {
-            "annual-average-height": null,
+            "annual-average-height": 70,
             "annual-average-circumference": null,
             "height-regression-seed": null
         }
     },
     "information": {
-        "type": "Deciduous|Evergreen",
-        "origin": "Native|Non-native",
-        "habitat": "",
-        "leaves": null,
-        "flowers": null,
-        "fruits": null,
-        "wildlife": null,
-        "uses": null
+        "type": "Evergreen",
+        "origin": "Non-native",
+        "habitat": "Cedar is native to Lebanon, where it is the national symbol, and is also native to the eastern coast of the Mediterranean and Asia Minor. In the UK, it is typically found in the estates of large stately homes and similar, where it was traditionally planted, but also in mountainous areas including those where snow is often found in the winter months.",
+        "leaves": "Dark green-grey needles with transparent tips. These are found in spirals around side shoots of the branches, in small clusters.",
+        "flowers": "None",
+        "fruits": "The tree is monoecious (both the male and female reproductive organs grow on the same tree); it grows male and female cones.",
+        "wildlife": "As the trees grow and age, splits and crevices appear in the Cedar's trunk and branches where nesting birds including the tawny owl can find shelter. Bats are also typically found sheltering in Cedar trees",
+        "uses": "The Cedar tree can grow extremely tall, which has made it perfect for use in large-scale building projects, particularly in its native middle-east."
     }
 }
