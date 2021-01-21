@@ -23,7 +23,7 @@ class RecalculateAgeFromObservedAge extends StrategyAbstract
 
         $treeData->logBuild(
             sprintf(
-                "Age (%d years) recalculated from observed age",
+                'Age (%d years) recalculated from observed age',
                 round($calculatedAge, 2)
             )
         );

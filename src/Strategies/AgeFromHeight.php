@@ -23,7 +23,7 @@ class AgeFromHeight extends StrategyAbstract
 
         $treeData->logBuild(
             sprintf(
-                "Age (%d years) calculated from height",
+                'Age (%d years) calculated from height',
                 round($calculatedAge, 2)
             )
         );
