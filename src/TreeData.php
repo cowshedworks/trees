@@ -16,7 +16,7 @@ use CowshedWorks\Trees\Strategies\AgeFromDiameter;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\CircumferenceFromAgeAndGrowthRate;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
-use CowshedWorks\Trees\Strategies\HeightFromAge;
+use CowshedWorks\Trees\Strategies\HeightFromAgeAndGrowthRate;
 use CowshedWorks\Trees\Strategies\RecalculateAgeFromObservedAge;
 use CowshedWorks\Trees\UnitValues\Age;
 use CowshedWorks\Trees\UnitValues\Circumference;
@@ -86,6 +86,7 @@ class TreeData
     {
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
+        $this->observedAt = new DateTime('midnight');
         $this->resolveProvidedAttributes($treeData);
         $this->executeStrategies();
         $this->calculateRates();
@@ -321,19 +322,17 @@ class TreeData
                 unset($treeData[$parameter]);
             }
         }
-        
-        if (array_key_exists('observed', $treeData)) {
-            $dateString = $treeData['observed'];
-            $this->observedAt = (new DateTime($dateString))->settime(0, 0);
-            $this->hasOlderObservedAge = $this->observedAt < new DateTime('midnight');
-
-            return;
-        } else {
-            $this->observedAt = new DateTime('midnight');
-        }
 
         foreach (self::$acceptedParameters as $parameter) {
+            
             if (false === isset($treeData[$parameter])) {
+                continue;
+            }
+
+            if ($parameter === 'observed') {
+                $dateString = $treeData['observed'];
+                $this->observedAt = (new DateTime($dateString))->settime(0, 0);
+                $this->hasOlderObservedAge = $this->observedAt < new DateTime('midnight');
                 continue;
             }
 
