@@ -85,7 +85,7 @@ try {
 
                     echo '<table class="table-auto bg-white border w-full">';
                     echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Tree Information</td></tr>";
-                    echo "<tr class='border'><td class='p-3'>Tree Name</td><td class='p-3'>{$treeData->getPopularName()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3 w-1/2'>Tree Name</td><td class='p-3'>{$treeData->getPopularName()}</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Family</td><td class='p-3'>{$treeData->getFamilyName()}</td></tr>";
                     echo '<tr class="border"><td class="p-3">Common Name(s)</td><td class="p-3">';
                     foreach ($treeData->getCommonNames() as $name) {
