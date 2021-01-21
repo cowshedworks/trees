@@ -43,7 +43,7 @@ class TreeData
         'circumference',
         'height',
         'age',
-        'observed'
+        'observed',
     ];
 
     private array $speciesData;
@@ -324,7 +324,6 @@ class TreeData
         }
 
         foreach (self::$acceptedParameters as $parameter) {
-            
             if (false === isset($treeData[$parameter])) {
                 continue;
             }
