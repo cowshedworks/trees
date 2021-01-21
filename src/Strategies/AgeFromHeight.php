@@ -12,14 +12,20 @@ class AgeFromHeight extends StrategyAbstract
     {
         $treeHeight = $treeData->getHeight();
         $averageAnnualHeightGrowthRate = $treeData->getAverageAnnualHeightGrowthRate();
+        $calculatedAge = $treeHeight->getValue() / $averageAnnualHeightGrowthRate->getValue();
 
         $treeData->setAge(
             $this->unitValueFactory->age(
-                $treeHeight->getValue() / $averageAnnualHeightGrowthRate->getValue(),
+                $calculatedAge,
                 'years'
             )
         );
 
-        $treeData->logBuild('Age calculated from height');
+        $treeData->logBuild(
+            sprintf(
+                "Age (%d years) calculated from height",
+                round($calculatedAge, 2)
+            )
+        );
     }
 }

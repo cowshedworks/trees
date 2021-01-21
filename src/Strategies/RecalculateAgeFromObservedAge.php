@@ -12,13 +12,20 @@ class RecalculateAgeFromObservedAge extends StrategyAbstract
     {
         $treeAge = $treeData->getAge();
 
+        $calculatedAge = $treeAge->getValue() + $treeData->getObservationDateDiffYears();
+
         $treeData->setAge(
             $this->unitValueFactory->age(
-                $treeAge->getValue() + $treeData->getObservationDateDiffYears(),
+                $calculatedAge,
                 'years'
             )
         );
 
-        $treeData->logBuild('Age recalculated from observed age');
+        $treeData->logBuild(
+            sprintf(
+                "Age (%d years) recalculated from observed age",
+                round($calculatedAge, 2)
+            )
+        );
     }
 }

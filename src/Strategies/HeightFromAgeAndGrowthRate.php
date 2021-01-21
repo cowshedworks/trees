@@ -28,7 +28,7 @@ class HeightFromAgeAndGrowthRate extends StrategyAbstract
         );
 
         $treeData->logBuild(sprintf(
-            'Height %dcm%s calculated from growth rate',
+            'Height (%dcm%s) calculated from growth rate',
             round($heightFromGrowthRate),
             $maxed ? ' (max) ' : ''
         ));

@@ -32,7 +32,7 @@ class TreeData
 {
     const DEFAULT_HEIGHT_GROWTH_RATE = 60;
     const DEFAULT_CIRCUMFERENCE_GROWTH_RATE = 2.5;
-    const DEFAULT_MAX_HEIGHT = 40;
+    const DEFAULT_MAX_HEIGHT = 4000;
     const DEFAULT_MAX_CIRCUMFERENCE = 400;
 
     public static array $requiredParameters = [
