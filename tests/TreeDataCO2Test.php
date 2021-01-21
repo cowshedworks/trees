@@ -17,9 +17,9 @@ class TreeDataCO2Test extends TestCase
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
-            'age'      => '10years',
+            'age'           => '10years',
             'circumference' => '8in',
-            'height'   => '15ft',
+            'height'        => '15ft',
         ]);
 
         $this->assertEquals('17.63 kg', $data->getCO2SequestrationToDate()->describe());

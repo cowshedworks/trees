@@ -17,7 +17,7 @@ class TreeDataAgeEstimatesTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
-            'height' => '10m',
+            'height'        => '10m',
             'circumference' => '5cm',
         ]);
 
@@ -32,7 +32,7 @@ class TreeDataAgeEstimatesTest extends TestCase
     {
         $factory = $this->getTreeDataFactoryWithEmptyData();
         $data = $factory->build('testTree', [
-            'height' => '10m',
+            'height'        => '10m',
             'circumference' => '5cm',
         ]);
 
@@ -48,8 +48,8 @@ class TreeDataAgeEstimatesTest extends TestCase
         $factory = $this->getTreeDataFactory();
 
         $data = $factory->build('testTree', [
-            'height' => '10m',
-            'circumference' => '21cm'
+            'height'        => '10m',
+            'circumference' => '21cm',
         ]);
 
         $this->assertEquals('15.38 years', $data->getAge()->describe());
@@ -63,8 +63,8 @@ class TreeDataAgeEstimatesTest extends TestCase
         $factory = $this->getTreeDataFactory();
 
         $data = $factory->build('testTree', [
-            'height' => '1800cm',
-            'circumference' => '42cm'
+            'height'        => '1800cm',
+            'circumference' => '42cm',
         ]);
 
         $this->assertEquals('27.69 years', $data->getAge()->describe());
