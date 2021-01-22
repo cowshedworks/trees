@@ -23,6 +23,7 @@ class AboveGroundWeightCalculator extends CalculatorAbstract
     {
         return $this->unitValueFactory->weight(
             $this->getDiameterCoefficient($diameter->getValue()) * pow($diameter->getValueIn('in'), 2) * $height->getValueIn('ft'),
+            // 0.104 * (pow(pow($diameter->getValueIn('in'), 2), 1.17) * pow($height->getValueIn('ft'), 0.93)),
             'lbs'
         );
     }

@@ -103,7 +103,8 @@ try {
                     echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>{$treeData->getHeight()}</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Circumference:</td><td class='p-3'>{$treeData->getCircumference()}</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Diameter:</td><td class='p-3'>{$treeData->getDiameter()}</td></tr>";
-                    echo "<tr class='border'><td class='p-3'>Weight:</td><td class='p-3'>{$treeData->getWeight()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Green Weight:</td><td class='p-3'>{$treeData->getWeight()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Dry Weight:</td><td class='p-3'>{$treeData->getDryWeight()}</td></tr>";
 
                     echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Carbon Data</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Carbon in tree:</td><td class='p-3'>{$treeData->getCarbonWeight()}</td></tr>";

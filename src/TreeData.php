@@ -202,6 +202,11 @@ class TreeData
         return $this->totalGreenWeight;
     }
 
+    public function getDryWeight(): Weight
+    {
+        return $this->totalDryWeight;
+    }
+
     public function getCarbonWeight(): Weight
     {
         return $this->totalCarbonWeight;
