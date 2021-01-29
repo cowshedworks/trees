@@ -5,8 +5,7 @@
         "scientific": ["TestTree glutinosa"],
         "family": "TestTreeius"
     },
-    "attributes": {
-        "shape": "Conical",
+    "attributes": {        "shape": "Conical",
         "dimensions": {
             "max-height": {
                 "unit": "cm",

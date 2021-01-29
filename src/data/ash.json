@@ -6,7 +6,6 @@
         "family": "Oleaceae"
     },
     "attributes": {
-        "shape": "Conical",
         "dimensions": {
             "max-height": {
                 "unit": "cm",

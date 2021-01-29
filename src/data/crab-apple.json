@@ -5,9 +5,7 @@
         "scientific": ["Malus sylvestris"],
         "family": "Rosaceae"
     },
-    "attributes": {
-        "shape": "Round Irregular",
-        "dimensions": {
+    "attributes": {        "dimensions": {
             "max-height": {
                 "unit": "cm",
                 "value": 1000
