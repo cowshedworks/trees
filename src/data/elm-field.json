@@ -21,6 +21,7 @@
     "information": {
         "type": "Deciduous|Evergreen",
         "origin": "Native|Non-native",
+        "density": "Hardwood|Softwood",
         "about": "",
         "habitat": "",
         "leaves": null,

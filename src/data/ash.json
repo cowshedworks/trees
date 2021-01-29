@@ -30,6 +30,7 @@
     "information": {
         "type": "Deciduous",
         "origin": "Native",
+        "density": "Hardwood|Softwood",
         "about": "",
         "habitat": "Very common in Britain, likes deep well-drained soil.",
         "leaves": null,

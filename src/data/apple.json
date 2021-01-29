@@ -30,6 +30,7 @@
     "information": {
         "type": "Deciduous",
         "origin": "Non-native",
+        "density": "Hardwood|Softwood",
         "about": "",
         "habitat": "Wildly planted, also found in hedgerows.",
         "leaves": null,

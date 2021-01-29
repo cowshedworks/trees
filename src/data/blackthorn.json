@@ -21,6 +21,7 @@
     "information": {
         "type": "Deciduous",
         "origin": "Native",
+        "density": "Hardwood|Softwood",
         "about": "",
         "habitat": "The Blackthorn tree is commonly found in well-drained, damp soil enjoying full sunlight. Although it is commonly found as a hedging plant in gardens, it also grows naturally in scrub, copses and woodland.",
         "leaves": "Dark green ovate leaves",
