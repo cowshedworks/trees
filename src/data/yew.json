@@ -13,7 +13,10 @@
         },
         "growth-rate": {
             "annual-average-height": null,
-            "annual-average-circumference": null
+            "annual-average-circumference": {
+                "unit": "cm",
+                "value": 1.25
+            }
         }
     },
     "information": {
