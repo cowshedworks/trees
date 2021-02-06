@@ -1,6 +1,6 @@
 {
     "name": {
-        "popular": "Cedar (Incomplete)",
+        "popular": "Cedar",
         "common": [""],
         "scientific": [""],
         "family": ""
@@ -16,7 +16,7 @@
         }
     },
     "information": {
-        "type": "Deciduous|Evergreen",
+        "type": "Deciduous",
         "origin": "Native|Non-native",
         "density": "Hardwood|Softwood",
         "about": "",

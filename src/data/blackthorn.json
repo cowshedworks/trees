@@ -1,6 +1,6 @@
 {
     "name": {
-        "popular": "Blackthorn (Incomplete)",
+        "popular": "Blackthorn",
         "common": ["Sloe"],
         "scientific": ["Prunus spinosa","Prunus platyphylla","Prunus stilboacantha"],
         "family": "Rosaceae"
@@ -21,7 +21,7 @@
     "information": {
         "type": "Deciduous",
         "origin": "Native",
-        "density": "Hardwood|Softwood",
+        "density": "Hardwood",
         "about": "",
         "habitat": "The Blackthorn tree is commonly found in well-drained, damp soil enjoying full sunlight. Although it is commonly found as a hedging plant in gardens, it also grows naturally in scrub, copses and woodland.",
         "leaves": "Dark green ovate leaves",
