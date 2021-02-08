@@ -3,7 +3,8 @@
         "popular": "Pear",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "pear"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Walnut (Black)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "walnut-black"
     },
     "attributes": {
         "dimensions": {

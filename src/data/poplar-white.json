@@ -3,7 +3,8 @@
         "popular": "Poplar (White)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "poplar-white"
     },
     "attributes": {
         "dimensions": {

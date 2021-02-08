@@ -3,7 +3,8 @@
         "popular": "Birch (Silver)",
         "common": ["Silver birch"],
         "scientific": ["Betula pendula"],
-        "family": "Betulaceae"
+        "family": "Betulaceae",
+        "slug": "birch-silver"
     },
     "attributes": {
         "dimensions": {

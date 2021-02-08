@@ -3,7 +3,8 @@
         "popular": "Elm (Huntingdon)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "elm-huntingdon"
     },
     "attributes": {
         "dimensions": {

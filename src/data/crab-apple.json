@@ -3,7 +3,8 @@
         "popular": "Crab apple",
         "common": ["Crab apple"],
         "scientific": ["Malus sylvestris"],
-        "family": "Rosaceae"
+        "family": "Rosaceae",
+        "slug": "crab-apple"
     },
     "attributes": {        "dimensions": {
             "max-height": {

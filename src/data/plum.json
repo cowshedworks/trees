@@ -3,7 +3,8 @@
         "popular": "Plum",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "plum"
     },
     "attributes": {
         "dimensions": {

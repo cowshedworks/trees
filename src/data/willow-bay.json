@@ -3,7 +3,8 @@
         "popular": "Willow (Bay)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "willow-bay"
     },
     "attributes": {
         "dimensions": {

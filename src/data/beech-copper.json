@@ -3,7 +3,8 @@
         "popular": "Beech (Copper)",
         "common": ["Copper Beech"],
         "scientific": ["Fagus sylvatica f. purpurea"],
-        "family": "Fagaceae"
+        "family": "Fagaceae",
+        "slug": "beech-copper"
     },
     "attributes": {
         "dimensions": {

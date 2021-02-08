@@ -3,7 +3,8 @@
         "popular": "Elm (Wych)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "elm-wych"
     },
     "attributes": {
         "dimensions": {

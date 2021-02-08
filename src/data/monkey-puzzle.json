@@ -3,7 +3,8 @@
         "popular": "Monkey Puzzle",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "monkey-puzzle"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Oak (English)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "oak-english"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Willow (Grey)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "willow-goat"
     },
     "attributes": {
         "dimensions": {

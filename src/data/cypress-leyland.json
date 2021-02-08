@@ -3,7 +3,8 @@
         "popular": "Cypress (Leyland)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "cypress-leyland"
     },
     "attributes": {
         "dimensions": {

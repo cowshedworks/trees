@@ -3,7 +3,8 @@
         "popular": "Sycamore",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "sycamore"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Plum (Cherry)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "plum-cherry"
     },
     "attributes": {
         "dimensions": {

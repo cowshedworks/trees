@@ -3,7 +3,8 @@
         "popular": "Aspen",
         "common": ["Aspen", "Quaking aspen", "Common aspen", "European aspen"],
         "scientific": ["Populus tremula"],
-        "family": "Salicaceae"
+        "family": "Salicaceae",
+        "slug": "aspen"
     },
     "attributes": {
         "dimensions": {

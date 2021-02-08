@@ -3,7 +3,8 @@
         "popular": "Spindle",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "spindle"
     },
     "attributes": {
         "dimensions": {

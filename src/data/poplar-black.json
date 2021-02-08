@@ -3,7 +3,8 @@
         "popular": "Poplar (Black)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "poplar-black"
     },
     "attributes": {
         "dimensions": {

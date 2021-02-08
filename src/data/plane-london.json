@@ -3,7 +3,8 @@
         "popular": "Plane (London)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "plane-london"
     },
     "attributes": {
         "dimensions": {

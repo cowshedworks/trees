@@ -3,7 +3,8 @@
         "popular": "Oak (Holm)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "oak-holm"
     },
     "attributes": {
         "dimensions": {

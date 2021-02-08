@@ -3,7 +3,8 @@
         "popular": "Box",
         "common": ["Common box","European box"],
         "scientific": ["Buxus sempervirens"],
-        "family": "Buxaceae"
+        "family": "Buxaceae",
+        "slug": "box"
     },
     "attributes": {
         "dimensions": {

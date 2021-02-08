@@ -3,7 +3,8 @@
         "popular": "Elm (Field)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "elm-field"
     },
     "attributes": {
         "dimensions": {

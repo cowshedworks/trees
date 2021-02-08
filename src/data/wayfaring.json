@@ -3,7 +3,8 @@
         "popular": "Wayfaring",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "wayfaring"
     },
     "attributes": {
         "dimensions": {

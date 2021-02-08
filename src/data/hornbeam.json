@@ -3,7 +3,8 @@
         "popular": "Hornbeam",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "hornbeam"
     },
     "attributes": {
         "dimensions": {

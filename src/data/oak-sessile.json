@@ -3,7 +3,8 @@
         "popular": "Oak (Sessile)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "oak-sessile"
     },
     "attributes": {
         "dimensions": {

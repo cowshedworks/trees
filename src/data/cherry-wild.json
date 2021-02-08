@@ -3,7 +3,8 @@
         "popular": "Cherry (Wild)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "cherry-wild"
     },
     "attributes": {
         "dimensions": {

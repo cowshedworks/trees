@@ -3,7 +3,8 @@
         "popular": "Juniper",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "juniper"
     },
     "attributes": {
         "dimensions": {

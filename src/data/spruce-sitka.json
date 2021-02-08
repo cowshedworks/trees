@@ -3,7 +3,8 @@
         "popular": "Spruce Sitka",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "spruce-sitka"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Whitebeam (Rock)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "whitebeam-rock"
     },
     "attributes": {
         "dimensions": {

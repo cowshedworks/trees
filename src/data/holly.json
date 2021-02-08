@@ -3,7 +3,8 @@
         "popular": "Holly",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "holly"
     },
     "attributes": {
         "dimensions": {

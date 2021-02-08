@@ -3,7 +3,8 @@
         "popular": "Whitebeam (Arran)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "whitebeam-arran"
     },
     "attributes": {
         "dimensions": {

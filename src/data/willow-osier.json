@@ -3,7 +3,8 @@
         "popular": "Willow (Osier)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "willow-osier"
     },
     "attributes": {
         "dimensions": {

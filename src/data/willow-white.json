@@ -3,7 +3,8 @@
         "popular": "Willow (White)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "willow-white"
     },
     "attributes": {
         "dimensions": {

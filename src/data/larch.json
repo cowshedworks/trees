@@ -3,7 +3,8 @@
         "popular": "Larch (European)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "larch"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Whitebeam",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "whitebeam"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Hawthorn",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "hawthorn"
     },
     "attributes": {
         "dimensions": {

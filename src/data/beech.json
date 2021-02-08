@@ -3,7 +3,8 @@
         "popular": "Beech (Common)",
         "common": ["Common Beech"],
         "scientific": ["Fagus sylvatica"],
-        "family": "Fagaceae"
+        "family": "Fagaceae",
+        "slug": "beech"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Cedar (Western Red)",
         "common": ["Cedar of Lebanon"],
         "scientific": ["Cedrus libani"],
-        "family": "Pinaceae"
+        "family": "Pinaceae",
+        "slug": "cedar-western-red"
     },
     "attributes": {
         "dimensions": {

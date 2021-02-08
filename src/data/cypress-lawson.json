@@ -3,7 +3,8 @@
         "popular": "Cypress (Lawson)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "cypress-lawson"
     },
     "attributes": {
         "dimensions": {

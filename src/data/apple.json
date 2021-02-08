@@ -3,7 +3,8 @@
         "popular": "Apple",
         "common": ["Apple"],
         "scientific": ["Malus x domestica"],
-        "family": "Rosaceae"
+        "family": "Rosaceae",
+        "slug": "apple"
     },
     "attributes": {
         "dimensions": {

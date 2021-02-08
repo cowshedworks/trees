@@ -3,7 +3,8 @@
         "popular": "Pine (Scots)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "pine-scots"
     },
     "attributes": {
         "dimensions": {

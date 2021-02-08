@@ -3,7 +3,8 @@
         "popular": "Willow (Crack)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "willow-crack"
     },
     "attributes": {
         "dimensions": {

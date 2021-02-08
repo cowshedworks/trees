@@ -3,7 +3,8 @@
         "popular": "Hazel",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "hazel"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Pine (Black)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "pine-black"
     },
     "attributes": {
         "dimensions": {

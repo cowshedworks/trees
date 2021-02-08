@@ -3,7 +3,8 @@
         "popular": "Maple (Field)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "maple-field"
     },
     "attributes": {
         "dimensions": {

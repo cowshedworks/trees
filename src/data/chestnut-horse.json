@@ -3,7 +3,8 @@
         "popular": "Horse Chestnut",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "chestnut-horse"
     },
     "attributes": {
         "dimensions": {

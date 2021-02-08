@@ -3,7 +3,8 @@
         "popular": "Spruce Norway",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "spruce-norway"
     },
     "attributes": {
         "dimensions": {

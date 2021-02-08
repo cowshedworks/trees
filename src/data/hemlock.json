@@ -3,7 +3,8 @@
         "popular": "Hemlock",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "hemlock"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Oak (Turkey)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "oak-turkey"
     },
     "attributes": {
         "dimensions": {

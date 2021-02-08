@@ -3,7 +3,8 @@
         "popular": "Blackthorn",
         "common": ["Sloe"],
         "scientific": ["Prunus spinosa","Prunus platyphylla","Prunus stilboacantha"],
-        "family": "Rosaceae"
+        "family": "Rosaceae",
+        "slug": "blackthorn"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Cedar",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "cedar"
     },
     "attributes": {
         "dimensions": {

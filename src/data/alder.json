@@ -3,7 +3,8 @@
         "popular": "Alder",
         "common": ["Alder", "Common Alder", "Black Alder", "European Alder"],
         "scientific": ["Alnus glutinosa"],
-        "family": "Betulaceae"
+        "family": "Betulaceae",
+        "slug": "alder"
     },
     "attributes": {
         "dimensions": {

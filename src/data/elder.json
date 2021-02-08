@@ -3,7 +3,8 @@
         "popular": "Elder",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "elder"
     },
     "attributes": {
         "dimensions": {

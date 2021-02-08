@@ -3,7 +3,8 @@
         "popular": "Chestnut (Sweet)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "chestnut-sweet"
     },
     "attributes": {
         "dimensions": {

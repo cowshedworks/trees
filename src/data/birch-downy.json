@@ -3,7 +3,8 @@
         "popular": "Birch (Downy)",
         "common": ["Downy birch", "Hairy birch", "Moor birch", "White birch", "Common white birch", "European white birch"],
         "scientific": ["Betula pubescens"],
-        "family": "Betulaceae"
+        "family": "Betulaceae",
+        "slug": "birch-downy"
     },
     "attributes": {
         "dimensions": {

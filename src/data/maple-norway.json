@@ -3,7 +3,8 @@
         "popular": "Maple (Norway)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "maple-norway"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Rowan",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "rowan"
     },
     "attributes": {
         "dimensions": {

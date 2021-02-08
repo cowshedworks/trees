@@ -3,7 +3,8 @@
         "popular": "Cherry (Sour)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "cherry-sour"
     },
     "attributes": {
         "dimensions": {

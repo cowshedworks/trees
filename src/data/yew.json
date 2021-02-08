@@ -3,7 +3,8 @@
         "popular": "Yew",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "yew"
     },
     "attributes": {
         "dimensions": {

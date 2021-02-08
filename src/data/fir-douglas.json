@@ -3,7 +3,8 @@
         "popular": "Fir (Douglas)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "fir-douglas"
     },
     "attributes": {
         "dimensions": {

@@ -3,7 +3,8 @@
         "popular": "Elm (English)",
         "common": [""],
         "scientific": [""],
-        "family": ""
+        "family": "",
+        "slug": "elm-english"
     },
     "attributes": {
         "dimensions": {

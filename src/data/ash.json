@@ -3,7 +3,8 @@
         "popular": "Ash",
         "common": ["Ash", "Common Ash", "European Ash"],
         "scientific": ["Fraxinus excelsior"],
-        "family": "Oleaceae"
+        "family": "Oleaceae",
+        "slug": "ash"
     },
     "attributes": {
         "dimensions": {
