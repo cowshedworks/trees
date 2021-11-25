@@ -58,8 +58,8 @@ class TreeDataFactory
         );
     }
 
-    public function getSpeciesFileData(string $fileName)
+    public function getSpeciesFileData(string $treeSpecies)
     {
-        return $this->speciesDataLoader->getDataFor($fileName);
+        return $this->speciesDataLoader->getDataFor($treeSpecies);
     }
 }
