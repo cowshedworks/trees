@@ -49,33 +49,33 @@ class TreeData
 
     private SpeciesData $speciesData;
 
-    private ?Age $estimatedAge = null;
+    private Age $estimatedAge;
 
-    private ?Circumference $circumference = null;
+    private Circumference $circumference;
 
-    private ?Diameter $diameter = null;
+    private Diameter $diameter;
 
-    private ?Height $height = null;
+    private Height $height;
 
-    private ?Weight $aboveGroundWeight = null;
+    private Weight $aboveGroundWeight;
 
-    private ?Weight $belowGroundWeight = null;
+    private Weight $belowGroundWeight;
 
-    private ?Weight $totalGreenWeight = null;
+    private Weight $totalGreenWeight;
 
-    private ?Weight $totalDryWeight = null;
+    private Weight $totalDryWeight;
 
-    private ?Weight $totalCarbonWeight = null;
+    private Weight $totalCarbonWeight;
 
-    private ?Weight $totalCarbonSequestered = null;
+    private Weight $totalCarbonSequestered;
 
-    private ?Weight $totalCarbonSequesteredPerYear = null;
+    private Weight $totalCarbonSequesteredPerYear;
 
-    private ?Height $growthRateHeightActual = null;
+    private Height $growthRateHeightActual;
 
-    private ?Length $growthRateCircumferenceActual = null;
+    private Length $growthRateCircumferenceActual;
 
-    private ?HeightAgeRegressionData $heightAgeRegressionData;
+    private ?HeightAgeRegressionData $heightAgeRegressionData = null;
 
     private UnitValueFactory $unitValueFactory;
 
