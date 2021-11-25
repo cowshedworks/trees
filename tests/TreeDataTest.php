@@ -23,7 +23,7 @@ class TreeDataTest extends TestCase
             'height'        => '300cm',
         ]);
 
-        $this->assertEquals('4.16 years', $data->getAge()->describe());
+        $this->assertEquals('4.16 years', $data->getEstimatedAge()->describe());
         $this->assertEquals('300 cm', $data->getHeight()->describe());
         $this->assertEquals('33 cm', $data->getCircumference()->describe());
         $this->assertEquals('10.5 cm', $data->getDiameter()->describe());
@@ -34,7 +34,7 @@ class TreeDataTest extends TestCase
             'height'        => '300 cm',
         ]);
 
-        $this->assertEquals('4.16 years', $data->getAge()->describe());
+        $this->assertEquals('4.16 years', $data->getEstimatedAge()->describe());
         $this->assertEquals('300 cm', $data->getHeight()->describe());
         $this->assertEquals('33 cm', $data->getCircumference()->describe());
         $this->assertEquals('10.5 cm', $data->getDiameter()->describe());
@@ -51,7 +51,7 @@ class TreeDataTest extends TestCase
             'height'        => '300 cm',
         ]);
 
-        $this->assertEquals('4.16 years', $data->getAge()->describe());
+        $this->assertEquals('4.16 years', $data->getEstimatedAge()->describe());
         $this->assertEquals('300 cm', $data->getHeight()->describe());
         $this->assertEquals('33 cm', $data->getCircumference()->describe());
         $this->assertEquals('10.5 cm', $data->getDiameter()->describe());
@@ -115,7 +115,7 @@ class TreeDataTest extends TestCase
             'circumference' => '10cm',
         ]);
 
-        $this->assertEquals('4.16 years', $data->getAge()->describe());
+        $this->assertEquals('4.16 years', $data->getEstimatedAge()->describe());
         $this->assertEquals('300 cm', $data->getHeight()->describe());
         $this->assertEquals('10 cm', $data->getCircumference()->describe());
         $this->assertEquals('3.18 cm', $data->getDiameter()->describe());
@@ -133,7 +133,7 @@ class TreeDataTest extends TestCase
         ]);
 
         $this->assertEquals($observationDate, $data->getObservedDate()->format('Y-m-d'));
-        $this->assertEquals('34.18 years', $data->getAge()->describe());
+        $this->assertEquals('34.18 years', $data->getEstimatedAge()->describe());
         $this->assertEquals('2251.42 cm', $data->getHeight()->describe());
         $this->assertEquals('82.05 cm', $data->getCircumference()->describe());
         $this->assertEquals('26.12 cm', $data->getDiameter()->describe());

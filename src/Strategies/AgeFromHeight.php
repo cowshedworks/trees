@@ -24,7 +24,7 @@ class AgeFromHeight extends StrategyAbstract
                 $ageFromRegression = 0.25;
             }
 
-            $treeData->setAge(
+            $treeData->setEstimatedAge(
                 $this->unitValueFactory->age(
                     $ageFromRegression,
                     'years'
@@ -40,7 +40,7 @@ class AgeFromHeight extends StrategyAbstract
         $averageAnnualHeightGrowthRate = $treeData->getAverageAnnualHeightGrowthRate();
         $calculatedAge = $treeHeight->getValue() / $averageAnnualHeightGrowthRate->getValue();
 
-        $treeData->setAge(
+        $treeData->setEstimatedAge(
             $this->unitValueFactory->age(
                 $calculatedAge,
                 'years'

@@ -49,7 +49,7 @@ class TreeData
 
     private array $speciesData;
 
-    private ?Age $age = null;
+    private ?Age $estimatedAge = null;
 
     private ?Circumference $circumference = null;
 
@@ -166,14 +166,20 @@ class TreeData
         return $maxCircumferenceFromData ?? self::DEFAULT_MAX_CIRCUMFERENCE;
     }
 
-    public function setAge(Age $age): void
+    public function setEstimatedAge(Age $age): void
     {
-        $this->age = $age;
+        $this->estimatedAge = $age;
     }
 
     public function getAge(): Age
     {
-        return $this->age;
+        // deprecated
+        return $this->getEstimatedAge();
+    }
+
+    public function getEstimatedAge(): Age
+    {
+        return $this->estimatedAge;
     }
 
     public function setCircumference(Circumference $circumference): void
@@ -305,11 +311,11 @@ class TreeData
     private function calculateRates(): void
     {
         $this->growthRateHeightActual = $this->unitValueFactory->height(
-            $this->height->getValue() / $this->age->getValue()
+            $this->height->getValue() / $this->estimatedAge->getValue()
         );
 
         $this->growthRateCircumferenceActual = $this->unitValueFactory->length(
-            $this->circumference->getValue() / $this->age->getValue()
+            $this->circumference->getValue() / $this->estimatedAge->getValue()
         );
     }
 
@@ -334,7 +340,7 @@ class TreeData
             ->calculate($this->totalCarbonWeight);
 
         $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator())
-            ->calculate($this->getAge(), $this->totalCarbonSequestered);
+            ->calculate($this->getEstimatedAge(), $this->totalCarbonSequestered);
     }
 
     public static function validateTreeParameters(array $treeParameters): bool

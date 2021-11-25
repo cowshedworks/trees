@@ -1,8 +1,8 @@
 # Tree Data
 
-Tree data for UK native trees
+The aim of this project is to provide a simple api for calculating data about UK native trees.
 
-The provided PHP utilities can be used to get data about a range of tree species. It can work out the CO2 sequestration rate for trees. The data is used as the base data in the Forest Of One Project.
+The provided PHP utilities can be used to get data about a range of tree species. It can work out the CO2 sequestration rate for trees. The data is used as the base data in the [Forest Of One Project](https://forest-of-one.org/).
 
 ## Installation
 
@@ -26,16 +26,12 @@ print_r($factory->getTrees());
 // prints ['alder', 'birch', 'oak']
 ```
 
-To instantiate a tree data object you need to pass parameters to the constructor, it requires 'circumference' and 'height' in order to build the object. You can also pass it a known 'age' in years and an observed date 'YYYY-MM-DD'.
+To instantiate a tree data object you need to pass parameters to the constructor, it requires 'circumference' and 'height' in order to build the object. You can also pass it an observed date 'YYYY-MM-DD'.
 
-If age if omitted from the parameters it will attempt to calculate it from species growth rates.
-
-If an observed date is provided it will recalculate the tree age and then estimate circumference and height based on growth rates for the time since the observed date.
-
+It will setup the tree object and calculate some information about it from the circumference and height, it will also work out an approximate age. If an observed date is provided it will attempt to extrapolate the data up to the current date.
 
 ```PHP
 $treeData = $factory->build('alder', [
-  'age'      => '10years',
   'circumference' => '22in',
   'height'   => '15ft'
 ]);
@@ -55,7 +51,7 @@ print_r($treeData->getScientificName());
 // (
 //     [0] => Alnus glutinosa
 // )
-echo $treeData->getAge();
+echo $treeData->getEstimatedAge();
 // 10 years
 echo $treeData->getCarbonWeight();
 // 36.3 kg

@@ -10,11 +10,11 @@ class RecalculateAgeFromObservedAge extends StrategyAbstract
 {
     public function execute(TreeData $treeData): void
     {
-        $treeAge = $treeData->getAge();
+        $treeAge = $treeData->getEstimatedAge();
 
         $calculatedAge = $treeAge->getValue() + $treeData->getObservationDateDiffYears();
 
-        $treeData->setAge(
+        $treeData->setEstimatedAge(
             $this->unitValueFactory->age(
                 $calculatedAge,
                 'years'

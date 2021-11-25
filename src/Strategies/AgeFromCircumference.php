@@ -13,7 +13,7 @@ class AgeFromCircumference extends StrategyAbstract
         $circumference = $treeData->getCircumference();
         $averageAnnualCircumferenceGrowthRate = $treeData->getAverageAnnualCircumferenceGrowthRate();
 
-        $treeData->setAge(
+        $treeData->setEstimatedAge(
             $this->unitValueFactory->age(
                 $circumference->getValue() / $averageAnnualCircumferenceGrowthRate->getValue(),
                 'years'

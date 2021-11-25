@@ -52,7 +52,7 @@ class TreeDataAgeEstimatesTest extends TestCase
             'circumference' => '21cm',
         ]);
 
-        $this->assertEquals('8.69 years', $data->getAge()->describe());
+        $this->assertEquals('8.69 years', $data->getEstimatedAge()->describe());
     }
 
     /**
@@ -67,6 +67,6 @@ class TreeDataAgeEstimatesTest extends TestCase
             'circumference' => '42cm',
         ]);
 
-        $this->assertEquals('15.46 years', $data->getAge()->describe());
+        $this->assertEquals('15.46 years', $data->getEstimatedAge()->describe());
     }
 }
