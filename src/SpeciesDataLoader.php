@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
-class ConfigLoader
+class SpeciesDataLoader
 {
     const DATADIR = __DIR__.'/data';
 

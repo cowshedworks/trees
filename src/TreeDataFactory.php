@@ -10,10 +10,10 @@ class TreeDataFactory
 {
     protected array $availableTrees = [];
 
-    public function __construct(ConfigLoader $configLoader = null)
+    public function __construct(SpeciesDataLoader $speciesDataLoader = null)
     {
-        $this->configLoader = $configLoader ?? new ConfigLoader();
-        $this->availableTrees = $this->configLoader->loadAvailableTrees();
+        $this->speciesDataLoader = $speciesDataLoader ?? new SpeciesDataLoader();
+        $this->availableTrees = $this->speciesDataLoader->loadAvailableTrees();
     }
 
     public function getTrees(): array
@@ -45,7 +45,7 @@ class TreeDataFactory
         $this->checkCanBuild($treeName, $userParameters);
 
         return $this->buildFromConfig(
-            $this->configLoader->getConfigFor($treeName),
+            $this->speciesDataLoader->getConfigFor($treeName),
             $userParameters ?? []
         );
     }
@@ -60,6 +60,6 @@ class TreeDataFactory
 
     public function getSpeciesFileData(string $fileName)
     {
-        return $this->configLoader->getConfigFor($fileName);
+        return $this->speciesDataLoader->getConfigFor($fileName);
     }
 }

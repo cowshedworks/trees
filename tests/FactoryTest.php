@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees\Tests;
 
 use ArgumentCountError;
-use CowshedWorks\Trees\ConfigLoader;
+use CowshedWorks\Trees\SpeciesDataLoader;
 use Exception;
 use PHPUnit\Framework\TestCase;
 
@@ -77,9 +77,9 @@ class FactoryTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
 
-        $configLoader = new ConfigLoader();
-        $configLoader->setDataDir(__DIR__.'/data');
-        $treeConfig = $configLoader->getConfigFor('testTree');
+        $speciesDataLoader = new SpeciesDataLoader();
+        $speciesDataLoader->setDataDir(__DIR__.'/data');
+        $treeConfig = $speciesDataLoader->getConfigFor('testTree');
 
         $data = $factory->buildFromConfig(
             $treeConfig,

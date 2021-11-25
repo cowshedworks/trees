@@ -4,24 +4,24 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees\Tests;
 
-use CowshedWorks\Trees\ConfigLoader;
+use CowshedWorks\Trees\SpeciesDataLoader;
 use CowshedWorks\Trees\TreeDataFactory;
 
 trait TestTreeFactory
 {
     protected function getTreeDataFactory(): TreeDataFactory
     {
-        $configLoader = new ConfigLoader();
-        $configLoader->setDataDir(__DIR__.'/data');
+        $loader = new SpeciesDataLoader();
+        $loader->setDataDir(__DIR__.'/data');
 
-        return new TreeDataFactory($configLoader);
+        return new TreeDataFactory($loader);
     }
 
     protected function getTreeDataFactoryWithEmptyData(): TreeDataFactory
     {
-        $configLoader = new ConfigLoader();
-        $configLoader->setDataDir(__DIR__.'/data/empty');
+        $loader = new SpeciesDataLoader();
+        $loader->setDataDir(__DIR__.'/data/empty');
 
-        return new TreeDataFactory($configLoader);
+        return new TreeDataFactory($loader);
     }
 }
