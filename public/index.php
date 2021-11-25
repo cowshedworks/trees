@@ -75,7 +75,7 @@ try {
 
   echo '<div class="lg:col-span-2 text-center">';
   echo '<div class="w-full bg-white rounded shadow-lg p-8">';
-  echo "<h3 class='font-bold text-lg'>Calculated Tree Data</h3>";
+  echo "<h4 class='text-xl font-black text-green-600 mb-5'>Calculated Tree Data</h4>";
   echo "<p class='mb-2'>Estimated Age <br><span class='text-xl'>{$treeData->getEstimatedAge()}</span></p>";
   echo "<p class='mb-2'>Height <br><span class='text-xl'>{$treeData->getHeight()}</span></p>";
   echo "<p class='mb-2'>Circumference<br><span class='text-xl'>{$treeData->getCircumference()}</span></p>";
@@ -87,7 +87,7 @@ try {
 
   echo '<div class="lg:col-span-2 text-center">';
   echo '<div class="w-full bg-white rounded shadow-lg p-8">';
-  echo "<h3 class='font-bold text-lg'>Growth Rates</h3>";
+  echo "<h4 class='text-xl font-black text-green-600 mb-5'>Growth Rates</h4>";
   echo "<p class='mb-2'>Actual Average Height Growth Rate<br><span class='text-xl'>{$treeData->getActualAnnualHeightGrowthRate()}</span></p>";
   echo "<p class='mb-2'>Default Average Height Growth Rate<br><span class='text-xl'>{$treeData->getAverageAnnualHeightGrowthRate()}</span></p>";
   echo "<p class='mb-2'>Actual Average Circumference Growth Rate<br><span class='text-xl'>{$treeData->getActualAverageCircumferenceGrowthRate()}</span></p>";
@@ -103,7 +103,7 @@ try {
 
   echo '<div class="lg:col-span-2 text-center">';
   echo '<div class="w-full bg-white rounded shadow-lg p-8">';
-  echo "<h3 class='font-bold text-lg'>Species Data</h3>";
+  echo "<h4 class='text-xl font-black text-green-600 mb-5'>Species Data</h4>";
   echo "<p class='mb-2'>Tree Name<br><span class='text-xl'>{$treeData->getPopularName()}</span></p>";
   echo "<p class='mb-2'>Family<br><span class='text-xl'>{$treeData->getFamilyName()}</span></p>";
   echo "<p class='mb-2'>Common Name(s)<br><span class='text-xl'>";
