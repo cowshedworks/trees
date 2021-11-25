@@ -91,9 +91,9 @@ class TreeData
         $this->speciesData = $speciesData;
         $this->observedAt = new DateTime('midnight');
 
-        $this->resolveRegressions();
+        $this->setupRegressionData();
 
-        $this->resolveProvidedAttributes($treeData);
+        $this->setProvidedAttributes($treeData);
 
         $this->executeStrategies();
 
@@ -344,18 +344,20 @@ class TreeData
         return count($missingRequiredParameters) === 0;
     }
 
-    private function resolveRegressions(): void
+    private function setupRegressionData(): void
     {
-        if (null === $this->getSpeciesData('attributes.growth-rate.height-regression-seed')) {
+        $regressionDataForSpecies = $this->getSpeciesData('attributes.growth-rate.height-regression-seed');
+
+        if (null === $regressionDataForSpecies) {
             $this->heightAgeRegressionData = null;
 
             return;
         }
 
-        $this->heightAgeRegressionData = new HeightAgeRegressionData($this->getSpeciesData('attributes.growth-rate.height-regression-seed'));
+        $this->heightAgeRegressionData = new HeightAgeRegressionData($regressionDataForSpecies);
     }
 
-    private function resolveProvidedAttributes(array $treeData): void
+    private function setProvidedAttributes(array $treeData): void
     {
         foreach ($treeData as $parameter => $data) {
             if ($treeData[$parameter] == '') {
@@ -391,9 +393,7 @@ class TreeData
 
     private function executeStrategies(): void
     {
-        if ($this->age === null) {
-            $this->executeAgeStrategy();
-        }
+        $this->executeAgeStrategy();
 
         if ($this->hasOlderObservedAge()) {
             $this->executeRecalculateStrategy();
