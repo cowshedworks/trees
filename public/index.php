@@ -22,11 +22,9 @@ $factory = new TreeDataFactory();
 $species = $_GET['species'] ?? 'alder';
 $currentCircumference = $_GET['circumference'] ?? '170cm';
 $currentHeight = $_GET['height'] ?? '28m';
-$currentAge = $_GET['age'] ?? null;
 $currentObservedDate = $_GET['observed'] ?? '2001-01-01';
 
 $treeParameters = [
-    'age'             => $currentAge,
     'circumference'   => $currentCircumference,
     'height'          => $currentHeight,
     'observed'        => $currentObservedDate,
@@ -66,10 +64,6 @@ $treeParameters = [
             <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="observed">Observed</label>
             <input class="border py-2 px-3 text-grey-darkest" type="text" name="observed" placeholder="eg 1990-01-04" value="<?php echo $currentObservedDate; ?>"">
           </div>
-          <div class="flex flex-col mb-4">
-            <label class="mb-2 uppercase font-bold text-lg text-grey-darkest" for="age">Age</label>
-            <input class="border py-2 px-3 text-grey-darkest" type="text" name="age" placeholder="age" value="<?php echo $currentAge; ?>"">
-          </div>
           <button class="block bg-green-600 hover:bg-green-700 uppercase text-lg text-white mx-auto p-4 rounded" type="submit">Build Tree Data</button>
         </form>
       </div>
@@ -99,7 +93,7 @@ try {
                     echo '</td></tr>';
                     echo "<tr class='border'><td class='p-3'>Habitat</td><td class='p-3'>{$treeData->getHabitat()}</td></tr>";
                     echo "<tr class='font-black text-white bg-green-800'><td class='p-2' colspan='2'>Tree Attributes</td></tr>";
-                    echo "<tr class='border'><td class='p-3'>Current Age</td><td class='p-3'>{$treeData->getAge()}</td></tr>";
+                    echo "<tr class='border'><td class='p-3'>Estimated Age</td><td class='p-3'>{$treeData->getAge()}</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Height</td><td class='p-3'>{$treeData->getHeight()}</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Circumference:</td><td class='p-3'>{$treeData->getCircumference()}</td></tr>";
                     echo "<tr class='border'><td class='p-3'>Diameter:</td><td class='p-3'>{$treeData->getDiameter()}</td></tr>";

@@ -60,16 +60,14 @@ class TreeDataTest extends TestCase
     /**
      * @test
      */
-    public function all_tree_data_can_be_overridden(): void
+    public function tree_data_can_be_overridden_by_parameters(): void
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
             'circumference' => '33cm',
-            'age'           => '40 years',
             'height'        => '280cm',
         ]);
 
-        $this->assertEquals('40 years', $data->getAge()->describe());
         $this->assertEquals('280 cm', $data->getHeight()->describe());
         $this->assertEquals('33 cm', $data->getCircumference()->describe());
         $this->assertEquals('10.5 cm', $data->getDiameter()->describe());

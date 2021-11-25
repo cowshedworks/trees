@@ -44,7 +44,6 @@ class TreeData
     public static array $acceptedParameters = [
         'circumference',
         'height',
-        'age',
         'observed',
     ];
 
@@ -91,10 +90,15 @@ class TreeData
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
         $this->observedAt = new DateTime('midnight');
+
         $this->resolveRegressions();
+
         $this->resolveProvidedAttributes($treeData);
+
         $this->executeStrategies();
+
         $this->calculateRates();
+
         $this->calculateWeights();
     }
 
