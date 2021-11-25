@@ -79,10 +79,10 @@ class FactoryTest extends TestCase
 
         $speciesDataLoader = new SpeciesDataLoader();
         $speciesDataLoader->setDataDir(__DIR__.'/data');
-        $treeConfig = $speciesDataLoader->getConfigFor('testTree');
+        $speciesData = $speciesDataLoader->getDataFor('testTree');
 
-        $data = $factory->buildFromConfig(
-            $treeConfig,
+        $data = $factory->buildFromSpeciesDataFile(
+            $speciesData,
             [
                 'circumference' => '33cm',
                 'height'        => '2000cm',

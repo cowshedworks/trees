@@ -44,13 +44,13 @@ class TreeDataFactory
     {
         $this->checkCanBuild($treeName, $userParameters);
 
-        return $this->buildFromConfig(
-            $this->speciesDataLoader->getConfigFor($treeName),
+        return $this->buildFromSpeciesDataFile(
+            $this->speciesDataLoader->getDataFor($treeName),
             $userParameters ?? []
         );
     }
 
-    public function buildFromConfig(array $treeConfigData, array $userParameters): TreeData
+    public function buildFromSpeciesDataFile(array $treeConfigData, array $userParameters): TreeData
     {
         return new TreeData(
             $treeConfigData,
@@ -60,6 +60,6 @@ class TreeDataFactory
 
     public function getSpeciesFileData(string $fileName)
     {
-        return $this->speciesDataLoader->getConfigFor($fileName);
+        return $this->speciesDataLoader->getDataFor($fileName);
     }
 }

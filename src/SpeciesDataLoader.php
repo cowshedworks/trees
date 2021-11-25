@@ -37,7 +37,7 @@ class SpeciesDataLoader
         return array_values($dataFiles);
     }
 
-    public function getConfigFor(string $treeName): array
+    public function getDataFor(string $treeName): array
     {
         return json_decode(
             file_get_contents(
