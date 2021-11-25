@@ -12,7 +12,8 @@
         },
         "growth-rate": {
             "annual-average-height": null,
-            "annual-average-circumference": null
+            "annual-average-circumference": null,
+            "height-regression-seed": null
         }
     },
     "information": {

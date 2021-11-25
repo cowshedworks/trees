@@ -16,7 +16,8 @@
             "annual-average-circumference": {
                 "unit": "cm",
                 "value": 2.75
-            }
+            },
+            "height-regression-seed": null
         }
     },
     "information": {
