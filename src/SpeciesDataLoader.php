@@ -37,17 +37,19 @@ class SpeciesDataLoader
         return array_values($dataFiles);
     }
 
-    public function getDataFor(string $treeName): array
+    public function getDataFor(string $treeName): SpeciesData
     {
-        return json_decode(
-            file_get_contents(
-                sprintf(
-                    '%s/%s.json',
-                    $this->getDataDir(),
-                    $treeName
-                )
-            ),
-            true // JSON OBJECT -> ASSOCIATIVE ARRAY
+        return new SpeciesData(
+            json_decode(
+                file_get_contents(
+                    sprintf(
+                        '%s/%s.json',
+                        $this->getDataDir(),
+                        $treeName
+                    )
+                ),
+                true // JSON OBJECT -> ASSOCIATIVE ARRAY
+            )
         );
     }
 }

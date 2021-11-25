@@ -103,6 +103,6 @@ class FactoryTest extends TestCase
         $factory = $this->getTreeDataFactory();
         $fileData = $factory->getSpeciesFileData('testTree');
 
-        $this->assertEquals('Test Tree', $fileData['name']['popular']);
+        $this->assertEquals('Test Tree', $fileData->get('name.popular'));
     }
 }

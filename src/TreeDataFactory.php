@@ -50,7 +50,7 @@ class TreeDataFactory
         );
     }
 
-    public function buildFromSpeciesDataFile(array $treeConfigData, array $userParameters): TreeData
+    public function buildFromSpeciesDataFile(SpeciesData $treeConfigData, array $userParameters): TreeData
     {
         return new TreeData(
             $treeConfigData,

@@ -47,7 +47,7 @@ class TreeData
         'observed',
     ];
 
-    private array $speciesData;
+    private SpeciesData $speciesData;
 
     private ?Age $estimatedAge = null;
 
@@ -85,7 +85,7 @@ class TreeData
 
     private bool $hasOlderObservedAge = false;
 
-    public function __construct(array $speciesData, array $providedTreeData)
+    public function __construct(SpeciesData $speciesData, array $providedTreeData)
     {
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
@@ -292,20 +292,7 @@ class TreeData
 
     private function getSpeciesData(string $dataName)
     {
-        try {
-            $currentValue = $this->speciesData;
-
-            foreach (explode('.', $dataName) as $key) {
-                if (isset($currentValue[$key]) === false) {
-                    throw new Exception('Species data key does not exist');
-                }
-                $currentValue = $currentValue[$key];
-            }
-
-            return $currentValue;
-        } catch (Exception $exception) {
-            return null;
-        }
+        return $this->speciesData->get($dataName);
     }
 
     private function calculateRates(): void
