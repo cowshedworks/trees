@@ -17,7 +17,7 @@ class RegressionTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
-            'height'   => '10cm',
+            'height'        => '10cm',
             'circumference' => '5cm',
         ]);
 
@@ -53,7 +53,7 @@ class RegressionTest extends TestCase
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
-            'height'   => '10cm',
+            'height'        => '10cm',
             'circumference' => '5cm',
         ]);
 
