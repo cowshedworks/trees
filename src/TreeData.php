@@ -85,7 +85,7 @@ class TreeData
 
     private bool $hasOlderObservedAge = false;
 
-    public function __construct(array $speciesData, array $treeData)
+    public function __construct(array $speciesData, array $providedTreeData)
     {
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
@@ -93,7 +93,7 @@ class TreeData
 
         $this->setupRegressionData();
 
-        $this->setProvidedAttributes($treeData);
+        $this->setProvidedAttributes($providedTreeData);
 
         $this->executeStrategies();
 
@@ -363,27 +363,27 @@ class TreeData
         $this->heightAgeRegressionData = new HeightAgeRegressionData($regressionDataForSpecies);
     }
 
-    private function setProvidedAttributes(array $treeData): void
+    private function setProvidedAttributes(array $providedTreeData): void
     {
-        foreach ($treeData as $parameter => $data) {
-            if ($treeData[$parameter] == '') {
-                unset($treeData[$parameter]);
+        foreach ($providedTreeData as $parameter => $data) {
+            if ($providedTreeData[$parameter] == '') {
+                unset($providedTreeData[$parameter]);
             }
         }
 
         foreach (self::$acceptedParameters as $parameter) {
-            if (false === isset($treeData[$parameter])) {
+            if (false === isset($providedTreeData[$parameter])) {
                 continue;
             }
 
             if ($parameter === 'observed') {
-                $dateString = $treeData['observed'];
+                $dateString = $providedTreeData['observed'];
                 $this->observedAt = (new DateTime($dateString))->settime(0, 0);
                 $this->hasOlderObservedAge = $this->observedAt < new DateTime('midnight');
                 continue;
             }
 
-            $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $treeData[$parameter]);
+            $values = preg_split('/(?<=[0-9])(?=[a-z]+)/i', $providedTreeData[$parameter]);
 
             if (count($values) === 2) {
                 $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0], $values[1]);
