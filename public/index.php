@@ -71,64 +71,63 @@ $treeParameters = [
   </div>
 <?php
 try {
-  $treeData = $factory->build($species, $treeParameters);
+                    $treeData = $factory->build($species, $treeParameters);
 
-  echo '<div class="lg:col-span-2 text-center">';
-  echo '<div class="w-full bg-white rounded shadow-lg p-8">';
-  echo "<h4 class='text-xl font-black text-green-600 mb-5'>Calculated Tree Data</h4>";
-  echo "<p class='mb-2'>Estimated Age <br><span class='text-xl'>{$treeData->getEstimatedAge()}</span></p>";
-  echo "<p class='mb-2'>Height <br><span class='text-xl'>{$treeData->getHeight()}</span></p>";
-  echo "<p class='mb-2'>Circumference<br><span class='text-xl'>{$treeData->getCircumference()}</span></p>";
-  echo "<p class='mb-2'>Diameter<br><span class='text-xl'>{$treeData->getDiameter()}</span></p>";
-  echo "<p class='mb-2'>Green Weight<br><span class='text-xl'>{$treeData->getWeight()}</span></p>";
-  echo "<p class='mb-2'>Dry Weight<br><span class='text-xl'>{$treeData->getDryWeight()}</span></p>";
-  echo '</div>';
-  echo '</div>';
+                    echo '<div class="lg:col-span-2 text-center">';
+                    echo '<div class="w-full bg-white rounded shadow-lg p-8">';
+                    echo "<h4 class='text-xl font-black text-green-600 mb-5'>Calculated Tree Data</h4>";
+                    echo "<p class='mb-2'>Estimated Age <br><span class='text-xl'>{$treeData->getEstimatedAge()}</span></p>";
+                    echo "<p class='mb-2'>Height <br><span class='text-xl'>{$treeData->getHeight()}</span></p>";
+                    echo "<p class='mb-2'>Circumference<br><span class='text-xl'>{$treeData->getCircumference()}</span></p>";
+                    echo "<p class='mb-2'>Diameter<br><span class='text-xl'>{$treeData->getDiameter()}</span></p>";
+                    echo "<p class='mb-2'>Green Weight<br><span class='text-xl'>{$treeData->getWeight()}</span></p>";
+                    echo "<p class='mb-2'>Dry Weight<br><span class='text-xl'>{$treeData->getDryWeight()}</span></p>";
+                    echo '</div>';
+                    echo '</div>';
 
-  echo '<div class="lg:col-span-2 text-center">';
-  echo '<div class="w-full bg-white rounded shadow-lg p-8">';
-  echo "<h4 class='text-xl font-black text-green-600 mb-5'>Growth Rates</h4>";
-  echo "<p class='mb-2'>Actual Average Height Growth Rate<br><span class='text-xl'>{$treeData->getActualAnnualHeightGrowthRate()}</span></p>";
-  echo "<p class='mb-2'>Default Average Height Growth Rate<br><span class='text-xl'>{$treeData->getAverageAnnualHeightGrowthRate()}</span></p>";
-  echo "<p class='mb-2'>Actual Average Circumference Growth Rate<br><span class='text-xl'>{$treeData->getActualAverageCircumferenceGrowthRate()}</span></p>";
-  echo "<p class='mb-2'>Default Average Circumference Growth Rates<br><span class='text-xl'>{$treeData->getAverageAnnualCircumferenceGrowthRate()}</span></p>";
-  echo "<p class='mb-2'>Max Height<br><span class='text-xl'>{$treeData->getMaxHeight()} cm</span></p>";
-  echo "<p class='mb-2'>Max Circumference<br><span class='text-xl'>{$treeData->getMaxCircumference()} cm</span></p>";
-  echo "<h4>Carbon Data</h4>";
-  echo "<p class='mb-2'>Carbon in tree<br><span class='text-xl'>{$treeData->getCarbonWeight()}</span></p>";
-  echo "<p class='mb-2'>CO2 Sequestered per year<br><span class='text-xl'>{$treeData->getCO2SequestrationPerYear()}</span></p>";
-  echo "<p class='mb-2'>CO2 Sequestered to date<br><span class='text-xl'>{$treeData->getCO2SequestrationToDate()}</span></p>";
-  echo '</div>';
-  echo '</div>';
+                    echo '<div class="lg:col-span-2 text-center">';
+                    echo '<div class="w-full bg-white rounded shadow-lg p-8">';
+                    echo "<h4 class='text-xl font-black text-green-600 mb-5'>Growth Rates</h4>";
+                    echo "<p class='mb-2'>Actual Average Height Growth Rate<br><span class='text-xl'>{$treeData->getActualAnnualHeightGrowthRate()}</span></p>";
+                    echo "<p class='mb-2'>Default Average Height Growth Rate<br><span class='text-xl'>{$treeData->getAverageAnnualHeightGrowthRate()}</span></p>";
+                    echo "<p class='mb-2'>Actual Average Circumference Growth Rate<br><span class='text-xl'>{$treeData->getActualAverageCircumferenceGrowthRate()}</span></p>";
+                    echo "<p class='mb-2'>Default Average Circumference Growth Rates<br><span class='text-xl'>{$treeData->getAverageAnnualCircumferenceGrowthRate()}</span></p>";
+                    echo "<p class='mb-2'>Max Height<br><span class='text-xl'>{$treeData->getMaxHeight()} cm</span></p>";
+                    echo "<p class='mb-2'>Max Circumference<br><span class='text-xl'>{$treeData->getMaxCircumference()} cm</span></p>";
+                    echo '<h4>Carbon Data</h4>';
+                    echo "<p class='mb-2'>Carbon in tree<br><span class='text-xl'>{$treeData->getCarbonWeight()}</span></p>";
+                    echo "<p class='mb-2'>CO2 Sequestered per year<br><span class='text-xl'>{$treeData->getCO2SequestrationPerYear()}</span></p>";
+                    echo "<p class='mb-2'>CO2 Sequestered to date<br><span class='text-xl'>{$treeData->getCO2SequestrationToDate()}</span></p>";
+                    echo '</div>';
+                    echo '</div>';
 
-  echo '<div class="lg:col-span-2 text-center">';
-  echo '<div class="w-full bg-white rounded shadow-lg p-8">';
-  echo "<h4 class='text-xl font-black text-green-600 mb-5'>Species Data</h4>";
-  echo "<p class='mb-2'>Tree Name<br><span class='text-xl'>{$treeData->getPopularName()}</span></p>";
-  echo "<p class='mb-2'>Family<br><span class='text-xl'>{$treeData->getFamilyName()}</span></p>";
-  echo "<p class='mb-2'>Common Name(s)<br><span class='text-xl'>";
-  foreach ($treeData->getCommonNames() as $name) {
-      echo $name.'<br>';
-  }
-  echo '</span><br>';
-  echo "<p class='mb-2'>Scientific Name(s)<br><span class='text-xl'>";
-  foreach ($treeData->getScientificName() as $name) {
-      echo $name.'<br>';
-  }
-  echo '</span></p>';
-  echo "<p class='mb-2'>Habitat<br>{$treeData->getHabitat()}</p>";
-  echo '<hr class="my-5">';
-  echo '<h4 class="font-bold text-lg">Build Log:</h4>';
-  echo '<p class="mb-5">Carbon results will be based on tree size calculated from:</p>';
-  foreach ($treeData->getBuildLog() as $logMessage) {
-      echo '- '.$logMessage.'<br>';
-  }
-  echo '</div>';
-  echo '</div>';
-
-  } catch (\Exception $exception) {
-  echo $exception->getMessage();
-  }
+                    echo '<div class="lg:col-span-2 text-center">';
+                    echo '<div class="w-full bg-white rounded shadow-lg p-8">';
+                    echo "<h4 class='text-xl font-black text-green-600 mb-5'>Species Data</h4>";
+                    echo "<p class='mb-2'>Tree Name<br><span class='text-xl'>{$treeData->getPopularName()}</span></p>";
+                    echo "<p class='mb-2'>Family<br><span class='text-xl'>{$treeData->getFamilyName()}</span></p>";
+                    echo "<p class='mb-2'>Common Name(s)<br><span class='text-xl'>";
+                    foreach ($treeData->getCommonNames() as $name) {
+                        echo $name.'<br>';
+                    }
+                    echo '</span><br>';
+                    echo "<p class='mb-2'>Scientific Name(s)<br><span class='text-xl'>";
+                    foreach ($treeData->getScientificName() as $name) {
+                        echo $name.'<br>';
+                    }
+                    echo '</span></p>';
+                    echo "<p class='mb-2'>Habitat<br>{$treeData->getHabitat()}</p>";
+                    echo '<hr class="my-5">';
+                    echo '<h4 class="font-bold text-lg">Build Log:</h4>';
+                    echo '<p class="mb-5">Carbon results will be based on tree size calculated from:</p>';
+                    foreach ($treeData->getBuildLog() as $logMessage) {
+                        echo '- '.$logMessage.'<br>';
+                    }
+                    echo '</div>';
+                    echo '</div>';
+                } catch (\Exception $exception) {
+                    echo $exception->getMessage();
+                }
 ?>
 </div>
 </div>
