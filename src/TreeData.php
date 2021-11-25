@@ -11,6 +11,8 @@ use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
+use CowshedWorks\Trees\Regression\HeightAgeRegression;
+use CowshedWorks\Trees\Regression\HeightAgeRegressionData;
 use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
@@ -74,6 +76,8 @@ class TreeData
 
     private ?Length $growthRateCircumferenceActual = null;
 
+    private ?HeightAgeRegressionData $heightAgeRegressionData;
+
     private UnitValueFactory $unitValueFactory;
 
     private array $buildLog = [];
@@ -87,6 +91,7 @@ class TreeData
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
         $this->observedAt = new DateTime('midnight');
+        $this->resolveRegressions();
         $this->resolveProvidedAttributes($treeData);
         $this->executeStrategies();
         $this->calculateRates();
@@ -185,6 +190,27 @@ class TreeData
     public function getHeight(): Height
     {
         return $this->height;
+    }
+
+    private function getHeightAgeRegressionData(): HeightAgeRegressionData
+    {
+        return $this->heightAgeRegressionData;
+    }
+
+    public function getHeightAgeRegression(): HeightAgeRegression
+    {
+        if ($this->hasHeightAgeRegressionData() === false) {
+            throw new Exception('No regression data available');
+        }
+
+        return new HeightAgeRegression(
+            $this->getHeightAgeRegressionData()
+        );
+    }
+
+    public function hasHeightAgeRegressionData(): bool
+    {
+        return $this->heightAgeRegressionData != null;
     }
 
     public function setDiameter(Diameter $diameter): void
@@ -312,6 +338,17 @@ class TreeData
         $missingRequiredParameters = array_diff(self::$requiredParameters, array_keys($treeParameters));
 
         return count($missingRequiredParameters) === 0;
+    }
+
+    private function resolveRegressions(): void
+    {
+        if (null === $this->getSpeciesData('attributes.growth-rate.height-regression-seed')) {
+            $this->heightAgeRegressionData = null;
+
+            return;
+        }
+
+        $this->heightAgeRegressionData = new HeightAgeRegressionData($this->getSpeciesData('attributes.growth-rate.height-regression-seed'));
     }
 
     private function resolveProvidedAttributes(array $treeData): void
