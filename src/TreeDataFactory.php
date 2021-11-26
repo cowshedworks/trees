@@ -56,6 +56,7 @@ class TreeDataFactory
     {
         if ($this->isARequiredParameter($method)) {
             $this->setParameters[$method] = $args[0];
+
             return $this;
         }
     }
