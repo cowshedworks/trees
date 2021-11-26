@@ -107,7 +107,7 @@ class TreeDataTest extends TestCase
     /**
      * @test
      */
-    public function calculates_using_uses_observation_date_if_provided(): void
+    public function recalculates_using_uses_observation_date_if_provided(): void
     {
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree', [
@@ -137,5 +137,25 @@ class TreeDataTest extends TestCase
         $this->assertEquals('2251.42 cm', $data->getHeight()->describe());
         $this->assertEquals('82.05 cm', $data->getCircumference()->describe());
         $this->assertEquals('26.12 cm', $data->getDiameter()->describe());
+    }
+
+        /**
+     * @test
+     */
+    public function recalculation_of_circumference_does_not_exceed_maximum_circumference(): void
+    {
+        $date = new DateTime();
+        $date->sub(new DateInterval('P30Y'));
+        $observationDate = $date->format('Y-m-d');
+
+        $factory = $this->getTreeDataFactory();
+        $data = $factory->build('testTree', [
+            'height'        => '3000cm',
+            'circumference' => '170cm',
+            'observed'      => $observationDate,
+        ]);
+
+        $this->assertEquals($observationDate, $data->getObservedDate()->format('Y-m-d'));
+        $this->assertEquals('175 cm', $data->getCircumference()->describe());
     }
 }
