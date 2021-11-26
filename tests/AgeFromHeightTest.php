@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees\Tests;
 
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
-use CowshedWorks\Trees\Tests\TestTreeFactory;
 use PHPUnit\Framework\TestCase;
 
 class AgeFromHeightTest extends TestCase
