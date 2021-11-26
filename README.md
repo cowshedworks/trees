@@ -26,15 +26,23 @@ print_r($factory->getTrees());
 // prints ['alder', 'birch', 'oak']
 ```
 
-To instantiate a tree data object you need to pass parameters to the constructor, it requires 'circumference' and 'height' in order to build the object. You can also pass it an observed date 'YYYY-MM-DD'.
-
-It will setup the tree object and calculate some information about it from the circumference and height, it will also work out an approximate age. If an observed date is provided it will attempt to extrapolate the data up to the current date.
+To instantiate a tree data object you need to pass parameters to the factory, it requires 'circumference' and 'height' in order to build the object. You can also pass it an observed date 'YYYY-MM-DD'. Parameters can be passed to the factory either as an array in the build method or chained before calling build. For example:
 
 ```PHP
 $treeData = $factory->build('alder', [
   'circumference' => '22in',
   'height'   => '15ft'
 ]);
+```
+
+or 
+
+```PHP
+$treeData = $factory->circumference('22in')->height('15ft')->build('alder');
+```
+It will setup the tree object and calculate some information about it from the circumference and height, it will also work out an approximate age. If an observed date is provided it will attempt to extrapolate the data up to the current date.
+
+```PHP
 
 echo $treeData->getPopularName();
 // Alder
