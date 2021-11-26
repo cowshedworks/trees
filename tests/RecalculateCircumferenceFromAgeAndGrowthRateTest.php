@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees\Tests;
 
 use CowshedWorks\Trees\Strategies\RecalculateCircumferenceFromAgeAndGrowthRate;
-use CowshedWorks\Trees\Tests\TestTreeFactory;
 use DateInterval;
 use DateTime;
 use PHPUnit\Framework\TestCase;
@@ -22,12 +21,12 @@ class RecalculateCircumferenceFromAgeAndGrowthRateTest extends TestCase
         $date = new DateTime();
         $date->sub(new DateInterval('P30Y'));
         $observationDate = $date->format('Y-m-d');
-        
+
         $factory = $this->getTreeDataFactory();
         $treeData = $factory->build('testTree', [
             'height'        => '300cm',
             'circumference' => '17cm',
-            'observed' => $observationDate,
+            'observed'      => $observationDate,
         ]);
 
         (new RecalculateCircumferenceFromAgeAndGrowthRate())->execute($treeData);

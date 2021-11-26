@@ -139,7 +139,7 @@ class TreeDataTest extends TestCase
         $this->assertEquals('26.12 cm', $data->getDiameter()->describe());
     }
 
-        /**
+    /**
      * @test
      */
     public function recalculation_of_circumference_does_not_exceed_maximum_circumference(): void
