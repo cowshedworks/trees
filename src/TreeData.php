@@ -273,13 +273,6 @@ class TreeData
     }
 
     // PRIVATE API
-    private function getSpeciesDataUnitValue(string $key, string $unitValueClass)
-    {
-        return $this->unitValueFactory->$unitValueClass(
-            $this->getSpeciesData($key)
-        );
-    }
-
     private function getSpeciesData(string $dataName)
     {
         return $this->speciesData->get($dataName);
