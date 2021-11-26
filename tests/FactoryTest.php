@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees\Tests;
 
-use ArgumentCountError;
 use CowshedWorks\Trees\SpeciesDataLoader;
 use Exception;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +30,7 @@ class FactoryTest extends TestCase
      */
     public function the_factory_will_not_build_when_no_params_are_provided(): void
     {
-        $this->expectException(ArgumentCountError::class);
+        $this->expectException(Exception::class);
 
         $factory = $this->getTreeDataFactory();
         $data = $factory->build('testTree');
@@ -104,5 +103,18 @@ class FactoryTest extends TestCase
         $fileData = $factory->getSpeciesFileData('testTree');
 
         $this->assertEquals('Test Tree', $fileData->get('name.popular'));
+    }
+
+    /**
+     * @test
+     */
+    public function it_allows_fluent_setting_of_parameters(): void
+    {
+        $factory = $this->getTreeDataFactory();
+
+        $treeData = $factory->circumference('10cm')->height('10m')->build('testTree');
+
+        $this->assertEquals('10 cm', (string) $treeData->getCircumference());
+        $this->assertEquals('1000 cm', (string) $treeData->getHeight());
     }
 }

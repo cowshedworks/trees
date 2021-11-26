@@ -36,11 +36,6 @@ class TreeData
     const DEFAULT_MAX_HEIGHT = 4000;
     const DEFAULT_MAX_CIRCUMFERENCE = 400;
 
-    public static array $requiredParameters = [
-        'circumference',
-        'height',
-    ];
-
     public static array $acceptedParameters = [
         'circumference',
         'height',
@@ -328,13 +323,6 @@ class TreeData
 
         $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator())
             ->calculate($this->getEstimatedAge(), $this->totalCarbonSequestered);
-    }
-
-    public static function validateTreeParameters(array $treeParameters): bool
-    {
-        $missingRequiredParameters = array_diff(self::$requiredParameters, array_keys($treeParameters));
-
-        return count($missingRequiredParameters) === 0;
     }
 
     private function setupRegressionData(): void
