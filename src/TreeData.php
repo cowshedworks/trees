@@ -31,11 +31,6 @@ use Exception;
 
 class TreeData
 {
-    const DEFAULT_HEIGHT_GROWTH_RATE = 60;
-    const DEFAULT_CIRCUMFERENCE_GROWTH_RATE = 2.5;
-    const DEFAULT_MAX_HEIGHT = 4000;
-    const DEFAULT_MAX_CIRCUMFERENCE = 400;
-
     public static array $acceptedParameters = [
         'circumference',
         'height',
@@ -151,14 +146,14 @@ class TreeData
     {
         $maxHeightFromData = $this->getSpeciesData('attributes.dimensions.max-height.value');
 
-        return $maxHeightFromData ?? self::DEFAULT_MAX_HEIGHT;
+        return $maxHeightFromData ?? SpeciesData::DEFAULT_MAX_HEIGHT;
     }
 
     public function getMaxCircumference(): float
     {
         $maxCircumferenceFromData = $this->getSpeciesData('attributes.dimensions.max-circumference.value');
 
-        return $maxCircumferenceFromData ?? self::DEFAULT_MAX_CIRCUMFERENCE;
+        return $maxCircumferenceFromData ?? SpeciesData::DEFAULT_MAX_CIRCUMFERENCE;
     }
 
     public function setEstimatedAge(Age $age): void
@@ -265,14 +260,14 @@ class TreeData
 
     public function getAverageAnnualHeightGrowthRate(): Height
     {
-        $heightGrowthRate = $this->getSpeciesData('attributes.growth-rate.annual-average-height.value') ?? self::DEFAULT_HEIGHT_GROWTH_RATE;
+        $heightGrowthRate = $this->getSpeciesData('attributes.growth-rate.annual-average-height.value') ?? SpeciesData::DEFAULT_HEIGHT_GROWTH_RATE;
 
         return $this->unitValueFactory->height($heightGrowthRate);
     }
 
     public function getAverageAnnualCircumferenceGrowthRate(): Length
     {
-        $circumferenceGrowthRate = $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value') ?? self::DEFAULT_CIRCUMFERENCE_GROWTH_RATE;
+        $circumferenceGrowthRate = $this->getSpeciesData('attributes.growth-rate.annual-average-circumference.value') ?? SpeciesData::DEFAULT_CIRCUMFERENCE_GROWTH_RATE;
 
         return $this->unitValueFactory->length($circumferenceGrowthRate);
     }
