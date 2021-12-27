@@ -1,9 +1,13 @@
 {
     "name": {
         "popular": "Spruce Norway",
-        "common": [""],
-        "scientific": [""],
-        "family": "",
+        "common": [
+            "Norway Spruce"
+        ],
+        "scientific": [
+            "Picea Abies"
+        ],
+        "family": "Pinaceae",
         "slug": "spruce-norway"
     },
     "attributes": {
@@ -17,13 +21,112 @@
                 "unit": "cm",
                 "value": 3.13
             },
-            "height-regression-seed": null
+            "height-regression-seed": [
+                {
+                    "year": 0,
+                    "value": {
+                        "unit": "m",
+                        "value": 0.0
+                    }
+                },
+                {
+                    "year": 10,
+                    "value": {
+                        "unit": "m",
+                        "value": 3.2
+                    }
+                },
+                {
+                    "year": 15,
+                    "value": {
+                        "unit": "m",
+                        "value": 5.4
+                    }
+                },
+                {
+                    "year": 20,
+                    "value": {
+                        "unit": "m",
+                        "value": 8.2
+                    }
+                },
+                {
+                    "year": 25,
+                    "value": {
+                        "unit": "m",
+                        "value": 10.8
+                    }
+                },
+                {
+                    "year": 30,
+                    "value": {
+                        "unit": "m",
+                        "value": 13.25
+                    }
+                },
+                {
+                    "year": 35,
+                    "value": {
+                        "unit": "m",
+                        "value": 15.5
+                    }
+                },
+                {
+                    "year": 40,
+                    "value": {
+                        "unit": "m",
+                        "value": 17.6
+                    }
+                },
+                {
+                    "year": 45,
+                    "value": {
+                        "unit": "m",
+                        "value": 19.6
+                    }
+                },
+                {
+                    "year": 50,
+                    "value": {
+                        "unit": "m",
+                        "value": 21.3
+                    }
+                },
+                {
+                    "year": 55,
+                    "value": {
+                        "unit": "m",
+                        "value": 22.8
+                    }
+                },
+                {
+                    "year": 60,
+                    "value": {
+                        "unit": "m",
+                        "value": 24.1
+                    }
+                },
+                {
+                    "year": 65,
+                    "value": {
+                        "unit": "m",
+                        "value": 25.2
+                    }
+                },
+                {
+                    "year": 70,
+                    "value": {
+                        "unit": "m",
+                        "value": 26.5
+                    }
+                }
+            ]
         }
     },
     "information": {
-        "type": "Deciduous|Evergreen",
-        "origin": "Native|Non-native",
-        "density": "Hardwood|Softwood",
+        "type": "Evergreen",
+        "origin": "Non-native",
+        "density": "Softwood",
         "about": "",
         "habitat": "",
         "leaves": null,

@@ -84,3 +84,5 @@ TCS = 3.67 * TCW  = 3.67 * 104.4
 ##### Height regression sources
 Larch https://www.forestresearch.gov.uk/documents/6462/FCBU003.pdf
 Scots Pine https://www.forestresearch.gov.uk/documents/6462/FCBU003.pdf
+Sitka Spruce https://www.forestresearch.gov.uk/documents/6462/FCBU003.pdf
+Norway Spruce https://www.forestresearch.gov.uk/documents/6462/FCBU003.pdf
