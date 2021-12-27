@@ -1,14 +1,21 @@
 {
     "name": {
         "popular": "Pine (Scots)",
-        "common": [""],
-        "scientific": [""],
-        "family": "",
+        "common": [
+            "Scots pine"
+        ],
+        "scientific": [
+            "Pinus sylvestris"
+        ],
+        "family": "Pinaceae",
         "slug": "pine-scots"
     },
     "attributes": {
         "dimensions": {
-            "max-height": null,
+            "max-height": {
+                "unit": "cm",
+                "value": 3500
+            },
             "max-circumference": null
         },
         "growth-rate": {
@@ -17,13 +24,154 @@
                 "unit": "cm",
                 "value": 3.13
             },
-            "height-regression-seed": null
+            "height-regression-seed": [
+                {
+                    "year": 0,
+                    "value": {
+                        "unit": "m",
+                        "value": 0.0
+                    }
+                },
+                {
+                    "year": 10,
+                    "value": {
+                        "unit": "m",
+                        "value": 3.0
+                    }
+                },
+                {
+                    "year": 15,
+                    "value": {
+                        "unit": "m",
+                        "value": 4.5
+                    }
+                },
+                {
+                    "year": 20,
+                    "value": {
+                        "unit": "m",
+                        "value": 6.0
+                    }
+                },
+                {
+                    "year": 25,
+                    "value": {
+                        "unit": "m",
+                        "value": 7.7
+                    }
+                },
+                {
+                    "year": 30,
+                    "value": {
+                        "unit": "m",
+                        "value": 9.4
+                    }
+                },
+                {
+                    "year": 35,
+                    "value": {
+                        "unit": "m",
+                        "value": 11.1
+                    }
+                },
+                {
+                    "year": 40,
+                    "value": {
+                        "unit": "m",
+                        "value": 12.6
+                    }
+                },
+                {
+                    "year": 45,
+                    "value": {
+                        "unit": "m",
+                        "value": 14.0
+                    }
+                },
+                {
+                    "year": 50,
+                    "value": {
+                        "unit": "m",
+                        "value": 15.2
+                    }
+                },
+                {
+                    "year": 55,
+                    "value": {
+                        "unit": "m",
+                        "value": 16.4
+                    }
+                },
+                {
+                    "year": 60,
+                    "value": {
+                        "unit": "m",
+                        "value": 17.3
+                    }
+                },
+                {
+                    "year": 65,
+                    "value": {
+                        "unit": "m",
+                        "value": 18.2
+                    }
+                },
+                {
+                    "year": 70,
+                    "value": {
+                        "unit": "m",
+                        "value": 19.0
+                    }
+                },
+                {
+                    "year": 75,
+                    "value": {
+                        "unit": "m",
+                        "value": 19.8
+                    }
+                },
+                {
+                    "year": 80,
+                    "value": {
+                        "unit": "m",
+                        "value": 20.4
+                    }
+                },
+                {
+                    "year": 85,
+                    "value": {
+                        "unit": "m",
+                        "value": 21.0
+                    }
+                },
+                {
+                    "year": 90,
+                    "value": {
+                        "unit": "m",
+                        "value": 21.6
+                    }
+                },
+                {
+                    "year": 95,
+                    "value": {
+                        "unit": "m",
+                        "value": 22.2
+                    }
+                },
+                {
+                    "year": 100,
+                    "value": {
+                        "unit": "m",
+                        "value": 22.5
+                    }
+                }
+            ]
         }
     },
     "information": {
-        "type": "Deciduous|Evergreen",
-        "origin": "Native|Non-native",
-        "density": "Hardwood|Softwood",
+        "type": "Evergreen",
+        "origin": "Native",
+        "density": "Softwood",
         "about": "",
         "habitat": "",
         "leaves": null,

@@ -79,3 +79,8 @@ TCW = 0.5 * TDW  = 0.5 * 208.8 = 104.4 lbs
 TCS = 3.67 * TCW  = 3.67 * 104.4 
 
 = 382.8 lbs CO2 sequestered in 10 years
+
+
+##### Height regression sources
+Larch https://www.forestresearch.gov.uk/documents/6462/FCBU003.pdf
+Scots Pine https://www.forestresearch.gov.uk/documents/6462/FCBU003.pdf
