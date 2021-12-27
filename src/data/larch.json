@@ -1,9 +1,14 @@
 {
     "name": {
         "popular": "Larch (European)",
-        "common": [],
-        "scientific": [],
-        "family": "",
+        "common": [
+            "Larch",
+            "European Larch"
+        ],
+        "scientific": [
+            "Larix decidua"
+        ],
+        "family": "Pinaceae",
         "slug": "larch"
     },
     "attributes": {
@@ -131,9 +136,9 @@
         }
     },
     "information": {
-        "type": "Deciduous|Evergreen",
-        "origin": "Native|Non-native",
-        "density": "Hardwood|Softwood",
+        "type": "Evergreen",
+        "origin": "Non-native",
+        "density": "Hardwood",
         "about": "",
         "habitat": "",
         "leaves": null,
