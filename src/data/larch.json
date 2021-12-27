@@ -1,8 +1,8 @@
 {
     "name": {
         "popular": "Larch (European)",
-        "common": [""],
-        "scientific": [""],
+        "common": [],
+        "scientific": [],
         "family": "",
         "slug": "larch"
     },
@@ -14,7 +14,120 @@
         "growth-rate": {
             "annual-average-height": null,
             "annual-average-circumference": null,
-            "height-regression-seed": null
+            "height-regression-seed": [
+                {
+                    "year": 0,
+                    "value": {
+                        "unit": "m",
+                        "value": 0.0
+                    }
+                },
+                {
+                    "year": 10,
+                    "value": {
+                        "unit": "m",
+                        "value": 4.2
+                    }
+                },
+                {
+                    "year": 15,
+                    "value": {
+                        "unit": "m",
+                        "value": 7.0
+                    }
+                },
+                {
+                    "year": 20,
+                    "value": {
+                        "unit": "m",
+                        "value": 9.0
+                    }
+                },
+                {
+                    "year": 25,
+                    "value": {
+                        "unit": "m",
+                        "value": 12.1
+                    }
+                },
+                {
+                    "year": 30,
+                    "value": {
+                        "unit": "m",
+                        "value": 14.6
+                    }
+                },
+                {
+                    "year": 35,
+                    "value": {
+                        "unit": "m",
+                        "value": 16.7
+                    }
+                },
+                {
+                    "year": 40,
+                    "value": {
+                        "unit": "m",
+                        "value": 18.5
+                    }
+                },
+                {
+                    "year": 45,
+                    "value": {
+                        "unit": "m",
+                        "value": 20.1
+                    }
+                },
+                {
+                    "year": 50,
+                    "value": {
+                        "unit": "m",
+                        "value": 21.3
+                    }
+                },
+                {
+                    "year": 55,
+                    "value": {
+                        "unit": "m",
+                        "value": 22.5
+                    }
+                },
+                {
+                    "year": 60,
+                    "value": {
+                        "unit": "m",
+                        "value": 23.6
+                    }
+                },
+                {
+                    "year": 65,
+                    "value": {
+                        "unit": "m",
+                        "value": 24.6
+                    }
+                },
+                {
+                    "year": 70,
+                    "value": {
+                        "unit": "m",
+                        "value": 25.6
+                    }
+                },
+                {
+                    "year": 75,
+                    "value": {
+                        "unit": "m",
+                        "value": 26.5
+                    }
+                },
+                {
+                    "year": 80,
+                    "value": {
+                        "unit": "m",
+                        "value": 27.4
+                    }
+                }
+            ]
         }
     },
     "information": {
