@@ -13,11 +13,8 @@ class UnitValueFactory
         'height'         => Height::class,
         'length'         => Length::class,
         'weight'         => Weight::class,
+        'smallweight'         => SmallWeight::class,
     ];
-
-    public function __construct()
-    {
-    }
 
     public function __call($method, $params)
     {

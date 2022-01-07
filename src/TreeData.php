@@ -8,6 +8,7 @@ use CowshedWorks\Trees\Calculators\AboveGroundWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalBelowGroundWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
+use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerDayCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
@@ -60,6 +61,8 @@ class TreeData
     private Weight $totalCarbonSequestered;
 
     private Weight $totalCarbonSequesteredPerYear;
+
+    private Weight $totalCarbonSequesteredPerDay;
 
     private Height $growthRateHeightActual;
 
@@ -248,6 +251,11 @@ class TreeData
         return $this->totalCarbonSequesteredPerYear;
     }
 
+    public function getCO2SequestrationPerDay(): Weight
+    {
+        return $this->totalCarbonSequesteredPerDay;
+    }
+
     public function getActualAnnualHeightGrowthRate(): Height
     {
         return $this->growthRateHeightActual;
@@ -311,6 +319,9 @@ class TreeData
 
         $this->totalCarbonSequesteredPerYear = (new TotalCarbonSequesteredPerYearCalculator())
             ->calculate($this->getEstimatedAge(), $this->totalCarbonSequestered);
+
+        $this->totalCarbonSequesteredPerDay = (new TotalCarbonSequesteredPerDayCalculator())
+            ->calculate($this->getEstimatedAge(), $this->totalCarbonSequesteredPerYear);
     }
 
     private function setupRegressionData(): void
@@ -356,7 +367,7 @@ class TreeData
                 $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0]);
             }
 
-            $this->logBuild(ucfirst($parameter).' set from provided parameters');
+            $this->logBuild(ucfirst($parameter) . ' set from provided parameters');
         }
     }
 

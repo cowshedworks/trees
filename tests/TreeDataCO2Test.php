@@ -10,9 +10,7 @@ class TreeDataCO2Test extends TestCase
 {
     use TestTreeFactory;
 
-    /**
-     * @test
-     */
+    /** @test */
     public function co2_sequestration_can_be_calculated(): void
     {
         $factory = $this->getTreeDataFactory();
@@ -23,5 +21,6 @@ class TreeDataCO2Test extends TestCase
 
         $this->assertEquals('17.63 kg', $data->getCO2SequestrationToDate()->describe());
         $this->assertEquals('3.03 kg', $data->getCO2SequestrationPerYear()->describe());
+        $this->assertEquals('0.008301 kg', $data->getCO2SequestrationPerDay()->describe());
     }
 }
