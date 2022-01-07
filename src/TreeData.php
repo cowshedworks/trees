@@ -7,8 +7,8 @@ namespace CowshedWorks\Trees;
 use CowshedWorks\Trees\Calculators\AboveGroundWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalBelowGroundWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredCalculator;
-use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerDayCalculator;
+use CowshedWorks\Trees\Calculators\TotalCarbonSequesteredPerYearCalculator;
 use CowshedWorks\Trees\Calculators\TotalCarbonWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
@@ -367,7 +367,7 @@ class TreeData
                 $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0]);
             }
 
-            $this->logBuild(ucfirst($parameter) . ' set from provided parameters');
+            $this->logBuild(ucfirst($parameter).' set from provided parameters');
         }
     }
 
