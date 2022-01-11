@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
-class SpeciesDataLoader
+class SpeciesDataLoader implements DataLoaderInterface
 {
-    const DATADIR = __DIR__.'/data';
+    const DATADIR = __DIR__ . '/data';
 
     protected ?string $dataDir = null;
 
