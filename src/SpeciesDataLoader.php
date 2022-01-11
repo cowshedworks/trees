@@ -6,7 +6,7 @@ namespace CowshedWorks\Trees;
 
 class SpeciesDataLoader implements DataLoaderInterface
 {
-    const DATADIR = __DIR__ . '/data';
+    const DATADIR = __DIR__.'/data';
 
     protected ?string $dataDir = null;
 

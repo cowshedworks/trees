@@ -7,12 +7,12 @@ namespace CowshedWorks\Trees\UnitValues;
 class UnitValueFactory
 {
     protected array $unitValues = [
-        'age'            => Age::class,
-        'circumference'  => Circumference::class,
-        'diameter'       => Diameter::class,
-        'height'         => Height::class,
-        'length'         => Length::class,
-        'weight'         => Weight::class,
+        'age'                 => Age::class,
+        'circumference'       => Circumference::class,
+        'diameter'            => Diameter::class,
+        'height'              => Height::class,
+        'length'              => Length::class,
+        'weight'              => Weight::class,
         'smallweight'         => SmallWeight::class,
     ];
 

@@ -62,7 +62,7 @@ abstract class UnitValue
 
     protected function getConverionFunction($fromUnit, $toUnit)
     {
-        $conversionString = $fromUnit . '-' . $toUnit;
+        $conversionString = $fromUnit.'-'.$toUnit;
 
         switch ($conversionString) {
             case 'months-years':
