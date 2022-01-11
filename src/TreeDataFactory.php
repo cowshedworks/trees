@@ -15,8 +15,9 @@ class TreeDataFactory
 
     protected array $availableTrees = [];
     protected array $setParameters = [];
+    protected DataLoaderInterface $speciesDataLoader;
 
-    public function __construct(SpeciesDataLoader $speciesDataLoader = null)
+    public function __construct(DataLoaderInterface $speciesDataLoader = null)
     {
         $this->speciesDataLoader = $speciesDataLoader ?? new SpeciesDataLoader();
         $this->availableTrees = $this->speciesDataLoader->loadAvailableTrees();
