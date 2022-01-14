@@ -14,7 +14,6 @@ use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
 use CowshedWorks\Trees\Regression\HeightAgeRegression;
 use CowshedWorks\Trees\Regression\HeightAgeRegressionData;
-use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
 use CowshedWorks\Trees\Strategies\RecalculateAgeFromObservedAge;
@@ -367,7 +366,7 @@ class TreeData
                 $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0]);
             }
 
-            $this->logBuild(ucfirst($parameter) . ' set from provided parameters');
+            $this->logBuild(ucfirst($parameter).' set from provided parameters');
         }
     }
 
