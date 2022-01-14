@@ -40,6 +40,6 @@
             "@putenv XDEBUG_MODE=coverage",
             "vendor/bin/phpunit --color=always --coverage-html=\"public/coverage\""
         ],
-        "phpstan": "vendor/bin/phpstan analyse src --level 1"
+        "phpstan": "vendor/bin/phpstan analyse src --level 2"
     }
 }
