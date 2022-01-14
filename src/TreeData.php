@@ -367,13 +367,13 @@ class TreeData
                 $this->{$parameter} = $this->unitValueFactory->{$parameter}($values[0]);
             }
 
-            $this->logBuild(ucfirst($parameter).' set from provided parameters');
+            $this->logBuild(ucfirst($parameter) . ' set from provided parameters');
         }
     }
 
     private function executeStrategies(): void
     {
-        $this->executeAgeStrategy();
+        (new AgeFromHeight())->execute($this);
 
         if ($this->hasOlderObservedAge()) {
             $this->executeRecalculateStrategy();
@@ -387,27 +387,5 @@ class TreeData
         (new RecalculateAgeFromObservedAge())->execute($this);
         (new RecalculateHeightFromAgeAndGrowthRate())->execute($this);
         (new RecalculateCircumferenceFromAgeAndGrowthRate())->execute($this);
-    }
-
-    private function executeAgeStrategy(): void
-    {
-        if ($this->height) {
-            (new AgeFromHeight())->execute($this);
-
-            return;
-        }
-
-        // Height should always be present so these aren't needed
-        // leaving in place as we may add logic to pick the most
-        // accurate based on the tree species
-
-        if ($this->circumference) {
-            (new AgeFromCircumference())->execute($this);
-
-            return;
-        }
-
-        // We're unable to calculate the age, this is fatal
-        throw new Exception('Unable to resolve tree age.');
     }
 }

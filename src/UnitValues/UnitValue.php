@@ -72,62 +72,50 @@ abstract class UnitValue
                 return function ($value) {
                     return $value / 12;
                 };
-                break;
             case 'days-years':
                 return function ($value) {
                     return $value / 365;
                 };
-                break;
             case 'mm-cm':
                 return function ($value) {
                     return $value / 10;
                 };
-                break;
             case 'm-cm':
                 return function ($value) {
                     return $value * 100;
                 };
-                break;
             case 'cm-m':
                 return function ($value) {
                     return $value / 100;
                 };
-                break;
             case 'in-cm':
                 return function ($value) {
                     return $value * 2.54;
                 };
-                break;
             case 'cm-in':
                 return function ($value) {
                     return $value / 2.54;
                 };
-                break;
             case 'lbs-kg':
                 return function ($value) {
                     return $value * 0.453592;
                 };
-                break;
             case 'kg-lbs':
                 return function ($value) {
                     return $value / 0.453592;
                 };
-                break;
             case 'grams-kg':
                 return function ($value) {
                     return $value / 1000;
                 };
-                break;
             case 'ft-cm':
                 return function ($value) {
                     return $value * 30.48;
                 };
-                break;
             case 'cm-ft':
                 return function ($value) {
                     return $value / 30.48;
                 };
-                break;
         }
 
         throw new Exception("Cannot convert {$conversionString}");

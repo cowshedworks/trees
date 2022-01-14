@@ -64,11 +64,11 @@ class TreeDataFactory
 
     private function checkCanBuild(string $treeName, array $userParameters): void
     {
-        if (false === is_array($userParameters) || count($userParameters) < 1) {
+        if (count($userParameters) < 1) {
             throw new Exception("Cannot build {$treeName} data without at least these parameters: height, circumference");
         }
 
-        if (false === $this->validateTreeParameters($userParameters)) {
+        if (false == $this->validateTreeParameters($userParameters)) {
             throw new Exception("Cannot build {$treeName} data without at least these parameters: height, circumference");
         }
 
@@ -76,7 +76,7 @@ class TreeDataFactory
             throw new Exception('Config files not loaded');
         }
 
-        if (false === in_array($treeName, $this->availableTrees)) {
+        if (false == in_array($treeName, $this->availableTrees)) {
             throw new Exception("{$treeName} tree not available");
         }
     }
