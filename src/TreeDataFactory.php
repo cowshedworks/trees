@@ -36,7 +36,7 @@ class TreeDataFactory
 
         return $this->buildFromSpeciesDataFile(
             $this->speciesDataLoader->getDataFor($treeName),
-            $userParameters ?? []
+            $userParameters
         );
     }
 
@@ -44,7 +44,7 @@ class TreeDataFactory
     {
         return new TreeData(
             $treeConfigData,
-            $userParameters ?? []
+            $userParameters
         );
     }
 
