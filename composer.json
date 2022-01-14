@@ -2,10 +2,16 @@
     "name": "cowshedworks/trees",
     "description": "Tree Database",
     "type": "library",
-    "keywords": ["trees", "CO2", "carbon", "sequestration"],
+    "keywords": [
+        "trees",
+        "CO2",
+        "carbon",
+        "sequestration"
+    ],
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "symfony/var-dumper": "^5.2"
+        "symfony/var-dumper": "^5.2",
+        "phpstan/phpstan": "^1.3"
     },
     "license": "MIT",
     "authors": [
@@ -15,13 +21,13 @@
         }
     ],
     "require": {
-        "php" : ">=7.4",
+        "php": ">=7.4",
         "dr-que/polynomial-regression": "v1.2.1.1"
     },
     "autoload": {
         "psr-4": {
-            "CowshedWorks\\Trees\\" : "src/",
-            "CowshedWorks\\Trees\\Tests\\" : "tests/"
+            "CowshedWorks\\Trees\\": "src/",
+            "CowshedWorks\\Trees\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -29,10 +35,11 @@
         "test:coverage": [
             "@putenv XDEBUG_MODE=coverage",
             "vendor/bin/phpunit --color=always --coverage-clover=\"public/coverage/clover.xml\""
-          ],
-          "test:coverage-html": [
+        ],
+        "test:coverage-html": [
             "@putenv XDEBUG_MODE=coverage",
             "vendor/bin/phpunit --color=always --coverage-html=\"public/coverage\""
-          ]
+        ],
+        "phpstan": "vendor/bin/phpstan analyse src --level 1"
     }
 }
