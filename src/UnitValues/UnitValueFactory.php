@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees\UnitValues;
 
 /**
- * @method UnitValue weight($value, $unit = null)
- * @method UnitValue smallweight($value, $unit = null)
- * @method UnitValue height($value, $unit = null)
- * @method UnitValue circumference($value, $unit = null)
- * @method UnitValue age($value, $unit = null)
- * @method UnitValue diameter($value, $unit = null)
- * @method UnitValue length($value, $unit = null)
+ * @method Weight weight($value, $unit = null)
+ * @method SmallWeight smallweight($value, $unit = null)
+ * @method Height height($value, $unit = null)
+ * @method Circumference circumference($value, $unit = null)
+ * @method Age age($value, $unit = null)
+ * @method Diameter diameter($value, $unit = null)
+ * @method Length length($value, $unit = null)
  */
 class UnitValueFactory
 {
