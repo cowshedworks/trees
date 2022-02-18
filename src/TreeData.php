@@ -86,7 +86,7 @@ class TreeData
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
         $this->observedAt = new DateTime('midnight');
-        $this->today = new DateTime();
+        $this->today = $today;
 
         $this->setupRegressionData();
 
