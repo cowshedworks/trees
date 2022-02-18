@@ -29,7 +29,7 @@ class TreeDataFactory
         return $this->availableTrees;
     }
 
-    public function build(string $treeName, array $userParameters = []): TreeData
+    public function build(string $treeName, array $userParameters = [], DateTime $today = null): TreeData
     {
         $userParameters = array_merge($this->setParameters, $userParameters);
 
@@ -37,7 +37,8 @@ class TreeDataFactory
 
         return $this->buildFromSpeciesDataFile(
             $this->speciesDataLoader->getDataFor($treeName),
-            $userParameters
+            $userParameters,
+            $today
         );
     }
 
@@ -46,6 +47,7 @@ class TreeDataFactory
         if ($today === null) {
             $today = new DateTime();
         }
+
         return new TreeData(
             $treeConfigData,
             $userParameters,
