@@ -46,6 +46,7 @@ class TreeDataFactory
         if ($today === null) {
             $today = new DateTime();
         }
+
         return new TreeData(
             $treeConfigData,
             $userParameters,
