@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace CowshedWorks\Trees;
 
+use DateTime;
 use Exception;
 
 class TreeDataFactory
@@ -40,11 +41,15 @@ class TreeDataFactory
         );
     }
 
-    public function buildFromSpeciesDataFile(SpeciesData $treeConfigData, array $userParameters): TreeData
+    public function buildFromSpeciesDataFile(SpeciesData $treeConfigData, array $userParameters, DateTime $today = null): TreeData
     {
+        if ($today === null) {
+            $today = new DateTime();
+        }
         return new TreeData(
             $treeConfigData,
-            $userParameters
+            $userParameters,
+            $today
         );
     }
 

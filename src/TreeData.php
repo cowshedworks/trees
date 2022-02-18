@@ -14,6 +14,7 @@ use CowshedWorks\Trees\Calculators\TotalDryWeightCalculator;
 use CowshedWorks\Trees\Calculators\TotalGreenWeightCalculator;
 use CowshedWorks\Trees\Regression\HeightAgeRegression;
 use CowshedWorks\Trees\Regression\HeightAgeRegressionData;
+use CowshedWorks\Trees\Strategies\AgeFromCircumference;
 use CowshedWorks\Trees\Strategies\AgeFromHeight;
 use CowshedWorks\Trees\Strategies\DiameterFromCircumference;
 use CowshedWorks\Trees\Strategies\RecalculateAgeFromObservedAge;
@@ -27,6 +28,7 @@ use CowshedWorks\Trees\UnitValues\Length;
 use CowshedWorks\Trees\UnitValues\UnitValueFactory;
 use CowshedWorks\Trees\UnitValues\Weight;
 use DateTime;
+use DateTimeImmutable;
 use Exception;
 
 class TreeData
@@ -75,13 +77,16 @@ class TreeData
 
     private DateTime $observedAt;
 
+    private DateTime $today;
+
     private bool $hasOlderObservedAge = false;
 
-    public function __construct(SpeciesData $speciesData, array $providedTreeData)
+    public function __construct(SpeciesData $speciesData, array $providedTreeData, DateTime $today)
     {
         $this->unitValueFactory = new UnitValueFactory();
         $this->speciesData = $speciesData;
         $this->observedAt = new DateTime('midnight');
+        $this->today = new DateTime();
 
         $this->setupRegressionData();
 
@@ -101,7 +106,7 @@ class TreeData
 
     public function getObservationDateDiffYears(): float
     {
-        return (new DateTime())->diff($this->getObservedDate())->days / 365;
+        return $this->today->diff($this->getObservedDate())->days / 365;
     }
 
     public function hasOlderObservedAge(): bool
@@ -372,7 +377,7 @@ class TreeData
 
     private function executeStrategies(): void
     {
-        (new AgeFromHeight())->execute($this);
+        $this->executeAgeStrategy();
 
         if ($this->hasOlderObservedAge()) {
             $this->executeRecalculateStrategy();
@@ -386,5 +391,27 @@ class TreeData
         (new RecalculateAgeFromObservedAge())->execute($this);
         (new RecalculateHeightFromAgeAndGrowthRate())->execute($this);
         (new RecalculateCircumferenceFromAgeAndGrowthRate())->execute($this);
+    }
+
+    private function executeAgeStrategy(): void
+    {
+        if ($this->height) {
+            (new AgeFromHeight())->execute($this);
+
+            return;
+        }
+
+        // Height should always be present so these aren't needed
+        // leaving in place as we may add logic to pick the most
+        // accurate based on the tree species
+
+        if ($this->circumference) {
+            (new AgeFromCircumference())->execute($this);
+
+            return;
+        }
+
+        // We're unable to calculate the age, this is fatal
+        throw new Exception('Unable to resolve tree age.');
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace CowshedWorks\Trees\Tests;
 
 use CowshedWorks\Trees\SpeciesDataLoader;
+use DateTime;
 use Exception;
 use PHPUnit\Framework\TestCase;
 
@@ -61,6 +62,28 @@ class FactoryTest extends TestCase
                 'circumference' => '33cm',
                 'height'        => '2000cm',
             ]
+        );
+
+        $this->assertNotNull($data);
+        $this->assertEquals('Test Tree', $data->getPopularName());
+        $this->assertEquals(['Test Tree', 'Common Test Tree', 'Black Test Tree', 'European Test Tree'], $data->getCommonNames());
+        $this->assertEquals(['TestTree glutinosa'], $data->getScientificName());
+    }
+
+    /**
+     * @test
+     */
+    public function the_factory_can_get_tree_data_with_a_provided_today_date(): void
+    {
+        $factory = $this->getTreeDataFactory();
+
+        $data = $factory->build(
+            'testTree',
+            [
+                'circumference' => '33cm',
+                'height'        => '2000cm',
+            ],
+            new DateTime()
         );
 
         $this->assertNotNull($data);
