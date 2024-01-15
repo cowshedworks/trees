@@ -2,7 +2,7 @@
 
 The aim of this project is to provide a simple api for calculating data about UK native trees.
 
-The provided PHP utilities can be used to get data about a range of tree species. It can work out the CO2 sequestration rate for trees. The data is used as the base data in the [Forest Of One Project](https://forest-of-one.org/).
+The provided PHP utilities can be used to get data about a range of tree species. It can work out the CO2 sequestration rate for trees. The data is used as the base data in the Forest Of One Project.
 
 ## Installation
 
